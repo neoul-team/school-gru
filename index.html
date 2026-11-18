@@ -2214,6 +2214,8 @@ JSON 하나만 답하세요: {"ok":true} 또는 {"ok":false,"reason":"학부모�
   } catch { return {ok: true}; }
 }
 const QCATS = ["입학·전학", "가정통신문", "돈·지원", "친구·마음", "공부·숙제", "기타"];
+// 일반 누리집(GitHub)에서 Q&A 글을 저장하는 서버 주소. 비어 있으면 Claude 버전에서만 Q&A가 된다.
+const QNA_API = "https://school-gru-ai.mixxj0527.workers.dev/";
 $("#qcat").append(...QCATS.map(c => h("option", {value: c}, c)));
 let qFilter = "전체", questions = [], answers = [], db = null, uid = null, canWrite = true, confirmDel = null;
 const nickKey = "nick";
@@ -2272,6 +2274,8 @@ function renderQs() {
   }));
 }
 function writeErr(err) {
+  if (err && err.code === "blocked") return "올리지 않았어요. 욕설이나 거친 말이 들어 있어요. 고쳐서 다시 올려 주세요.";
+  if (err && err.code === "remote") return "올리지 못했어요. 잠시 뒤에 다시 눌러 주세요.";
   if (err && err.code === "invalid_argument") { canWrite = false; lockForm(); return "이 페이지에 글을 쓸 권한이 없어요. 공유한 사람에게 '참여' 권한을 부탁해 주세요."; }
   if (err && err.code === "quota_exceeded") return "저장 공간이 가득 찼어요. 오래된 글을 정리해야 해요.";
   return "올리지 못했어요. 인터넷 연결을 확인하고 다시 눌러 주세요.";
@@ -2309,9 +2313,45 @@ $("#qform").addEventListener("submit", async e => {
 });
 renderQcats();
 
+function startQna() {
+  db.collection("questions").orderBy("createdAt", "desc").limit(300).onSnapshot(snap => {
+    questions = snap.docs.map(s => ({id: s.id, ...s.data()})); renderQs();
+  }, () => { $("#qstatus").textContent = "질문을 불러오지 못했어요. 페이지를 새로 열어 주세요."; $("#qstatus").classList.add("err"); });
+  db.collection("answers").orderBy("createdAt", "asc").limit(1000).onSnapshot(snap => {
+    answers = snap.docs.map(s => ({id: s.id, ...s.data()})); renderQs();
+  }, () => {});
+}
+/* 일반 누리집: 저장 서버(QNA_API)를 Claude db와 같은 모양으로 감싼다. 20초마다 새 글을 가져온다. */
+async function remoteQna() {
+  let tok = store.get("qnaToken");
+  if (!tok) { tok = crypto.randomUUID() + crypto.randomUUID(); store.set("qnaToken", tok); }
+  const hash = [...new Uint8Array(await crypto.subtle.digest("SHA-256", new TextEncoder().encode(tok)))].map(x => x.toString(16).padStart(2, "0")).join("");
+  const subs = {questions: [], answers: []};
+  let data = {questions: [], answers: []};
+  const emit = () => {
+    const sets = {questions: [...data.questions].sort((a, b) => b.createdAt - a.createdAt), answers: [...data.answers].sort((a, b) => a.createdAt - b.createdAt)};
+    for (const n of ["questions", "answers"]) subs[n].forEach(cb => cb({docs: sets[n].map(x => ({id: x.id, data: () => x}))}));
+  };
+  const pull = async () => { const r = await fetch(QNA_API, {cache: "no-store"}); if (!r.ok) throw new Error("http " + r.status); data = await r.json(); emit(); };
+  const post = async body => {
+    const r = await fetch(QNA_API, {method: "POST", headers: {"Content-Type": "application/json"}, body: JSON.stringify({...body, token: tok})});
+    const d = await r.json().catch(() => ({}));
+    if (!r.ok) { const e = new Error(d.error || "http " + r.status); e.code = d.error === "blocked" ? "blocked" : "remote"; throw e; }
+    data = {questions: d.questions, answers: d.answers}; emit();
+  };
+  try { await pull(); } catch { noDb(); return; }
+  uid = hash;
+  db = {
+    collection: name => { const q = {orderBy: () => q, limit: () => q, onSnapshot: cb => { subs[name].push(cb); cb({docs: []}); emit(); return () => {}; },
+      add: d => post(name === "questions" ? {type: "question", nick: d.nick, cat: d.cat, title: d.title, body: d.body} : {type: "answer", qid: d.qid, nick: d.nick, body: d.body})}; return q; },
+    doc: path => ({delete: () => { const [col, id] = path.split("/"); return post({type: "delete", kind: col === "questions" ? "question" : "answer", id}); }}),
+  };
+  startQna();
+  setInterval(() => { if (!document.hidden) pull().catch(() => {}); }, 20000);
+}
 (async () => {
   const c = window.claude;
-  if (!c || !c.use) { noDb(); return; }
+  if (!c || !c.use) { if (QNA_API) remoteQna(); else noDb(); return; }
   const [d, user, smp] = await Promise.all([c.use("db"), c.use("user"), c.use("sample")]);
   qSample = smp;
   if (!d) { noDb(); return; }
@@ -2320,12 +2360,7 @@ renderQcats();
     try { uid = await user.id(); } catch {}
     try { const w = await user.can("data.write"); if (w === false) { canWrite = false; lockForm(); } } catch {}
   }
-  db.collection("questions").orderBy("createdAt", "desc").limit(300).onSnapshot(snap => {
-    questions = snap.docs.map(s => ({id: s.id, ...s.data()})); renderQs();
-  }, () => { $("#qstatus").textContent = "질문을 불러오지 못했어요. 페이지를 새로 열어 주세요."; $("#qstatus").classList.add("err"); });
-  db.collection("answers").orderBy("createdAt", "asc").limit(1000).onSnapshot(snap => {
-    answers = snap.docs.map(s => ({id: s.id, ...s.data()})); renderQs();
-  }, () => {});
+  startQna();
 })();
 function noDb() {
   $("#qstatus").textContent = "";

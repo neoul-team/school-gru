@@ -162,6 +162,7 @@ section[data-view].wrap{gap:24px}
 .ctitle p{color:var(--muted);font-size:.95em}
 .band .ncard{padding:18px 20px;border-color:transparent;box-shadow:0 1px 3px rgba(0,0,0,.08)}
 .band .ncard:hover{border-color:var(--sky)}
+.wmore{grid-column:1 / -1}
 .more{justify-self:center;border:1px solid var(--line-strong);background:var(--card);border-radius:999px;padding:7px 26px;text-decoration:none;color:var(--ink);font-size:.92em}
 .more:hover{border-color:var(--brand-ink);color:var(--brand-ink)}
 .split{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);padding-block:48px 0 !important}
@@ -525,6 +526,70 @@ footer{padding-bottom:88px}
 .org .tel:hover{text-decoration:underline}
 .org .tel.web{font-size:1em;font-weight:700}
 .org .hrs{justify-self:start;font-size:.78em;font-weight:700;color:var(--sky-ink);border:1px solid var(--sky);border-radius:999px;padding:1px 10px}
+/* phone: compact layout + bottom menu */
+.bnav{display:none}
+.word .ex::after{content:none}
+@media (max-width:600px){
+  nav[aria-label="주 메뉴"]{display:none}
+  .bnav{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));position:fixed;left:0;right:0;bottom:0;z-index:17;background:var(--card);border-top:1px solid var(--line);padding:4px max(4px,env(safe-area-inset-right,0px)) calc(env(safe-area-inset-bottom,0px) + 4px) max(4px,env(safe-area-inset-left,0px));box-shadow:0 -2px 10px rgba(0,0,0,.06)}
+  .bnav a{display:grid;justify-items:center;gap:1px;padding:5px 0 3px;text-decoration:none;color:var(--muted);font-size:.68em;font-weight:700;border-radius:8px}
+  .bnav svg{width:24px;height:24px;fill:none;stroke:currentColor;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
+  .bnav a[aria-current="page"]{color:var(--sky-ink);background:var(--brand-soft)}
+  body{padding-bottom:calc(64px + env(safe-area-inset-bottom,0px))}
+  .ai-fab{bottom:calc(env(safe-area-inset-bottom,0px) + 74px);padding:10px 14px;font-size:.92em}
+  footer{padding-block:20px 80px}
+  /* home */
+  .mv .wrap{padding-block:26px 24px !important;gap:10px}
+  .mv h1{font-size:1.55em;line-height:1.35}
+  .mv .txt > p{display:none}
+  .mv .badge{font-size:.72em}
+  .mv .acts{gap:6px}
+  .mv .acts a{padding:9px 14px;font-size:.9em}
+  .msearch{padding-block:16px}
+  .msearch .wrap{gap:8px}
+  .hot{flex-wrap:nowrap;overflow-x:auto;justify-content:flex-start;width:100%;scrollbar-width:none;padding-bottom:2px}
+  .hot::-webkit-scrollbar{display:none}
+  .hot > *{flex:0 0 auto}
+  .split{padding-block:16px 0 !important}
+  .svc{padding:18px 12px;gap:12px}
+  .feat{gap:6px 2px}
+  .feat svg{width:36px;height:36px}
+  .feat a,.feat button{font-size:.84em;padding:4px 2px;gap:4px}
+  .bbs{padding:16px 14px 18px}
+  .blist li:nth-child(n+4){display:none}
+  .boxes{padding-block:0 24px !important}
+  .boxes .box{padding:20px 18px;min-height:0}
+  .boxes .box:nth-child(2){display:none}
+  /* sub-page banners */
+  .head{padding:20px 0 22px !important;gap:6px}
+  .head h1,.head h2{font-size:1.45em}
+  .head .lead{font-size:.95em;line-height:1.6}
+  .head .hicon{display:none}
+  .hcta{gap:8px}
+  .hcta > span{font-size:.9em}
+  .hcta button{padding:7px 16px;font-size:.92em}
+  section[data-view].wrap{gap:16px}
+  /* dictionary: short cards, tap for example */
+  #wSearch{padding:12px}
+  #cats{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;padding-bottom:2px}
+  #cats::-webkit-scrollbar{display:none}
+  #cats .chip{flex:0 0 auto}
+  .words{gap:8px}
+  .word{padding:12px 14px;gap:4px;cursor:pointer}
+  .word .row{padding-bottom:4px}
+  .word h3{font-size:1.05em}
+  .word:not(.open) .ex,.word:not(.open) .tip{display:none}
+  .word:not(.open)::after{content:"눌러서 예문 보기 ›";font-size:.76em;color:var(--sky-ink)}
+  /* notices: cards slide sideways */
+  .ncards{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:8px;padding-bottom:6px;scrollbar-width:thin}
+  .ncard{flex:0 0 78%;scroll-snap-align:start}
+  .ncard .badges{display:none}
+  /* agencies: tighter cards */
+  .help{gap:8px}
+  .org{padding:14px 16px 14px !important;gap:4px}
+  .org .tel{font-size:1.2em}
+  .org p.small{font-size:.86em}
+}
 /* QR overlay */
 .overlay{position:fixed;inset:0;z-index:20;background:rgba(10,16,26,.55);display:grid;place-items:center;padding:max(16px,env(safe-area-inset-top,0px)) max(16px,env(safe-area-inset-right,0px)) max(16px,env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px))}
 .qrbox{background:var(--card);border-top:4px solid var(--brand);padding:24px;display:grid;gap:12px;justify-items:center;width:min(100%,360px);box-sizing:border-box;text-align:center}
@@ -790,6 +855,7 @@ footer b{color:var(--ink)}
   </div>
 </div>
 
+<div class="bnav" id="bnav" role="navigation" aria-label="아래 메뉴"></div>
 <footer>
   <div class="wrap"><span class="fcopy">© 2026 팀 너울</span></div>
 </footer>
@@ -1751,6 +1817,8 @@ const FICON = {
   qna: '<path d="M7 9h23v16H17l-6 5v-5H7z"/><path d="M34 17h7v15h-3v5l-6-5H20v-3"/>',
   ai: '<path d="M22 6l3 9 9 3-9 3-3 9-3-9-9-3 9-3z"/><path d="M36 28l1.5 4.5L42 34l-4.5 1.5L36 40l-1.5-4.5L30 34l4.5-1.5z"/>',
 };
+const BNAV = [["home", "처음", '<path d="M8 23L24 9l16 14"/><path d="M12 20v18h24V20"/>'], ["notices", "통신문"], ["words", "용어"], ["guide", "상황"], ["help", "기관"], ["qna", "Q&A"]];
+setTimeout(() => $("#bnav").append(...BNAV.map(([v, t, icon]) => { const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg"); svg.setAttribute("viewBox", "0 0 48 48"); svg.setAttribute("aria-hidden", "true"); svg.innerHTML = icon || FICON[v]; const a = h("a", {href: "#" + v, "data-go": v}, svg, h("span", {}, t)); if (document.querySelector(`#nav a[data-go="${v}"][aria-current]`)) a.setAttribute("aria-current", "page"); return a; })), 0);
 function ficon(k) { const s = document.createElementNS("http://www.w3.org/2000/svg", "svg"); s.setAttribute("viewBox", "0 0 48 48"); s.setAttribute("aria-hidden", "true"); s.innerHTML = FICON[k]; return s; }
 const FEAT = [
   ["notices", "가정통신문 읽기", "실제 7건 · 예시 5건"],
@@ -1786,19 +1854,21 @@ function renderCats() {
   $("#cats").replaceChildren(...["전체", ...CATS].map(c => h("button", {class: "chip", type: "button", "aria-pressed": c === curCat,
     onclick: () => { curCat = c; renderCats(); renderWords(); }}, c)));
 }
+let wShow = 24, wKey = "";
 function renderWords() {
   const q = $("#wq").value.trim().replace(/\s+/g, "");
+  if (wKey !== q + "|" + curCat) { wKey = q + "|" + curCat; wShow = 24; }
   const norm = s => s.replace(/\s+/g, "");
   const list = W.filter(w => (curCat === "전체" || w.c === curCat) &&
     (!q || norm(w.t + w.e + w.x + (w.tip || "")).includes(q)));
   $("#wcount").replaceChildren("검색 결과 ", h("b", {}, list.length), "건");
   renderCats();
-  $("#words").replaceChildren(...(list.length ? list.map(w => h("article", {class: "word"},
+  $("#words").replaceChildren(...(list.length ? list.slice(0, wShow).map(w => h("article", {class: "word", onclick: e => e.currentTarget.classList.toggle("open")},
     h("div", {class: "row"}, h("h3", {}, h("span", {class: "mk"}, w.t)), h("span", {class: "tag"}, w.c)),
     h("p", {}, w.e),
     h("p", {class: "ex"}, "예) ", w.x),
     w.tip ? h("p", {class: "tip"}, w.tip) : null
-  )) : [h("div", {class: "empty"}, `'${$("#wq").value}'은(는) 아직 사전에 없어요. `, h("button", {class: "link", type: "button", onclick: () => aiOpen(`'${$("#wq").value.trim()}'이(가) 무슨 뜻이에요?`)}, "AI에게 뜻 물어보기"))]));
+  )).concat(list.length > wShow ? [h("button", {class: "more wmore", type: "button", onclick: () => { wShow += 24; renderWords(); }}, `더 보기 (${list.length - wShow}개 남음)`)] : []) : [h("div", {class: "empty"}, `'${$("#wq").value}'은(는) 아직 사전에 없어요. `, h("button", {class: "link", type: "button", onclick: () => aiOpen(`'${$("#wq").value.trim()}'이(가) 무슨 뜻이에요?`)}, "AI에게 뜻 물어보기"))]));
 }
 $("#wq").addEventListener("input", renderWords);
 $("#wSearch").addEventListener("submit", e => e.preventDefault());
@@ -1835,7 +1905,7 @@ const VIEWS = ["home", "notices", "words", "guide", "help", "qna"];
 function go(v, push = true) {
   if (!VIEWS.includes(v)) v = "home";
   document.querySelectorAll("section[data-view]").forEach(s => s.hidden = s.dataset.view !== v);
-  document.querySelectorAll("#nav a").forEach(a => a.toggleAttribute("aria-current", false) || (a.dataset.go === v && a.setAttribute("aria-current", "page")));
+  document.querySelectorAll("#nav a, #bnav a").forEach(a => a.toggleAttribute("aria-current", false) || (a.dataset.go === v && a.setAttribute("aria-current", "page")));
   const cur = $(`#nav a[data-go="${v}"]`); cur?.scrollIntoView({block: "nearest", inline: "nearest"});
   if (push) { try { history.replaceState(null, "", "#" + v); } catch {} }
   window.scrollTo({top: 0});

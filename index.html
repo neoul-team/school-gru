@@ -1858,7 +1858,8 @@ $("#sizeBtn").addEventListener("click", () => setBig(!document.documentElement.c
 if (store.get("big") === "1") setBig(true);
 
 /* ---------- QR코드 ---------- */
-const SITE_URL = /^https?:$/.test(location.protocol) ? location.href.split("#")[0] : "";
+// QR코드와 주소 복사는 공유용 GitHub 주소를 가리킨다.
+const SITE_URL = "https://neoul-team.github.io/school-gru/";
 function qrImg(cell) {
   if (typeof qrcode !== "function") return null;
   const q = qrcode(0, "M"); q.addData(SITE_URL); q.make();

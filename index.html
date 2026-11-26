@@ -121,8 +121,6 @@ section[data-view].wrap{gap:24px}
 
 .sub{display:flex;justify-content:space-between;align-items:baseline;gap:12px;border-bottom:1px solid var(--line);padding-bottom:8px}
 .sub h2{font-size:1.2em}
-.open{background:var(--card);border:1px solid var(--line);padding:18px 22px;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:20px;align-items:center}
-.open .txt{display:grid;gap:6px}
 .qrmini{display:grid;justify-items:center;gap:4px;font-size:.75em;color:var(--muted);cursor:pointer;border:0;background:none;padding:0}
 .qrmini canvas,.qrmini img{width:96px;height:96px;background:#fff;padding:6px;border:1px solid var(--line)}
 
@@ -347,6 +345,14 @@ body.qs-on{overflow:hidden}
 @media (max-width:860px){.mv .art-wrap .art{display:none}.mv .art-wrap{display:flex;flex-direction:column;align-items:center;gap:4px;width:100%}.gru-hero{position:static;width:130px;order:2}.gru-say{position:static;order:1;white-space:normal}.gru-say::after{left:50%;margin-left:-8px}}
 @media (prefers-reduced-motion:reduce){.gru *,.gru,.qs-box,.gru-say{animation:none!important}.rv{opacity:1;transform:none}}
 
+/* support cards readability */
+#supp{grid-template-columns:repeat(auto-fill,minmax(min(100%,380px),1fr));gap:14px}
+#supp .lrow{padding:18px 20px;gap:10px;align-content:start}
+#supp .lrow b{font-size:1.05em;line-height:1.45}
+#supp .lrow .small:not(.kind){font-size:.93em;line-height:1.75;color:var(--ink)}
+#supp .lrow .kind{justify-self:start;background:var(--brand-soft);border-radius:999px;padding:1px 10px;margin-bottom:4px}
+#supp .lrow .tel{font-size:1.05em}
+.qsearch input{width:100%;box-sizing:border-box;border:1px solid var(--line-strong);border-radius:999px;padding:12px 18px 12px 46px;font-size:1em;background:var(--card) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%235B616B' stroke-width='2.4' stroke-linecap='round'%3E%3Ccircle cx='10.5' cy='10.5' r='6.5'/%3E%3Cpath d='M15.5 15.5L21 21'/%3E%3C/svg%3E") no-repeat 16px center/20px}
 /* Q&A login */
 .tool-login{background:var(--brand)!important;color:#fff!important;border-color:var(--brand)!important;font-weight:700}
 @media (max-width:600px){.tool-login{padding:5px 10px}}
@@ -841,7 +847,6 @@ footer b{color:var(--ink)}
 @media (max-width:520px){
   .notice{padding:20px 16px}
   .opts{grid-template-columns:minmax(0,1fr)}
-  .open{grid-template-columns:minmax(0,1fr)}
 }
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
 </style>
@@ -1275,6 +1280,7 @@ footer b{color:var(--ink)}
   </div>
   <div class="qna">
     <div style="display:grid;gap:12px;min-width:0">
+      <div class="qsearch"><input id="qq" type="search" placeholder="궁금한 말로 질문 찾기 (예: 우유급식, 결석, 방과후)" aria-label="질문 검색" autocomplete="off"></div>
       <div class="chips" id="qcats"></div>
       <div class="qacct" id="qacct" hidden></div>
       <p class="status" id="qstatus">질문을 불러오는 중이에요.</p>
@@ -3327,10 +3333,11 @@ $("#help").append(...HELP.map(([who, n, tel, url, hrs, d]) => h("article", {clas
 (function () {
   if (!("IntersectionObserver" in window) || matchMedia("(prefers-reduced-motion: reduce)").matches) return;
   const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } }), {rootMargin: "0px 0px -40px 0px"});
-  const mark = () => document.querySelectorAll(".st-t, .st-l, .st-hi, .st-3 > div, .st-4 > *, .st-vs > div, .st-end .wrap > *, .split > *, .boxes > .box, .gcard, .org, .lrow, .word")
+  const mark = () => document.querySelectorAll(".st-t, .st-l, .st-hi, .st-3 > div, .st-4 > *, .st-vs > div, .st-end .wrap > *")
     .forEach((el, i) => { if (el.classList.contains("rv")) return; el.classList.add("rv"); el.style.transitionDelay = (i % 4) * 70 + "ms"; io.observe(el); });
   mark(); new MutationObserver(() => mark()).observe(document.querySelector("main"), {childList: true, subtree: true});
   setTimeout(() => document.querySelectorAll(".rv:not(.in)").forEach(el => { const r = el.getBoundingClientRect(); if (r.top < innerHeight) el.classList.add("in"); }), 1200);
+  setTimeout(() => document.querySelectorAll(".rv:not(.in)").forEach(el => el.classList.add("in")), 6000);
 })();
 
 /* ---------- 라우팅 ---------- */
@@ -3747,14 +3754,17 @@ function delButton(key, onYes) {
     h("button", {class: "link", type: "button", onclick: () => { confirmDel = null; renderQs(); }}, "그만두기"));
   return h("button", {class: "link del", type: "button", onclick: () => { confirmDel = key; renderQs(); }}, "지우기");
 }
+$("#qq").addEventListener("input", () => renderQs());
 function renderQs() {
   renderQcats();
   if (!db) return;
-  const list = questions.filter(q => !qHidden(q.title, q.body, q.nick) && (qFilter === "전체" || q.cat === qFilter));
+  const kw = ($("#qq")?.value || "").replace(/\s+/g, "").toLowerCase();
+  const hay = q => (q.title + q.body + q.nick + answers.filter(a => a.qid === q.id).map(a => a.body).join("")).replace(/\s+/g, "").toLowerCase();
+  const list = questions.filter(q => !qHidden(q.title, q.body, q.nick) && (qFilter === "전체" || q.cat === qFilter) && (!kw || hay(q).includes(kw)));
   const hid = questions.filter(q => qHidden(q.title, q.body, q.nick)).length + answers.filter(a => qHidden(a.body, a.nick)).length;
   $("#qstatus").textContent = questions.length ? `질문 ${list.length}개` + (hid ? ` · 규칙에 맞지 않아 가려진 글 ${hid}개` : "") : "";
   if (!list.length) {
-    $("#qs").replaceChildren(h("div", {class: "empty"}, questions.length ? "이 분류에는 아직 질문이 없어요." : "아직 질문이 없어요. 오른쪽(휴대전화는 아래)에서 첫 질문을 올려 주세요."));
+    $("#qs").replaceChildren(h("div", {class: "empty"}, questions.length ? (kw ? `'${$("#qq").value.trim()}'이(가) 들어간 질문이 없어요. 새로 질문해 보세요.` : "이 분류에는 아직 질문이 없어요.") : "아직 질문이 없어요. 오른쪽(휴대전화는 아래)에서 첫 질문을 올려 주세요."));
     return;
   }
   $("#qs").replaceChildren(...list.map(q => {

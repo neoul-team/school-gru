@@ -215,7 +215,7 @@ section[data-view].wrap{gap:24px}
 .st-t h2{font-size:clamp(1.45em,3.2vw,1.95em);font-weight:800}
 .st-t p{color:var(--muted);max-width:40em}
 .st-k{font-weight:700;color:var(--brand-ink);font-size:.9em}
-.st-name .wrap{grid-template-columns:minmax(0,1.2fr) minmax(0,.8fr);align-items:center;gap:40px}
+.st-name .wrap{grid-template-columns:minmax(0,1.3fr) minmax(0,.7fr);align-items:center;gap:40px}
 .st-l{display:grid;gap:14px}
 .st-l h2{font-size:clamp(1.6em,3.6vw,2.2em);font-weight:800}
 .st-l h2 .hand{color:var(--brand-ink)}
@@ -278,6 +278,74 @@ section[data-view].wrap{gap:24px}
   .st-vs i{transform:rotate(90deg);justify-self:start}
   .st-vs .h{display:none}
 }
+/* mascot 그루 */
+.mv .art-wrap{justify-self:center;position:relative;width:min(100%,400px)}
+.mv .art-wrap .art{width:76%;display:block;margin-left:auto}
+.gru{display:block;overflow:visible}
+.gru .g-all{animation:g-bob 3.2s ease-in-out infinite;transform-box:view-box;transform-origin:100px 200px}
+.gru .g-leaf{animation:g-sway 2.8s ease-in-out infinite;transform-box:view-box;transform-origin:100px 60px}
+.gru .g-arm-r{animation:g-wave 1.8s ease-in-out infinite;transform-box:view-box;transform-origin:158px 128px}
+.gru .g-eyes{animation:g-blink 4.5s infinite;transform-box:view-box;transform-origin:100px 112px}
+.gru .g-sh{animation:g-shadow 3.2s ease-in-out infinite;transform-box:view-box;transform-origin:100px 208px}
+@keyframes g-bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+@keyframes g-shadow{0%,100%{transform:scaleX(1)}50%{transform:scaleX(.85)}}
+@keyframes g-sway{0%,100%{transform:rotate(-6deg)}50%{transform:rotate(7deg)}}
+@keyframes g-wave{0%,100%{transform:rotate(0)}25%{transform:rotate(-22deg)}50%{transform:rotate(6deg)}75%{transform:rotate(-16deg)}}
+@keyframes g-blink{0%,92%,100%{transform:scaleY(1)}95%{transform:scaleY(.1)}}
+@keyframes g-pop{0%{transform:scale(.6) translateY(20px);opacity:0}70%{transform:scale(1.05)}100%{transform:scale(1);opacity:1}}
+@keyframes g-say{0%,30%{opacity:0;transform:translateY(6px)}45%,100%{opacity:1;transform:none}}
+.gru-hero{position:absolute;left:0;bottom:-18px;width:145px;animation:g-pop .8s cubic-bezier(.3,1.4,.5,1) both .2s;filter:drop-shadow(0 6px 10px rgba(14,47,76,.15))}
+.gru-say{position:absolute;left:0;top:34px;background:#fff;color:#0E2F4C;font-weight:800;font-size:.92em;padding:8px 14px;border-radius:16px;box-shadow:0 4px 14px rgba(14,47,76,.15);white-space:nowrap;animation:g-say 1.6s ease both}
+.gru-say::after{content:"";position:absolute;left:34px;bottom:-8px;border:8px solid transparent;border-top-color:#fff;border-bottom:0}
+.st-hi{display:grid;justify-items:center;gap:6px;text-align:center}
+.gru-hi{width:170px}
+.hi-say{position:relative;background:var(--card);border:1px solid var(--line);border-radius:18px;padding:14px 18px;color:var(--muted);font-size:.95em;max-width:22em;box-shadow:0 4px 14px rgba(14,47,76,.08)}
+.hi-say b{display:block;color:var(--brand-ink);font-size:1.08em;margin-bottom:2px}
+.hi-say::before{content:"";position:absolute;left:50%;top:-9px;transform:translateX(-50%);border:9px solid transparent;border-bottom-color:var(--line);border-top:0}
+/* scroll reveal */
+.rv{opacity:0;transform:translateY(18px);transition:opacity .6s ease,transform .6s ease}
+.rv.in{opacity:1;transform:none}
+.feat a,.feat button,.box,.st-3 > div,.gcard,.org,.lrow{transition:transform .18s ease,box-shadow .18s ease}
+.st-3 > div:hover,.gcard:hover,.org:hover,.lrow:hover{transform:translateY(-3px);box-shadow:0 8px 20px rgba(14,47,76,.1)}
+.feat a:hover svg,.feat button:hover svg{animation:g-hop .5s ease}
+@keyframes g-hop{50%{transform:translateY(-5px)}}
+/* quick search */
+.qs-open{display:inline-flex;align-items:center;gap:4px;border-color:var(--brand-ink)!important;color:var(--brand-ink)!important;font-weight:700}
+.qs-open svg{width:14px;height:14px;fill:none;stroke:currentColor;stroke-width:2.6;stroke-linecap:round}
+.urgent{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;align-items:center}
+.urgent > b{color:#fff;background:#B42318;border-radius:999px;padding:4px 12px;font-size:.9em}
+.u-tel{display:inline-flex;align-items:baseline;gap:6px;background:#fff;color:#B42318;text-decoration:none;font-weight:800;font-size:1.05em;border-radius:999px;padding:6px 14px;box-shadow:0 2px 6px rgba(0,0,0,.12)}
+.u-tel small{color:#5B616B;font-weight:600;font-size:.72em}
+.u-tel:hover{background:#FFF1F0}
+.qchips{display:flex;flex-wrap:wrap;gap:6px;justify-content:center;align-items:center}
+.qchips span{color:rgba(255,255,255,.8);font-size:.9em;margin-right:4px}
+.qchips button{border:1px solid rgba(255,255,255,.55);background:rgba(255,255,255,.1);color:#fff;border-radius:999px;padding:6px 14px;cursor:pointer;font-weight:700;font-size:.92em}
+.qchips button:hover{background:#fff;color:#0E2F4C}
+#qso{position:fixed;inset:0;z-index:30;background:rgba(10,16,26,.55);display:grid;align-items:start;justify-items:center;padding:max(16px,env(safe-area-inset-top,0px)) 16px 16px;overflow:auto}
+.qs-box{width:min(100%,860px);background:#0E2F4C;border-radius:20px;padding:20px;display:grid;gap:14px;box-shadow:0 12px 40px rgba(0,0,0,.3);animation:g-pop .35s ease both}
+.qs-top{display:flex;gap:10px;align-items:center}
+.qs-bar{flex:1;width:auto}
+.qs-x{border:0;background:rgba(255,255,255,.15);color:#fff;width:48px;height:48px;border-radius:50%;font-size:1.2em;cursor:pointer;flex:none}
+.qs-res{width:auto;max-height:none}
+body.qs-on{overflow:hidden}
+.qs-fab{position:fixed;left:calc(env(safe-area-inset-left,0px) + 16px);bottom:calc(env(safe-area-inset-bottom,0px) + 16px);z-index:18;display:flex;gap:8px;align-items:center;background:#fff;color:#0E2F4C;border:2px solid #0E2F4C;border-radius:999px;padding:10px 18px;font-weight:800;box-shadow:0 6px 18px rgba(13,40,80,.25);cursor:pointer}
+.qs-fab svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:2.6;stroke-linecap:round}
+@media (max-width:600px){.qs-fab{bottom:calc(env(safe-area-inset-bottom,0px) + 74px);padding:9px 14px;font-size:.92em}.urgent > b{width:100%;text-align:center}}
+/* phones and tablets: bigger touch targets and text */
+@media (pointer:coarse){
+  :root{--fs:18px}
+  html.big{--fs:21px}
+  .qs-fab,.ai-fab{font-size:1.25em;padding:14px 22px}
+  .qs-fab svg,.ai-fab svg{width:26px;height:26px}
+  .u-tel{font-size:1.25em;padding:10px 18px}
+  .qchips button{font-size:1.05em;padding:10px 16px}
+  .qs-box{font-size:1.15em}
+  .sbar input{font-size:1.3em}
+  .tool{font-size:.95em;padding:6px 14px}
+}
+@media (max-width:860px){.gru-hero{position:static;width:120px;margin:0 auto}.gru-say{display:none}.mv .art-wrap{display:none}}
+@media (prefers-reduced-motion:reduce){.gru *,.gru,.qs-box,.gru-say{animation:none!important}.rv{opacity:1;transform:none}}
+
 /* legal pages */
 .doc{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:32px clamp(18px,4vw,44px);display:grid;gap:22px;max-width:880px;width:100%;box-sizing:border-box;justify-self:center}
 .doc h3{font-size:1.12em;font-weight:800;color:var(--brand-ink);padding-bottom:6px;border-bottom:1px solid var(--line)}
@@ -464,6 +532,15 @@ section[data-view].wrap{gap:24px}
 .what{background:var(--bg);border-left:4px solid var(--brand);padding:12px 16px}
 .first{font-weight:700}
 .gsec{display:grid;gap:10px}
+.tips ul{margin:0;padding:0;list-style:none;display:grid;gap:8px}
+.tips li{position:relative;padding-left:26px;line-height:1.65}
+.tips li::before{content:"✓";position:absolute;left:0;top:0;width:20px;height:20px;border-radius:50%;background:var(--brand-soft);color:var(--brand-ink);font-weight:800;font-size:.8em;display:grid;place-items:center;margin-top:3px}
+.faq details{border:1px solid var(--line);border-radius:10px;background:var(--card);padding:0 14px}
+.faq summary{cursor:pointer;font-weight:700;padding:12px 0;list-style:none;display:flex;gap:8px}
+.faq summary::before{content:"Q";color:var(--brand-ink);font-weight:800}
+.faq summary::-webkit-details-marker{display:none}
+.faq details[open] summary{border-bottom:1px solid var(--line)}
+.faq details p{padding:10px 0 12px;color:var(--muted)}
 .gsec h4{margin:0;font-size:1.05em}
 .checks{display:grid;gap:8px}
 .check{display:grid;grid-template-columns:22px 28px minmax(0,1fr);gap:12px;align-items:start;border:1px solid var(--line);padding:12px 14px;cursor:pointer;border-radius:var(--r)}
@@ -753,6 +830,7 @@ footer b{color:var(--ink)}
       <span><small>학부모 학교생활 안내 서비스</small><b>학교 그루</b></span>
     </a>
     <div class="tools">
+      <button class="tool qs-open" id="qsBtn" type="button" aria-label="빠르게 찾기"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5L21 21"/></svg>찾기</button>
       <button class="tool" id="sizeBtn" aria-pressed="false">글자 크게</button>
     </div>
   </div>
@@ -776,6 +854,7 @@ footer b{color:var(--ink)}
       <p>학교에서 실제로 보낸 가정통신문을 보면서 밑줄 친 말을 누르면 뜻을 쉬운 말로 알려 드립니다. 학부모가 해야 할 일도 함께 정리했습니다.</p>
       <div class="acts"><a class="pri" href="#notices" data-go="notices">가정통신문 읽기</a><a class="sec" href="#notices" data-go="notices" data-photo>사진으로 풀이받기</a><a class="sec" href="#guide" data-go="guide">상황별 행동 안내</a></div>
     </div>
+    <div class="art-wrap">
     <svg class="art" viewBox="0 0 340 280" aria-hidden="true">
   <rect x="40" y="18" width="210" height="250" rx="6" fill="#fff" stroke="#D3DCE6"/>
   <rect x="40" y="18" width="210" height="44" rx="6" fill="#E6F4FB"/>
@@ -785,6 +864,31 @@ footer b{color:var(--ink)}
   <g transform="translate(206 120)"><circle r="46" fill="rgba(159,225,255,.25)" stroke="#0E2F4C" stroke-width="9"/><path d="M33 33l38 38" stroke="#0E2F4C" stroke-width="14" stroke-linecap="round"/></g>
   <g transform="translate(218 196)"><rect width="112" height="58" rx="10" fill="#fff" stroke="#D3DCE6"/><path d="M22 58l-4 14 18-14z" fill="#fff"/><text x="56" y="25" text-anchor="middle" font-size="13" font-weight="800" fill="#1B86B8">수익자 부담</text><text x="56" y="44" text-anchor="middle" font-size="12" fill="#333">= 내가 내는 돈</text></g>
 </svg>
+    <svg class="gru gru-hero" viewBox="0 0 200 220" aria-hidden="true">
+  <ellipse class="g-sh" cx="100" cy="208" rx="50" ry="8" fill="rgba(14,47,76,.13)"/>
+  <g class="g-all">
+    <g class="g-leaf">
+      <path d="M100 60V30" stroke="#3E8E41" stroke-width="5" stroke-linecap="round" fill="none"/>
+      <path d="M100 40C86 22 64 22 57 32c12 16 31 17 43 8z" fill="#6CC04A"/>
+      <path d="M100 33c12-22 38-24 46-12-12 20-34 22-46 12z" fill="#8ED36A"/>
+      <path d="M99 39c-11-7-23-9-34-7M101 32c10-8 23-11 36-10" stroke="#4FA33A" stroke-width="2" fill="none" stroke-linecap="round"/>
+    </g>
+    <path class="g-arm-l" d="M42 134q-18 8-15 24" stroke="#62B455" stroke-width="11" stroke-linecap="round" fill="none"/>
+    <path class="g-arm-r" d="M158 128q19-14 17-34" stroke="#62B455" stroke-width="11" stroke-linecap="round" fill="none"/>
+    <path d="M100 56c42 0 64 32 64 72 0 42-26 68-64 68s-64-26-64-68c0-40 22-72 64-72z" fill="#7CCB6A"/>
+    <ellipse cx="100" cy="150" rx="40" ry="33" fill="#CDEFB9"/>
+    <path d="M57 104q3 38 7 76M143 104q-3 38-7 76" stroke="#1B86B8" stroke-width="7" fill="none" stroke-linecap="round"/>
+    <g class="g-eyes">
+      <ellipse cx="82" cy="112" rx="7" ry="9" fill="#1E2A1A"/><ellipse cx="118" cy="112" rx="7" ry="9" fill="#1E2A1A"/>
+      <circle cx="84.5" cy="108.5" r="2.6" fill="#fff"/><circle cx="120.5" cy="108.5" r="2.6" fill="#fff"/>
+    </g>
+    <ellipse cx="70" cy="127" rx="8" ry="5" fill="#FF9DA8" opacity=".75"/><ellipse cx="130" cy="127" rx="8" ry="5" fill="#FF9DA8" opacity=".75"/>
+    <path d="M91 125q9 10 18 0" stroke="#1E2A1A" stroke-width="3.2" fill="none" stroke-linecap="round"/>
+    <ellipse cx="80" cy="197" rx="14" ry="7" fill="#5DAA4C"/><ellipse cx="120" cy="197" rx="14" ry="7" fill="#5DAA4C"/>
+  </g>
+</svg>
+    <span class="gru-say" aria-hidden="true">어려운 말, 같이 봐요!</span>
+    </div>
   </div></div>
 
   <div class="msearch"><div class="wrap">
@@ -793,6 +897,21 @@ footer b{color:var(--ink)}
       <button type="submit" aria-label="찾기"><svg viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5L21 21"/></svg></button>
     </form>
     <div class="hres" id="hres" hidden aria-live="polite"></div>
+    <div class="urgent"><b>급해요</b>
+      <a class="u-tel" href="tel:119">119 <small>다치거나 위험할 때</small></a>
+      <a class="u-tel" href="tel:112">112 <small>범죄·폭력</small></a>
+      <a class="u-tel" href="tel:117">117 <small>학교폭력</small></a>
+      <a class="u-tel" href="tel:109">109 <small>죽고 싶다는 말</small></a>
+      <a class="u-tel" href="tel:1388">1388 <small>청소년 고민</small></a>
+    </div>
+    <div class="qchips"><span>바로 보기</span>
+      <button type="button" data-sit="health/sick">아파서 결석해요</button>
+      <button type="button" data-sit="health/injury">학교에서 다쳤어요</button>
+      <button type="button" data-sit="friends/bullied">괴롭힘을 당해요</button>
+      <button type="button" data-sit="family/crisis">아이가 많이 우울해요</button>
+      <button type="button" data-sit="school/absenceapp">결석신고서 내기</button>
+      <button type="button" data-sit="school/familytrip">체험학습 신청</button>
+    </div>
     <div class="hot"><span>자주 찾는 말</span><a href="#words" data-go="words" data-q="결석">결석</a><a href="#words" data-go="words" data-q="교외체험학습">교외체험학습</a><a href="#words" data-go="words" data-q="수익자">수익자 부담</a><a href="#words" data-go="words" data-q="방과후">방과후학교</a><a href="#words" data-go="words" data-q="회신">회신서</a></div>
   </div></div>
 
@@ -803,10 +922,31 @@ footer b{color:var(--ink)}
       <p>'그루'는 나무를 세는 말이에요. 아이 한 명 한 명이 학교라는 땅에 뿌리를 내리고 한 그루 나무처럼 자라도록, 그 곁의 부모님을 돕고 싶다는 뜻을 이름에 담았어요.</p>
       <p>낯선 학교 말 앞에서 혼자 애태우지 않도록, 바쁜 하루 중에도 잠깐 들러 필요한 것만 쏙 챙겨 갈 수 있는 곳이 되고 싶어요.</p>
     </div>
-    <div class="st-dict" aria-label="낱말 풀이">
-      <b>그루</b> <span>의존명사</span>
-      <p>나무를 세는 단위. 예) 사과나무 한 그루</p>
-      <ul><li>쉬운 말로 풀어요</li><li>할 일을 차례로 알려요</li><li>도움받을 곳을 이어요</li></ul>
+    <div class="st-hi">
+      <svg class="gru gru-hi" viewBox="0 0 200 220" aria-hidden="true">
+  <ellipse class="g-sh" cx="100" cy="208" rx="50" ry="8" fill="rgba(14,47,76,.13)"/>
+  <g class="g-all">
+    <g class="g-leaf">
+      <path d="M100 60V30" stroke="#3E8E41" stroke-width="5" stroke-linecap="round" fill="none"/>
+      <path d="M100 40C86 22 64 22 57 32c12 16 31 17 43 8z" fill="#6CC04A"/>
+      <path d="M100 33c12-22 38-24 46-12-12 20-34 22-46 12z" fill="#8ED36A"/>
+      <path d="M99 39c-11-7-23-9-34-7M101 32c10-8 23-11 36-10" stroke="#4FA33A" stroke-width="2" fill="none" stroke-linecap="round"/>
+    </g>
+    <path class="g-arm-l" d="M42 134q-18 8-15 24" stroke="#62B455" stroke-width="11" stroke-linecap="round" fill="none"/>
+    <path class="g-arm-r" d="M158 128q19-14 17-34" stroke="#62B455" stroke-width="11" stroke-linecap="round" fill="none"/>
+    <path d="M100 56c42 0 64 32 64 72 0 42-26 68-64 68s-64-26-64-68c0-40 22-72 64-72z" fill="#7CCB6A"/>
+    <ellipse cx="100" cy="150" rx="40" ry="33" fill="#CDEFB9"/>
+    <path d="M57 104q3 38 7 76M143 104q-3 38-7 76" stroke="#1B86B8" stroke-width="7" fill="none" stroke-linecap="round"/>
+    <g class="g-eyes">
+      <ellipse cx="82" cy="112" rx="7" ry="9" fill="#1E2A1A"/><ellipse cx="118" cy="112" rx="7" ry="9" fill="#1E2A1A"/>
+      <circle cx="84.5" cy="108.5" r="2.6" fill="#fff"/><circle cx="120.5" cy="108.5" r="2.6" fill="#fff"/>
+    </g>
+    <ellipse cx="70" cy="127" rx="8" ry="5" fill="#FF9DA8" opacity=".75"/><ellipse cx="130" cy="127" rx="8" ry="5" fill="#FF9DA8" opacity=".75"/>
+    <path d="M91 125q9 10 18 0" stroke="#1E2A1A" stroke-width="3.2" fill="none" stroke-linecap="round"/>
+    <ellipse cx="80" cy="197" rx="14" ry="7" fill="#5DAA4C"/><ellipse cx="120" cy="197" rx="14" ry="7" fill="#5DAA4C"/>
+  </g>
+</svg>
+      <p class="hi-say"><b>안녕하세요, 저는 그루예요!</b>모르는 학교 말이나 급한 일이 생기면 언제든 저를 찾아 주세요. 같이 하나씩 살펴봐요.</p>
     </div>
   </div></div>
   <div class="st st-cream"><div class="wrap">
@@ -859,11 +999,6 @@ footer b{color:var(--ink)}
       <div><b>앱이 낯설어요</b><p>하이클래스, e알리미, 나이스처럼 학교마다 쓰는 앱이 달라요.</p></div>
       <div><b>물어볼 곳이 없어요</b><p>아이 일로 누구에게 먼저 연락해야 할지 막막해요.</p></div>
     </div>
-  </div></div>
-  <div class="st st-dark"><div class="wrap"><p class="hand">그래서 부모님이 실제로 받는 자료부터 하나씩 모아 봤어요.</p></div></div>
-  <div class="st st-soft"><div class="wrap">
-    <div class="st-t"><h2>진짜 자료로 만들었어요</h2><p>지어낸 예시보다, 부모님이 실제로 받는 통신문과 직접 들려주신 이야기를 담았어요.</p></div>
-    <div class="st-4 nums" id="stNums"></div>
   </div></div>
   <div class="st"><div class="wrap">
     <div class="st-t"><h2>필요할 때 바로 꺼내 보세요</h2><p>궁금한 게 생기면 여기부터 들러 주세요.</p></div>
@@ -997,15 +1132,15 @@ footer b{color:var(--ink)}
   <div class="help" id="help"></div>
   <div class="local supp">
     <h3 class="gq">받을 수 있는 지원 제도</h3>
-    <p class="small">북한배경 학생과 가정이 신청할 수 있는 장학금, 학습 지원, 멘토링이에요. 모집 시기와 대상은 해마다 바뀌니 신청 전 각 기관 공고를 확인하세요(2026년 11월 확인).</p>
+    <p class="small">북한배경 학생과 가정이 받을 수 있는 장학금, 등록금, 학습, 멘토링, 상담, 진로 지원이에요. 종류를 골라 보세요. 모집 시기와 대상은 해마다 바뀌니 신청 전 각 기관 공고를 확인하세요(2026년 11월 확인).</p>
+    <div class="chips" id="scats"></div>
     <div class="lrows" id="supp"></div>
   </div>
   <div class="local">
     <h3 class="gq">우리 동네 기관</h3>
-    <p class="small">북한이탈주민 가정이 많이 사는 지역의 하나센터(정착 지원)와 종합사회복지관이에요. 사는 곳을 골라 보세요.</p>
+    <p class="small">북한이탈주민 가정이 많이 사는 지역의 하나센터, 복지관, 지역아동센터, 가족센터, 청소년상담복지센터예요. 사는 곳을 골라 보세요.</p>
     <div class="chips" id="lcats"></div>
     <div class="lrows" id="lrows"></div>
-    <p class="small lsrc">하나센터 번호는 남북하나재단, 경기 복지관 번호는 경기도 「2026년 종합사회복지관 현황」에서 2026년 11월에 확인했어요. 복지관마다 운영하는 프로그램이 다르니 전화로 물어보세요. 상황별 첫 연락처와 지원 제도는 북한이탈주민이 함께 만든 PSCORE 「학교생활과 자녀 성장을 돕는 안내서」(2026)를 참고했어요.</p>
   </div>
 </section>
 
@@ -1132,6 +1267,34 @@ footer b{color:var(--ink)}
 </main>
 
 
+<div class="qs" id="qso" hidden role="dialog" aria-modal="true" aria-label="빠르게 찾기">
+  <div class="qs-box">
+    <div class="qs-top">
+      <form class="sbar qs-bar" id="qsForm" role="search">
+        <input id="qsq" type="search" placeholder="무엇이든 적어 보세요 (예: 아파요, 다쳤어요, 결석)" aria-label="빠르게 찾기" autocomplete="off">
+        <button type="submit" aria-label="찾기"><svg viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5L21 21"/></svg></button>
+      </form>
+      <button class="qs-x" id="qsClose" type="button" aria-label="닫기">✕</button>
+    </div>
+    <div class="urgent"><b>급해요</b>
+      <a class="u-tel" href="tel:119">119 <small>다치거나 위험할 때</small></a>
+      <a class="u-tel" href="tel:112">112 <small>범죄·폭력</small></a>
+      <a class="u-tel" href="tel:117">117 <small>학교폭력</small></a>
+      <a class="u-tel" href="tel:109">109 <small>죽고 싶다는 말</small></a>
+      <a class="u-tel" href="tel:1388">1388 <small>청소년 고민</small></a>
+    </div>
+    <div class="qchips"><span>바로 보기</span>
+      <button type="button" data-sit="health/sick">아파서 결석해요</button>
+      <button type="button" data-sit="health/injury">학교에서 다쳤어요</button>
+      <button type="button" data-sit="friends/bullied">괴롭힘을 당해요</button>
+      <button type="button" data-sit="family/crisis">아이가 많이 우울해요</button>
+      <button type="button" data-sit="school/absenceapp">결석신고서 내기</button>
+      <button type="button" data-sit="school/familytrip">체험학습 신청</button>
+    </div>
+    <div class="hres qs-res" id="qsres" hidden aria-live="polite"></div>
+  </div>
+</div>
+<button class="qs-fab" id="qsFab" type="button" aria-label="빠르게 찾기"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5L21 21"/></svg>빠른 찾기</button>
 <button class="ai-fab" id="aiFab" type="button" aria-expanded="false" aria-controls="aiPanel"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16v11H9l-5 4z"/><path d="M8 9.5h8M8 12.5h5"/></svg>AI에게 묻기</button>
 <div class="ai-panel" id="aiPanel" role="dialog" aria-label="AI 질의응답" hidden>
   <div class="ai-head">
@@ -2185,6 +2348,604 @@ const TOPICS = [
      help: ["담임 선생님", "Wee클래스", "청소년상담 1388", "꿈드림|https://www.kdream.or.kr"]},
    ]},
 ];
+// 상황마다 더 자세한 도움말과 자주 묻는 질문
+const TIPS = {
+"sick": {
+"tips": [
+"병원에 갈 때 '학교에 낼 진료확인서도 주세요'라고 말하면 한 번에 받을 수 있어요. 처방전과 약 봉투는 버리지 말고 모아 두세요.",
+"결석신고서에는 보통 결석한 날짜, 이유(예: 감기로 열이 남), 보호자 이름과 서명을 적어요.",
+"병원에 가지 않고 집에서 쉬었다면 보호자 의견서만으로 되는지 학교에 물어보세요. 학교마다 달라요.",
+"자주 아파서 결석이 많아지면 담임 선생님과 상담하세요. 남은 출석일과 도움받을 방법을 함께 확인할 수 있어요."
+],
+"faq": [
+[
+"아이가 아파서 반나절만 가면 어떻게 돼요?",
+"결석이 아니라 지각이나 조퇴로 처리돼요. 아파서 그런 거라면 결석과 비슷하게 병원 서류를 내라고 하는 학교가 많아요."
+],
+[
+"아파서 결석하면 성적이나 생활기록부에 나쁘게 남아요?",
+"질병결석은 미인정 결석과 달리 잘못한 결석이 아니에요. 다만 결석 날짜는 기록되니, 서류를 꼭 내서 질병결석으로 처리되게 하세요."
+]
+]
+},
+"infection": {
+"tips": [
+"진단받은 날 병원에서 진단서나 소견서를 바로 받으세요. 병 이름과 '등교 중지 기간'이 적혀 있으면 좋아요.",
+"집에서 한 검사 결과만으로 인정되는지는 학교마다 달라요. 병원 진료를 받는 것이 가장 확실해요.",
+"형제가 같은 학교에 다니면 그 아이도 증상이 있는지 살피고, 증상이 있으면 학교에 함께 알려 주세요.",
+"쉬는 동안 놓친 숙제나 수업 내용은 다시 등교할 때 담임 선생님께 물어보세요."
+],
+"faq": [
+[
+"감기도 출석으로 인정돼요?",
+"아니요. 일반 감기는 보통 질병결석이에요. 독감, 코로나19, 수두처럼 법으로 정한 감염병만 출석 인정 결석이 될 수 있어요."
+],
+[
+"열은 내렸는데 기침이 아직 있어요. 학교에 보내도 돼요?",
+"병원에서 등교해도 된다고 했는지 먼저 확인하세요. 잘 모르겠으면 보내기 전에 담임 선생님이나 보건 선생님께 물어보세요."
+]
+]
+},
+"foodpoison": {
+"tips": [
+"언제 무엇을 먹었는지, 몇 시에 배가 아프기 시작했는지, 몇 번 토하거나 설사했는지 메모해 두면 병원과 학교에 설명하기 쉬워요.",
+"토하거나 설사할 때는 물을 조금씩 자주 먹이세요. 소변이 거의 안 나오거나, 축 늘어지거나, 피가 섞인 변을 보면 바로 병원에 가세요.",
+"병원 진료 기록과 영수증은 꼭 보관하세요. 원인이 확인되면 학교에서 필요한 서류를 안내해 줄 수 있어요.",
+"그날 학교 식단표를 사진으로 저장해 두면 학교와 이야기할 때 도움이 돼요."
+],
+"faq": [
+[
+"급식 때문인지 어떻게 알 수 있어요?",
+"부모님이 혼자 판단하기는 어려워요. 같은 증상인 학생이 여러 명이면 학교와 보건소가 조사해서 원인을 확인해요."
+],
+[
+"식중독으로 학교를 쉬면 결석이에요?",
+"보통 아파서 쉰 것이라 질병결석으로 처리돼요. 처리 방법은 학교에 확인하고 병원 서류를 챙기세요."
+]
+]
+},
+"allergy": {
+"tips": [
+"식단표의 음식 이름 옆에 있는 작은 숫자가 알레르기 식재료 번호예요. 예를 들어 1번은 달걀(난류), 2번은 우유, 4번은 땅콩이에요.",
+"학기 초에 오는 건강 조사서나 알레르기 조사서에 아이가 먹으면 안 되는 음식을 빠짐없이 적으세요. 병원 진단서가 있으면 함께 내면 좋아요.",
+"아이에게 '이건 먹으면 안 돼'라고 스스로 말하는 연습을 시켜 주세요. 친구가 주는 과자도 조심해야 해요.",
+"현장체험학습이나 행사 날에는 급식이 아닌 간식이 나올 수 있어요. 그때마다 담당 선생님께 다시 알려 주세요."
+],
+"faq": [
+[
+"학교에서 알레르기 음식을 빼고 따로 만들어 줘요?",
+"학교마다 달라요. 대체식을 주는 학교도 있고, 그 음식만 빼고 먹게 하는 학교도 있어요. 영양 선생님과 상담하세요."
+],
+[
+"학년이 올라가면 다시 알려야 해요?",
+"네. 담임 선생님이 바뀌니 새 학기마다 다시 알려 주는 것이 안전해요."
+]
+]
+},
+"injury": {
+"tips": [
+"다친 곳은 날짜가 보이게 사진을 찍어 두세요. 상처가 어떻게 낫는지도 가끔 찍어 두면 좋아요.",
+"병원에서 '학교에서 다쳤어요'라고 말하고, 진료비 영수증과 세부내역서를 매번 받아 두세요. 나중에 한꺼번에 받으려면 번거로워요.",
+"치료가 길어지면 진료받을 때마다 서류를 모아 두세요. 청구할 수 있는 기간이 정해져 있으니 너무 미루지 마세요.",
+"다른 학생과 부딪혀 다쳤다면 부모끼리 바로 돈 이야기를 하지 말고 학교를 통해 상황을 확인하세요."
+],
+"faq": [
+[
+"쉬는 시간이나 등하교 길에 다쳐도 지원받을 수 있어요?",
+"학교 교육활동과 관련된 사고라면 대상이 될 수 있어요. 정확한 것은 학교와 학교안전공제회에 확인하세요."
+],
+[
+"병원비를 먼저 내지 못하면 어떻게 해요?",
+"보통은 먼저 내고 나중에 청구해요. 형편이 어렵다면 담임 선생님이나 교육복지사에게 사정을 말하고 방법을 물어보세요."
+]
+]
+},
+"nurse": {
+"tips": [
+"학교에서 오는 전화는 모르는 번호일 수 있어요. 학교 전화번호를 휴대전화에 저장해 두고, 일하는 중에도 받을 수 있게 해 주세요.",
+"당장 갈 수 없으면 '○시쯤 갈 수 있어요'처럼 언제 갈 수 있는지 분명히 말해 주세요. 대신 데리러 갈 가족이 있다면 이름을 알려 주세요.",
+"아이 혼자 집에 가도 되는지는 학교마다 달라요. 보통 보호자가 확인해 줘야 조퇴할 수 있어요.",
+"아이가 평소 먹는 약이나 지병이 있다면 학기 초에 보건 선생님께 미리 알려 두세요."
+],
+"faq": [
+[
+"보건실에서 약을 먹여도 돼요?",
+"학교마다 기준이 달라요. 보통 보호자의 동의를 확인하고 간단한 약만 줘요. 아이에게 꼭 먹여야 할 약이 있다면 미리 상의하세요."
+],
+[
+"아파서 조퇴하면 서류를 내야 해요?",
+"아파서 조퇴했다면 질병조퇴로 처리돼요. 병원 서류를 내라고 하는 학교도 있으니 담임 선생님께 물어보세요."
+]
+]
+},
+"bullied": {
+"tips": [
+"아이가 말한 내용을 날짜, 장소, 한 말과 행동 그대로 적어 두세요. '언제 처음 시작됐는지'도 중요해요.",
+"아이에게 '네가 뭘 잘못했니?'라고 묻지 마세요. '말해 줘서 고마워, 엄마(아빠)가 도울게'라고 말해 주세요.",
+"다쳤거나 마음이 많이 힘들면 병원이나 상담 기관에 가세요. 진단서와 상담 기록도 나중에 도움이 돼요.",
+"신고한 뒤에는 학교가 양쪽 이야기를 듣고 사실을 확인해요. 그동안 아이가 불안해하면 학교에 상대 학생과 떨어져 지낼 수 있게 해 달라고 요청할 수 있어요."
+],
+"faq": [
+[
+"신고하면 우리 아이가 더 괴롭힘을 당하지 않을까요?",
+"신고한 학생에게 보복하는 것도 학교폭력이에요. 걱정되는 점을 학교에 미리 말하고 아이를 보호해 달라고 요청하세요."
+],
+[
+"학교에 말하면 꼭 큰일이 되나요?",
+"아니요. 상담만 먼저 할 수도 있어요. 어떤 방법이 있는지 담임 선생님이나 117에 먼저 물어보세요."
+]
+]
+},
+"lonely": {
+"tips": [
+"'오늘 누구랑 점심 먹었어?', '쉬는 시간에 뭐 했어?'처럼 쉽게 대답할 수 있는 질문으로 물어보세요.",
+"주말에 같은 반 친구 한두 명과 놀이터나 도서관에서 만날 기회를 만들어 주면 친해지는 데 도움이 돼요.",
+"아이가 잘하거나 좋아하는 것(그림, 운동, 노래 등)과 관련된 동아리나 방과후 프로그램을 찾아보세요.",
+"학교에 가기 싫어하거나, 밥을 잘 안 먹거나, 잠을 못 자면 단순히 외로운 것보다 더 힘든 일일 수 있어요. 담임 선생님께 바로 알려 주세요."
+],
+"faq": [
+[
+"말투가 달라서 친구들이 놀릴까 봐 걱정돼요.",
+"놀림이 계속되면 담임 선생님께 알려 주세요. 반복해서 놀리는 것은 학교폭력일 수 있어요."
+],
+[
+"전학 온 지 얼마 안 됐는데 언제쯤 적응해요?",
+"아이마다 달라요. 몇 달이 걸릴 수도 있어요. 조급해하지 말고 선생님과 함께 지켜봐 주세요."
+]
+]
+},
+"accused": {
+"tips": [
+"학교에 가거나 통화할 때 들은 내용을 메모해 두세요. 날짜, 담당 선생님 이름, 앞으로의 일정을 적어 두면 좋아요.",
+"아이를 바로 혼내기보다 '무슨 일이 있었는지 말해 줘'라고 차분히 물어보세요. 그래야 아이가 사실대로 말해요.",
+"학교에 아이의 입장을 적어 내라고 하면, 있었던 일을 꾸미지 말고 그대로 쓰게 하세요.",
+"잘못이 확인되면 진심으로 사과하는 것이 중요해요. 사과 방법은 학교와 먼저 상의하세요."
+],
+"faq": [
+[
+"학교폭력 결과가 생활기록부에 남아요?",
+"받은 조치의 종류에 따라 남을 수도 있어요. 자세한 기준은 학교폭력 담당 선생님께 물어보세요."
+],
+[
+"결과에 동의할 수 없으면 어떻게 해요?",
+"정해진 절차로 다시 판단해 달라고 할 수 있어요. 방법과 기간을 교육지원청에 문의하세요."
+]
+]
+},
+"cyber": {
+"tips": [
+"캡처할 때는 날짜와 시간, 상대방 이름이나 아이디가 함께 보이게 저장하세요. 대화방을 나가기 전에 먼저 저장해야 해요.",
+"아이가 화가 나서 똑같이 욕을 하지 않도록 이야기해 주세요. 맞대응하면 아이도 가해자가 될 수 있어요.",
+"아이 휴대전화를 바로 빼앗으면 다음부터 말을 안 할 수 있어요. 함께 차단하고 신고하는 방법을 찾아보세요.",
+"아이 이름, 학교, 사는 곳 같은 개인 정보가 퍼졌다면 더 위험할 수 있어요. 바로 학교와 경찰에 알리세요."
+],
+"faq": [
+[
+"학교 밖 온라인에서 생긴 일도 학교폭력이에요?",
+"같은 학교 학생 사이의 일이라면 학교폭력으로 다룰 수 있어요. 학교에 알리고 도움을 요청하세요."
+],
+[
+"캡처를 못 했는데 상대가 다 지웠어요.",
+"다른 친구가 저장한 화면이 있는지 확인해 보세요. 기억나는 내용을 날짜와 함께 적어 두는 것도 도움이 돼요."
+]
+]
+},
+"digital": {
+"tips": [
+"아이에게 '이런 일이 생기면 혼내지 않을게. 꼭 말해 줘'라고 미리 말해 두세요. 아이가 숨기지 않게 하는 것이 가장 중요해요.",
+"누군가 사진을 퍼뜨리겠다며 돈이나 다른 사진을 요구하면, 응하지 말고 대화 화면을 저장한 뒤 바로 신고하세요.",
+"아이 휴대전화에 모르는 사람의 친구 신청, 갑자기 생긴 선물이나 돈이 있다면 조심스럽게 물어보세요.",
+"아이가 많이 불안해하거나 잠을 못 자면 상담 기관의 도움도 함께 받으세요."
+],
+"faq": [
+[
+"이미 퍼진 사진도 지울 수 있어요?",
+"모두 지우기는 어렵지만 지원센터가 찾아서 삭제를 요청해 줘요. 빨리 신고할수록 좋아요."
+],
+[
+"우리 아이가 친구 합성 사진을 받아서 가지고만 있어요.",
+"가지고 있기만 해도 처벌받을 수 있어요. 다른 사람에게 보내지 말고 학교나 경찰에 어떻게 해야 하는지 상담하세요."
+]
+]
+},
+"friendtalk": {
+"tips": [
+"상담 전에 '언제부터, 누구와, 어떤 일이, 몇 번' 있었는지 3~4줄로 메모해 가세요.",
+"선생님께 '학교에서는 어떻게 보이나요?'라고 물어보세요. 집에서 듣는 이야기와 학교 모습이 다를 수 있어요.",
+"상담에서 정한 일(예: 자리 바꾸기, 쉬는 시간 살펴보기)을 적어 두고, 2~3주 뒤 어떻게 되었는지 다시 물어보세요.",
+"상담했다는 사실을 아이에게도 알려 주세요. 아이가 '내 편이 있다'고 느낄 수 있어요."
+],
+"faq": [
+[
+"작은 다툼인데 상담을 해도 될까요?",
+"네, 괜찮아요. 작은 문제일 때 이야기하면 더 쉽게 풀 수 있어요."
+],
+[
+"상대 아이 이름을 말해도 되나요?",
+"네. 선생님이 상황을 알아야 도울 수 있어요. 다만 상대 부모님께 직접 연락하는 것은 선생님과 먼저 상의하세요."
+]
+]
+},
+"enroll": {
+"tips": [
+"보통 12월쯤 취학통지서가 오고, 1월쯤 예비소집이 있어요. 예비소집에 갈 때 취학통지서를 가져가세요.",
+"예비소집에 갈 수 없으면 미리 학교에 전화해 알려 주세요. 연락 없이 빠지면 학교가 아이가 어디 있는지 확인하려고 연락할 수 있어요.",
+"입학 전에 아이 예방접종 기록이 다 되어 있는지 보건소나 병원에서 확인하세요. 학교에서 확인을 요청해요.",
+"입학 전에 아이가 이름 쓰기, 화장실 혼자 가기, 신발 신고 벗기 같은 것을 연습하면 학교생활이 편해져요."
+],
+"faq": [
+[
+"취학통지서를 못 받았어요. 어떻게 해요?",
+"사는 곳의 행정복지센터나 교육지원청에 물어보세요. 한국에 온 지 얼마 안 됐다면 따로 입학 방법을 안내받을 수 있어요."
+],
+[
+"아이가 아직 준비가 안 된 것 같아요. 1년 늦게 들어가도 돼요?",
+"입학을 미루는 제도가 있지만 절차와 조건이 있어요. 행정복지센터나 학교에 먼저 상담하세요."
+]
+]
+},
+"transfer": {
+"tips": [
+"초등학교는 보통 새 주소로 전입신고를 할 때 행정복지센터에서 전학할 학교를 안내받아요. 중학교와 고등학교는 교육지원청이나 새 학교에 먼저 물어보세요.",
+"지금 학교 마지막 날에 아이가 친구들과 인사할 수 있게 해 주세요. 담임 선생님께 미리 날짜를 말하면 좋아요.",
+"새 학교는 교과서가 다를 수 있어요. 교과서를 어디서 받는지, 사야 하는지 새 학교에 물어보세요.",
+"새 학교 담임 선생님께 알레르기, 건강 문제, 한국어 수준처럼 꼭 알아야 할 것을 첫날에 알려 주세요."
+],
+"faq": [
+[
+"이사 전에 전학부터 할 수 있어요?",
+"학교급과 지역에 따라 달라요. 보통 새 주소가 확인되어야 하니 교육지원청에 먼저 물어보세요."
+],
+[
+"학기 중간에 전학해도 돼요?",
+"네, 학기 중에도 전학할 수 있어요. 다만 고등학교는 조건이 더 까다로울 수 있으니 미리 확인하세요."
+]
+]
+},
+"notice": {
+"tips": [
+"안내문에서 날짜, 돈, '까지'라는 말에 먼저 표시해 보세요. 해야 할 일과 마감 날짜를 찾기 쉬워요.",
+"모르는 단어는 이 누리집의 학교 용어 사전에서 찾아보거나, 휴대전화 번역 기능으로 사진을 찍어 확인할 수 있어요.",
+"동의서에서 '동의함'과 '동의하지 않음' 가운데 하나를 꼭 표시하세요. 빈칸으로 내면 다시 내라고 할 수 있어요.",
+"종이 안내문은 사진을 찍어 두면 잃어버려도 다시 볼 수 있어요."
+],
+"faq": [
+[
+"안내문을 아이가 가방에서 안 꺼내요.",
+"학교 앱에도 같은 안내문이 올라오는 경우가 많아요. 아이와 매일 가방을 함께 보는 습관을 만들어 보세요."
+],
+[
+"동의하지 않으면 아이에게 불이익이 있어요?",
+"선택하는 안내문이라면 동의하지 않아도 괜찮아요. 걱정되면 선생님께 이유를 간단히 말씀드리세요."
+]
+]
+},
+"absenceapp": {
+"tips": [
+"처음 가입할 때 휴대전화 본인인증이 필요할 수 있어요. 휴대전화가 다른 사람 이름으로 되어 있으면 인증이 어려울 수 있으니 미리 확인하세요.",
+"서류 사진은 밝은 곳에서 글자가 잘 보이게 찍으세요. 흐리면 '보완요청'이 올 수 있어요.",
+"제출한 뒤에 화면을 캡처해 두면, 나중에 냈는지 확인할 때 도움이 돼요.",
+"앱이 너무 어려우면 종이 서류로 내도 되는지 담임 선생님께 물어보세요."
+],
+"faq": [
+[
+"형제가 두 명인데 각각 등록해야 해요?",
+"네. 아이마다 자녀등록을 따로 해야 해요. 학교가 달라도 한 계정에 함께 등록할 수 있어요."
+],
+[
+"보완요청이 왔는데 무엇을 고쳐야 할지 모르겠어요.",
+"담임 선생님께 '무엇을 다시 내면 되나요?'라고 물어보세요. 보통 빠진 서류나 흐린 사진 때문이에요."
+]
+]
+},
+"trip": {
+"tips": [
+"멀미가 심한 아이는 버스 앞자리에 앉게 해 달라고 미리 부탁하고, 멀미약은 집에서 먹이고 보내세요.",
+"아이 가방에 이름표를 달고, 보호자 전화번호를 적은 쪽지를 넣어 주세요.",
+"용돈을 가져가도 되는지, 휴대전화를 가져가도 되는지는 학교마다 달라요. 안내문을 확인하세요.",
+"비용이 부담되면 담임 선생님이나 행정실에 지원받을 수 있는지 조용히 물어보세요."
+],
+"faq": [
+[
+"아이가 체험학습에 안 가면 어떻게 돼요?",
+"학교에 남아 다른 활동을 하거나, 결석으로 처리될 수 있어요. 학교마다 다르니 담임 선생님께 물어보세요."
+],
+[
+"체험학습 당일 아침에 아프면요?",
+"출발 시간 전에 바로 담임 선생님께 연락하세요. 낸 비용을 돌려받을 수 있는지도 함께 물어보세요."
+]
+]
+},
+"familytrip": {
+"tips": [
+"신청서에는 보통 날짜, 장소, 함께 가는 보호자, 체험할 내용(예: 할머니 댁 방문, 역사 유적 보기)을 적어요.",
+"보고서에는 다녀온 곳 사진, 입장권이나 영수증, 아이가 느낀 점을 간단히 적으면 돼요. 아이가 직접 쓰게 하세요.",
+"시험 기간에는 체험학습을 허락하지 않는 학교가 많아요. 날짜를 정하기 전에 학교 일정을 확인하세요.",
+"해외에 가는 경우도 신청할 수 있지만, 한 번에 쓸 수 있는 날 수가 정해진 학교도 있어요."
+],
+"faq": [
+[
+"장례식이나 결혼식도 체험학습으로 내야 해요?",
+"가까운 가족의 결혼이나 장례는 '경조사'로 따로 출석 인정을 받을 수 있어요. 날 수는 관계에 따라 다르니 학교에 물어보세요."
+],
+[
+"허락을 받기 전에 이미 다녀왔어요.",
+"바로 담임 선생님께 말씀드리세요. 미인정 결석이 될 수 있지만, 사정을 이야기하고 방법을 상의해 보세요."
+]
+]
+},
+"vacation": {
+"tips": [
+"방학 돌봄은 방학이 시작되기 전에 신청을 받는 경우가 많아요. 학기 말 안내문을 놓치지 마세요.",
+"방학에는 급식이 없을 수 있어요. 도시락을 싸 가야 하는지, 점심을 주는지 꼭 확인하세요.",
+"아이 혼자 집에 있는 시간이 있다면 비상 연락처, 문 잠그기, 모르는 사람에게 문 열지 않기를 미리 약속하세요.",
+"아이돌봄서비스처럼 돌보미가 집으로 와 주는 제도도 있어요. 사는 곳의 행정복지센터에 물어보세요."
+],
+"faq": [
+[
+"초등학생을 혼자 집에 두면 안 돼요?",
+"어린아이를 오랜 시간 혼자 두면 위험하고 방임이 될 수 있어요. 돌봄 프로그램이나 주변 도움을 꼭 알아보세요."
+],
+[
+"신청 기간을 놓쳤어요.",
+"빈자리가 있으면 들어갈 수 있는 경우도 있어요. 학교 돌봄 담당자와 지역 돌봄기관에 바로 물어보세요."
+]
+]
+},
+"contact": {
+"tips": [
+"보내기 전에 아이 이름과 반이 맞는지 한 번 더 확인하세요.",
+"부탁이나 질문은 한 번에 하나씩 쓰면 선생님이 답하기 쉬워요.",
+"선생님 답이 바로 오지 않아도 괜찮아요. 수업 중이라 늦을 수 있어요. 하루가 지나도 답이 없으면 교무실에 전화하세요.",
+"화가 났을 때는 바로 보내지 말고 조금 기다렸다가 차분하게 다시 쓰세요."
+],
+"faq": [
+[
+"선생님 개인 전화번호로 연락해도 돼요?",
+"학교마다 달라요. 요즘은 학교 앱이나 학교 전화로 연락하라고 하는 곳이 많아요. 학기 초 안내를 확인하세요."
+],
+[
+"한국어 맞춤법이 틀릴까 봐 걱정돼요.",
+"조금 틀려도 괜찮아요. 무슨 일인지만 알 수 있으면 돼요."
+]
+]
+},
+"parentmeet": {
+"tips": [
+"학부모 총회는 보통 3월에 있어요. 총회 날 교실에서 아이 자리와 책상을 보고, 담임 선생님의 1년 계획을 들어요.",
+"상담 신청서에는 보통 원하는 날짜와 시간, 대면 또는 전화, 궁금한 점을 적어요.",
+"통역이 필요하거나 말이 서툴러 걱정되면 신청서에 미리 적어 두세요. 선생님이 천천히 설명해 줄 수 있어요.",
+"상담 시간은 보통 20~30분 정도로 짧아요. 가장 중요한 질문부터 하세요."
+],
+"faq": [
+[
+"총회에서 학부모회 임원을 하라고 하면 어떻게 해요?",
+"하고 싶지 않으면 거절해도 괜찮아요. 아이에게 아무 영향이 없어요."
+],
+[
+"상담 갈 때 선물을 가져가야 해요?",
+"아니요. 한국 학교에서는 선생님께 선물을 드리지 않는 것이 원칙이에요. 빈손으로 가도 돼요."
+]
+]
+},
+"afterschool": {
+"tips": [
+"신청서에는 보통 이용하고 싶은 요일과 시간, 귀가 방법, 데리러 올 사람, 비상 연락처, 알레르기를 적어요.",
+"자리가 모자라면 일하는 부모, 한부모, 형편이 어려운 가정을 먼저 뽑는 학교가 있어요. 해당되면 증명 서류를 함께 내세요.",
+"아이가 혼자 집에 간다면 집에 도착하면 전화하기 같은 약속을 정해 두세요.",
+"아이가 프로그램을 힘들어하면 학기 중에도 바꾸거나 그만둘 수 있는지 학교에 물어보세요."
+],
+"faq": [
+[
+"늘봄학교는 저녁 몇 시까지 해요?",
+"학교마다 달라요. 늦게까지 필요하면 저녁 돌봄이 있는지 학교 늘봄 담당에게 물어보세요."
+],
+[
+"학기 중간에도 신청할 수 있어요?",
+"자리가 남아 있으면 가능한 경우가 있어요. 학교 늘봄·방과후 담당에게 문의하세요."
+]
+]
+},
+"teacher": {
+"tips": [
+"상담 날에 아이 공책이나 시험지를 가져가면 이야기하기 쉬워요.",
+"'집에서 무엇을 도와주면 좋을까요?'라고 꼭 물어보세요. 구체적인 방법을 알 수 있어요.",
+"선생님 말이 빠르면 '천천히 다시 말씀해 주세요'라고 해도 괜찮아요.",
+"상담이 끝나면 들은 내용을 짧게 메모해 두세요. 다음 상담 때 무엇이 달라졌는지 비교할 수 있어요."
+],
+"faq": [
+[
+"상담 주간이 아닐 때도 상담할 수 있어요?",
+"네. 언제든 담임 선생님께 연락해 시간을 정하면 돼요."
+],
+[
+"아이가 듣는 데서 상담해도 돼요?",
+"괜찮지만, 아이 앞에서 말하기 어려운 내용이라면 부모님만 상담하겠다고 말씀드리세요."
+]
+]
+},
+"korean": {
+"tips": [
+"남한 학교에서는 외래어와 한자말을 많이 써요. 학교에서 자주 나오는 말을 이 누리집 용어 사전에서 아이와 함께 익혀 보세요.",
+"교과서 단원마다 새로 나오는 단어를 공책에 적고 뜻을 함께 찾아보면 공부를 따라가기 쉬워요.",
+"아이와 함께 그림책이나 쉬운 책을 소리 내어 읽거나, 하루 있었던 일을 한두 줄 써 보게 하세요.",
+"아이가 중국어 등 다른 말을 더 잘한다면 그 말을 잊지 않게 해 주세요. 두 언어를 하는 것은 장점이에요."
+],
+"faq": [
+[
+"말투가 달라서 아이가 학교에서 말을 안 하려고 해요.",
+"선생님께 알려 주면 아이가 편하게 말할 수 있도록 살펴 줄 수 있어요. 집에서는 말투를 고치라고 다그치기보다 많이 칭찬해 주세요."
+],
+[
+"한국어를 배우는 데 얼마나 걸려요?",
+"아이마다 달라요. 일상 대화보다 공부에 쓰는 한국어를 익히는 데 더 오래 걸릴 수 있어요. 꾸준히 도와주세요."
+]
+]
+},
+"fees": {
+"tips": [
+"새 학기 초에 교육비 지원 집중 신청 기간이 있는 경우가 많아요. 학교에서 오는 안내문을 놓치지 마세요.",
+"신청할 때 보통 신분증과 가족 관계, 소득을 확인할 수 있는 정보가 필요해요. 행정복지센터에 가기 전에 무엇을 가져갈지 전화로 물어보세요.",
+"지원을 신청한 사실은 다른 학생이나 학부모에게 알려지지 않아요. 걱정하지 말고 신청하세요.",
+"급식비, 수학여행비, 방과후 비용처럼 항목마다 지원이 다를 수 있어요. 어떤 것이 지원되는지 하나씩 확인하세요."
+],
+"faq": [
+[
+"작년에 신청했는데 올해도 다시 해야 해요?",
+"제도와 상황에 따라 달라요. 학년이 바뀌거나 학교를 옮기면 다시 확인하는 것이 좋아요."
+],
+[
+"지원 대상이 아니면 아무 도움도 못 받아요?",
+"학교나 지역에 따라 다른 지원이 있을 수 있어요. 교육복지사나 행정실에 사정을 말하고 물어보세요."
+]
+]
+},
+"apps": {
+"tips": [
+"앱은 휴대전화의 공식 앱 가게(앱 스토어)에서 학교가 알려 준 이름 그대로 검색해 설치하세요. 문자로 온 설치 주소는 누르기 전에 학교에 확인하세요.",
+"아이디와 비밀번호는 잊지 않도록 안전한 곳에 적어 두세요.",
+"알림을 켜 두면 새 안내문이 올 때 바로 알 수 있어요.",
+"어려우면 아이나 가까운 사람에게 한 번 같이 해 달라고 부탁하거나, 지역 하나센터·가족센터에 도움을 물어보세요."
+],
+"faq": [
+[
+"앱을 여러 개 깔아야 해요?",
+"학교에서 쓰는 앱이 두세 개일 수 있어요. 담임 선생님께 '꼭 필요한 앱이 무엇인가요?'라고 물어보세요."
+],
+[
+"휴대전화가 없거나 오래되어 앱이 안 깔려요.",
+"선생님께 사정을 말하면 종이 안내문이나 문자로 받을 수 있는지 알려 줘요."
+]
+]
+},
+"study": {
+"tips": [
+"시험지나 단원평가지를 아이와 함께 보면서 어떤 문제를 틀렸는지 살펴보세요. 문제의 말을 이해 못 한 것인지, 내용을 모르는 것인지 알 수 있어요.",
+"하루 20~30분이라도 같은 시간에 숙제와 복습을 하는 습관을 만들어 주세요.",
+"EBS처럼 무료로 볼 수 있는 학습 방송과 강의도 있어요. 선생님께 아이 수준에 맞는 것을 추천해 달라고 해 보세요.",
+"글을 읽거나 집중하는 것이 유난히 어렵다면 선생님과 상의해 전문 검사를 받아 볼 수도 있어요."
+],
+"faq": [
+[
+"부모가 공부를 잘 몰라서 도와줄 수가 없어요.",
+"괜찮아요. 옆에서 '오늘 뭐 배웠어?' 묻고 칭찬해 주는 것만으로도 큰 도움이 돼요. 공부 내용은 학교 지원을 받으세요."
+],
+[
+"학년을 낮춰서 다니게 할 수 있어요?",
+"쉽게 바꿀 수 있는 것은 아니에요. 먼저 학교에서 받을 수 있는 학습 지원을 상담해 보세요."
+]
+]
+},
+"college": {
+"tips": [
+"수시는 고등학교 1학년부터의 성적과 학교생활 기록을 봐요. 1학년 때부터 수업, 출석, 활동을 꾸준히 챙기세요.",
+"대학교 누리집의 '모집요강'에서 '북한이탈주민' 또는 '정원 외'를 찾아보면 지원 조건과 서류를 알 수 있어요.",
+"보통 수시 원서는 9월쯤, 수능은 11월에 있어요. 정확한 날짜는 해마다 발표되니 학교 안내를 확인하세요.",
+"국가장학금처럼 모든 학생이 신청할 수 있는 장학금도 함께 알아보세요."
+],
+"faq": [
+[
+"북한이탈주민 자녀면 모두 특별전형에 지원할 수 있어요?",
+"아니요. 대학마다 대상이 달라요. 부모님만 북한이탈주민이고 아이는 다른 나라에서 태어난 경우 등 조건을 꼭 확인하세요."
+],
+[
+"대학 말고 다른 길도 있어요?",
+"네. 전문대학, 직업훈련, 취업 등 여러 길이 있어요. 진로 선생님과 아이가 좋아하는 일을 함께 찾아보세요."
+]
+]
+},
+"parenttired": {
+"tips": [
+"하루 10분이라도 혼자 쉬는 시간을 정해 보세요. 산책, 좋아하는 음악 듣기처럼 작은 것도 괜찮아요.",
+"잠을 잘 못 자거나, 밥맛이 없거나, 이유 없이 눈물이 나는 날이 2주 넘게 계속되면 상담이나 진료를 받아 보세요.",
+"같은 처지의 부모님 모임이 있는지 하나센터나 가족센터에 물어보세요. 이야기를 나누면 마음이 가벼워질 수 있어요.",
+"아이에게 짜증을 냈다면 나중에 '아까는 엄마(아빠)가 힘들어서 그랬어, 미안해'라고 말해 주세요."
+],
+"faq": [
+[
+"상담받으면 기록이 남아서 불이익이 있어요?",
+"상담 내용은 비밀이 지켜져요. 상담을 받았다고 해서 일이나 생활에 불이익이 생기지 않아요."
+],
+[
+"돈이 없어서 상담을 못 받을 것 같아요.",
+"정신건강복지센터, 하나센터, 가족센터의 상담은 무료이거나 적은 비용으로 받을 수 있어요. 먼저 전화로 물어보세요."
+]
+]
+},
+"reunite": {
+"tips": [
+"아이가 부르는 호칭(엄마, 어머니 등)을 억지로 바꾸게 하지 마세요. 시간이 지나면 자연스러워져요.",
+"아이가 지내던 곳의 이야기, 좋아하던 음식, 친구 이야기를 편하게 할 수 있게 들어 주세요.",
+"규칙은 처음부터 많이 만들지 말고, 꼭 필요한 것 두세 가지만 함께 정하세요.",
+"아이가 다른 말(예: 중국어)을 더 편하게 쓴다면 학교에 알려 한국어 지원을 받을 수 있는지 물어보세요."
+],
+"faq": [
+[
+"아이가 저를 원망하는 것 같아요.",
+"떨어져 지낸 시간 동안 아이도 많이 힘들었을 수 있어요. 변명하기보다 아이 마음을 들어 주고, 필요하면 가족 상담을 함께 받아 보세요."
+],
+[
+"형제들끼리 사이가 안 좋아요.",
+"한쪽 편만 들지 말고 각자와 따로 시간을 보내 주세요. 계속 힘들면 가족센터에 상담하세요."
+]
+]
+},
+"talk": {
+"tips": [
+"'왜 그랬어?' 대신 '무슨 일이 있었어?'라고 물어보세요. 아이가 덜 방어적으로 대답해요.",
+"아이가 말할 때는 휴대전화나 텔레비전을 끄고 눈을 보며 들어 주세요.",
+"'너는 맨날 그래' 대신 '나는 네가 늦게 와서 걱정했어'처럼 내 마음을 말하세요.",
+"사춘기 아이는 말수가 줄어드는 것이 흔해요. 함께 밥 먹기, 차 타고 이동하기처럼 편한 시간에 짧게 이야기해 보세요."
+],
+"faq": [
+[
+"화가 나서 아이를 때렸어요. 어떻게 해야 해요?",
+"아이에게 진심으로 사과하고, 다시는 그러지 않도록 화를 다루는 방법을 상담받아 보세요. 가족센터나 1388에서 도움을 받을 수 있어요."
+],
+[
+"아이가 휴대전화만 봐요.",
+"무조건 빼앗기보다 쓰는 시간과 장소를 아이와 함께 정하고, 부모님도 같이 지켜 주세요."
+]
+]
+},
+"crisis": {
+"tips": [
+"아이 방에 약, 칼처럼 위험한 물건이 쉽게 손에 닿지 않게 치워 두세요.",
+"'그런 말 하지 마' 대신 '그런 생각이 들 만큼 힘들었구나'라고 말해 주세요.",
+"아이가 '비밀로 해 달라'고 해도, 위험한 일은 비밀로 지킬 수 없다고 부드럽게 말하고 전문가에게 알리세요.",
+"상담이나 치료를 시작한 뒤에도 아이 기분이 갑자기 좋아지거나 물건을 정리하면 더 주의 깊게 살펴보세요."
+],
+"faq": [
+[
+"학교에 알리면 아이에게 불리하지 않을까요?",
+"학교는 아이를 보호하기 위해 도와요. 상담 내용은 필요한 사람에게만 알려져요."
+],
+[
+"정신과 진료를 받으면 기록이 남아 나중에 불이익이 있을까요?",
+"진료 기록은 개인정보라서, 법에 정한 경우가 아니면 본인이나 보호자 허락 없이 학교에 알려지지 않아요. 아이의 안전이 먼저예요."
+]
+]
+},
+"dropout": {
+"tips": [
+"초등학교와 중학교는 의무교육이라 고등학교의 자퇴와 처리 방법이 달라요. 학교에 꼭 물어보세요.",
+"아이가 학교를 그만두고 싶은 이유를 들은 뒤, '그만두면 하루를 어떻게 보낼지'도 함께 이야기해 보세요.",
+"반을 바꾸거나 전학하는 것만으로 해결되는 경우도 있어요. 다른 방법이 있는지 먼저 알아보세요.",
+"그만둔 뒤에도 다시 학교로 돌아가는 길(재입학, 편입학)이 있을 수 있어요. 조건은 학교와 교육지원청에 확인하세요."
+],
+"faq": [
+[
+"학교를 그만두면 졸업장은 어떻게 받아요?",
+"검정고시에 합격하면 같은 학력을 인정받을 수 있어요. 꿈드림센터에서 준비를 도와줘요."
+],
+[
+"부모가 반대하면 아이 혼자 자퇴할 수 있어요?",
+"학생이 미성년자라면 보통 보호자 동의가 필요해요. 정확한 절차는 학교에 확인하세요."
+]
+]
+}
+};
+for (const tp of TOPICS) for (const st of tp.list) Object.assign(st, TIPS[st.id] || {});
 // 상황별 안내에 나온 말도 학교 용어 사전에 넣는다.
 for (const tp of TOPICS) for (const st of tp.list) for (const [t, e] of st.w) {
   if (byTerm[t]) continue;
@@ -2236,6 +2997,10 @@ function renderG() {
       h("p", {class: "what"}, h("b", {}, "이런 상황인가요? "), st.what),
       h("p", {class: "first"}, "먼저 기억하세요: ", h("span", {class: "mk"}, st.s[0][0])),
       h("div", {class: "gsec"}, h("h4", {}, "이렇게 해결하세요"), h("div", {class: "checks"}, boxes)),
+      st.tips && st.tips.length ? h("div", {class: "gsec panel tips"}, h("h4", {}, "더 자세히 알아 두면 좋아요"),
+        h("ul", {}, st.tips.map(t => h("li", {}, t)))) : null,
+      st.faq && st.faq.length ? h("div", {class: "gsec panel faq"}, h("h4", {}, "부모님들이 자주 묻는 질문"),
+        st.faq.map(([q, a]) => h("details", {}, h("summary", {}, q), h("p", {}, a)))) : null,
       h("div", {class: "gsec panel"}, h("h4", {}, "어려운 말 쉽게 알아보기"),
         h("dl", {class: "wl"}, st.w.flatMap(([t, e]) => [h("dt", {}, t), h("dd", {}, e)]))),
       h("div", {class: "gsec panel"}, h("h4", {}, "학교에 어떻게 알려야 할까요?"),
@@ -2273,13 +3038,6 @@ const FICON = {
 const BNAV = [["home", "처음", '<path d="M8 23L24 9l16 14"/><path d="M12 20v18h24V20"/>'], ["notices", "통신문"], ["words", "용어"], ["guide", "상황"], ["help", "기관"], ["qna", "Q&A"]];
 setTimeout(() => $("#bnav").append(...BNAV.map(([v, t, icon]) => { const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg"); svg.setAttribute("viewBox", "0 0 48 48"); svg.setAttribute("aria-hidden", "true"); svg.innerHTML = icon || FICON[v]; const a = h("a", {href: "#" + v, "data-go": v}, svg, h("span", {}, t)); if (document.querySelector(`#nav a[data-go="${v}"][aria-current]`)) a.setAttribute("aria-current", "page"); return a; })), 0);
 function ficon(k) { const s = document.createElementNS("http://www.w3.org/2000/svg", "svg"); s.setAttribute("viewBox", "0 0 48 48"); s.setAttribute("aria-hidden", "true"); s.innerHTML = FICON[k]; return s; }
-const ST_NUMS = [
-  [NOTICES.filter(n => n.real).length + "건", "실제 가정통신문", "여러 학교에서 받은 통신문을 학교 이름과 번호만 가리고 그대로 실었어요."],
-  [W.length + "개", "학교 용어", "통신문과 학교생활에 나오는 말을 쉬운 말로 풀었어요."],
-  [TOPICS.reduce((n, t) => n + t.list.length, 0) + "가지", "상황별 안내", "북한이탈주민이 함께 만든 PSCORE 안내서를 참고해 보강했어요."],
-  ["설문", "학부모 의견", "설문에서 받은 의견으로 통합 검색, 지역 기관, 학교 앱 안내를 더했어요."],
-];
-$("#stNums").append(...ST_NUMS.map(([n, b, d]) => h("div", {}, h("strong", {}, n), h("b", {}, b), h("p", {}, d))));
 const FEAT = [
   ["notices", "가정통신문 읽기", "실제 7건 · 예시 5건"],
   ["words", "학교 용어 사전", `학교 말 ${W.length}개`],
@@ -2305,20 +3063,22 @@ renderBoard();
 $("#boxGuide")?.append(...TOPICS.map(t => h("li", {}, h("a", {href: "#guide", onclick: e => { e.preventDefault(); e.stopPropagation(); go("guide"); gGo(t.id, null); }}, t.t))));
 /* 통합 검색: 용어·상황·기관·통신문을 한 번에 */
 function sNorm(t) { return String(t || "").replace(/\[\[([^\]|]+)(\|[^\]]+)?\]\]/g, "$1").replace(/\s+/g, "").toLowerCase(); }
-function homeSearch() {
-  const raw = $("#hq").value.trim(), q = sNorm(raw);
-  if (!q) { $("#hres").hidden = true; return; }
+function homeSearch(inp = $("#hq"), out = $("#hres")) {
+  const raw = inp.value.trim(), q = sNorm(raw);
+  if (!q) { out.hidden = true; return; }
   const score = (title, rest) => { const t = sNorm(title); return t === q ? 3 : t.startsWith(q) ? 2 : t.includes(q) ? 1.5 : sNorm(rest).includes(q) ? 1 : 0; };
   const pick = (arr, f, n) => arr.map(x => [x, f(x)]).filter(([, sc]) => sc > 0).sort((a, b) => b[1] - a[1]).slice(0, n).map(([x]) => x);
   const terms = pick(W, w => score(w.t, w.e + w.x + (w.tip || "")), 5);
-  const sits = pick(TOPICS.flatMap(tp => tp.list.map(st => ({tp, st}))), ({st}) => score(st.t, st.what + st.s.map(x => x.join("")).join("") + st.w.map(x => x.join("")).join("")), 3);
+  const kw = sNorm(raw).replace(/\s/g, "");
+  const hit = new Set(LSIT.filter(([, re]) => re.test(kw)).map(([id]) => id));
+  const sits = pick(TOPICS.flatMap(tp => tp.list.map(st => ({tp, st}))), ({st}) => Math.max(hit.has(st.id) ? 2.5 : 0, score(st.t, st.what + st.s.map(x => x.join("")).join("") + st.w.map(x => x.join("")).join("") + (st.tips || []).join("") + (st.faq || []).flat().join(""))), 4);
   const orgs = pick(HELP.concat(SUPPORT.map(([k, n, d, tel, url]) => [k, n, tel, url, null, d])).concat(LOCAL.flatMap(([a, rows]) => rows.map(([n, k, tel, addr]) => [a + " " + k, n, tel, null, null, addr, a]))), ([who, n, tel, url, hrs, d]) => score(n, who + (tel || "") + (url || "") + d), 4);
   const nots = pick(NOTICES, n => score(n.title, n.summary + n.cat), 3);
   const group = (title, items, all) => items.length ? h("div", {class: "hgrp"}, h("h4", {}, title), h("ul", {}, items), all || null) : null;
   const li = (label, sub, onclick) => h("li", {}, h("button", {type: "button", onclick}, h("b", {}, label), sub ? h("span", {}, sub) : null));
   const total = terms.length + sits.length + orgs.length + nots.length;
-  $("#hres").hidden = false;
-  $("#hres").replaceChildren(...(total ? [
+  out.hidden = false;
+  out.replaceChildren(...(total ? [
     group("학교 용어", terms.map(w => li(w.t, w.e, () => { $("#wq").value = w.t; curCat = "전체"; renderWords(); go("words"); })),
       h("button", {class: "hall", type: "button", onclick: () => { $("#wq").value = raw; curCat = "전체"; renderWords(); go("words"); }}, "용어 사전에서 모두 보기 ›")),
     group("상황별 행동 안내", sits.map(({tp, st}) => li(st.t, tp.t, () => { go("guide"); gGo(tp.id, st.id); }))),
@@ -2327,8 +3087,24 @@ function homeSearch() {
   ].filter(Boolean) : [h("p", {class: "hnone"}, `'${raw}'에 맞는 안내를 찾지 못했어요. `,
     h("button", {class: "link", type: "button", onclick: () => aiOpen(`${raw}에 대해 알려 주세요.`)}, "AI에게 물어보기"))]));
 }
-$("#hq").addEventListener("input", homeSearch);
+$("#hq").addEventListener("input", () => homeSearch());
 $("#homeSearch").addEventListener("submit", e => { e.preventDefault(); homeSearch(); });
+function qsOpen() { $("#qso").hidden = false; document.body.classList.add("qs-on"); setTimeout(() => $("#qsq").focus(), 30); }
+function qsClose() { $("#qso").hidden = true; document.body.classList.remove("qs-on"); }
+$("#qsBtn").addEventListener("click", qsOpen);
+$("#qsFab").addEventListener("click", qsOpen);
+$("#qsClose").addEventListener("click", qsClose);
+$("#qso").addEventListener("click", e => { if (e.target.id === "qso") qsClose(); else if (e.target.closest("#qsres button, .qchips button")) setTimeout(qsClose, 0); });
+$("#qsq").addEventListener("input", () => homeSearch($("#qsq"), $("#qsres")));
+$("#qsForm").addEventListener("submit", e => { e.preventDefault(); homeSearch($("#qsq"), $("#qsres")); });
+addEventListener("keydown", e => {
+  if (e.key === "Escape" && !$("#qso").hidden) qsClose();
+  if (e.key === "/" && !/INPUT|TEXTAREA/.test(document.activeElement.tagName)) { e.preventDefault(); qsOpen(); }
+});
+document.addEventListener("click", e => {
+  const b = e.target.closest("[data-sit]"); if (!b) return;
+  const [tp, st] = b.dataset.sit.split("/"); go("guide"); gGo(tp, st);
+});
 
 /* ---------- 쉬운 말 풀이 ---------- */
 let curCat = "전체";
@@ -2360,16 +3136,16 @@ renderWords();
 const HELP = [
   ["학교 안", "담임 선생님 · Wee클래스 · 통일전담교육사", null, null, null, "학교 일은 먼저 담임 선생님께. 마음 상담은 Wee클래스, 북한에서 온 학생은 통일전담교육사가 도와줄 수 있어요."],
   ["학교폭력", "학교폭력 신고·상담", "117", null, "24시간", "괴롭힘, 따돌림이 있을 때 전화나 문자(#0117)로 신고하고 상담해요."],
-  ["청소년 고민", "청소년상담 1388", "1388", null, "24시간", "공부, 진로, 친구, 가출 고민을 들어 줘요. 아이가 직접 전화해도 되고, 문자·카카오톡 상담도 돼요. 가까운 청소년상담복지센터도 알려 줘요."],
+  ["청소년 고민", "청소년상담 1388", "1388", null, "24시간", "공부, 진로, 친구, 가출 고민을 들어 줘요. 아이도 부모도 전화(휴대전화는 지역번호+1388), 문자, 카카오톡 \'청소년상담1388\'로 무료 상담할 수 있어요."],
   ["마음이 많이 힘들 때", "자살예방상담전화", "109", null, "24시간", "죽고 싶은 생각이 들거나 너무 우울하고 불안할 때 전문 상담사와 이야기할 수 있어요. 아이 일로 걱정될 때도 전화해요."],
   ["마음 건강 상담", "정신건강위기상담전화", "1577-0199", null, "24시간", "우울, 불안, 스트레스를 상담하고 사는 곳 가까운 정신건강복지센터를 연결해 줘요."],
   ["아동학대", "아동학대 신고", "112", null, "24시간", "아이가 학대받는 것 같으면 바로 신고해요. 신고한 사람은 법으로 보호받아요."],
   ["가정폭력·성폭력", "여성긴급전화", "1366", null, "24시간", "가정폭력, 성폭력 피해를 상담하고, 급할 때는 안전한 곳으로 피할 수 있게 도와줘요."],
-  ["북한이탈주민 정착 상담", "남북하나재단 콜센터", "1577-6635", null, null, "생활, 일자리, 교육, 마음 건강까지 상담해요. 가까운 하나센터도 알려 줘요."],
+  ["북한이탈주민 정착 상담", "남북하나재단 콜센터", "1577-6635", null, "평일 9~18시", "교육·장학, 취업, 마음 건강, 주택, 의료, 법률까지 정착 생활에서 궁금한 것을 물어보면 알맞은 지원을 알려 줘요. 가까운 하나센터도 안내해 줘요."],
   ["가까운 지역 기관", "지역 하나센터", null, null, null, "사는 곳 가까이에서 정착을 도와주는 곳이에요. 위치는 남북하나재단 콜센터에 물어보세요."],
   ["북한배경 학생 교육", "북한배경학생교육지원센터 (한국교육개발원)", "043-530-9481", null, "평일", "누리집 hub4u.or.kr · 예전 이름은 '탈북청소년교육지원센터'예요. 북한배경 학생의 공부와 학교 적응을 돕는 자료와, 현직 선생님과 1:1로 만나는 멘토링 같은 프로그램이 있어요."],
-  ["가족 상담", "가족센터", "1577-9337", null, "평일", "부모 교육, 가족 상담, 아이 돌봄을 도와줘요. 전화하면 사는 곳 가까운 가족센터를 알려 줘요."],
-  ["다문화 가족 상담", "다누리콜센터", "1577-1366", null, "24시간", "13개 나라 말로 생활과 상담 정보를 알려 줘요. 결혼이민 가정, 다문화 가정에 도움이 돼요."],
+  ["가족 상담", "가족센터", "1577-9337", null, null, "부모 교육, 가족 상담, 아이 돌봄을 도와줘요. 전화하면 사는 곳 가까운 가족센터를 알려 줘요."],
+  ["다문화 가족 상담", "다누리콜센터", "1577-1366", null, "24시간", "중국어·러시아어 등 15개 나라 말로 생활 정보와 가족 고민을 상담하고, 병원·학교·경찰서 통역도 연결해 줘요."],
   ["생활이 어려울 때", "보건복지상담센터", "129", null, "24시간", "갑자기 생활이 어려워졌을 때 받을 수 있는 긴급 지원과 복지 제도를 알려 줘요."],
   ["복지 신청", "복지로", null, "https://www.bokjiro.go.kr", null, "교육급여, 교육비 지원 같은 복지를 찾아보고 신청해요. 주민센터에서도 할 수 있어요."],
   ["법률 상담", "대한법률구조공단", "132", null, "평일 낮", "형편이 어려운 가정에 무료로 법률 상담을 해 주고, 소송도 도와줘요."],
@@ -2380,36 +3156,84 @@ const LOCAL = [
   ["인천 남동구", [
     ["인천하나센터", "하나센터 · 인천 전 지역", "032-437-1173", "연수구 갯벌로 12 미추홀타워 9층"],
     ["논현종합사회복지관", "종합사회복지관", "032-446-9339", "남동구 논현동 · 예전 자료의 번호라 바뀌었을 수 있어요"],
-    ["남동구 가족센터", "가족센터 · 다문화 가족 지원", "032-467-3904", "남동구 구월동"]]],
+    ["남동구 가족센터", "가족센터 · 다문화 가족 지원", "032-467-3904", "남동구 구월동"],
+    ["상담센터 마음숲 인천 (남북하나재단)", "북한이탈주민 가족 심리상담", "032-435-6601", "인천", "북한이탈주민과 가족이 무료로 심리검사, 가족 상담, 아이 놀이·미술치료를 받을 수 있어요."],
+    ["만수종합사회복지관", "종합사회복지관 · 생활·학습 지원", "032-463-8161", "남동구 만수동, 담방로 105 (만수주공7단지 내)", "생활이 어려울 때 상담하고, 아이와 가족이 이용할 수 있는 프로그램을 안내받을 수 있어요."],
+    ["남동구청소년상담복지센터", "청소년상담복지센터 · 상담", "032-471-1388", "남동구 소래로 645", "아이가 학교생활이나 친구 문제로 힘들어할 때 무료로 상담받을 수 있어요."],
+    ["남동구 학교밖청소년지원센터 꿈드림", "학교밖청소년지원센터 · 학업·진로", "032-471-1318", "남동구 소래로 645, 남동구평생학습관 2층", "학교를 그만둔 아이가 검정고시, 진로, 취업 준비를 도움받을 수 있어요."],
+    ["지역아동센터 인천지원단", "아동돌봄 안내 · 방과후·방학 돌봄", "032-425-7327", "인천 전역 안내 (내선 0번)", "초등학생이 밤늦게나 방학에 갈 수 있는 지역아동센터 돌봄을 신청할 수 있어요."]]],
   ["광명", [
     ["경기서부하나센터", "하나센터 · 부천·광명·시흥·안양·과천", "032-329-2325", "부천시 길주로 434"],
     ["광명종합사회복지관", "종합사회복지관", "02-2687-2921", "광명시 오리로 1018"],
-    ["청소년 상담", "청소년상담 전국 번호", "1388", "가까운 청소년상담복지센터로 연결해 줘요"]]],
+    ["청소년 상담", "청소년상담 전국 번호", "1388", "가까운 청소년상담복지센터로 연결해 줘요"],
+    ["하안종합사회복지관", "종합사회복지관 · 북한이탈주민 지원", "02-894-0720", "광명시 하안동, 하안로 238", "북한이탈주민 지원사업을 하는 곳이라 생활 상담과 가족 지원을 함께 물어볼 수 있어요."],
+    ["하안누리지역아동센터", "지역아동센터 · 방과후 돌봄·학습", "02-895-0720", "광명시 하안3동 (하안종합사회복지관 운영)", "학교가 끝난 뒤 아이가 숙제를 하고 저녁까지 돌봄을 받을 수 있어요."],
+    ["철산종합사회복지관", "종합사회복지관 · 생활 지원", "02-2617-0410", "광명시 철산동, 연서일로 4-3", "생활이 어려울 때 상담하고, 가족이 쓸 수 있는 복지 서비스를 안내받을 수 있어요."],
+    ["광명시 가족센터", "가족센터 · 가족상담·아이돌봄", "02-6265-1366", "광명시 도덕공원로 52, 철산4동 생활문화복합센터 4·5층", "부모 교육, 가족 상담, 아이돌봄 서비스를 신청할 수 있어요."],
+    ["광명시청 아동희망드림팀 (지역아동센터 문의)", "시청 담당 · 지역아동센터 안내", "02-2680-6718", "광명시청 성평등가족과", "집 가까운 지역아동센터를 찾고 이용 방법을 물어볼 수 있어요."]]],
   ["수원", [
     ["경기중부하나센터", "하나센터 · 수원·안산·의왕·군포", "031-410-6070", "안산시 단원구 화정로 9"],
     ["우만종합사회복지관", "종합사회복지관", "031-254-1992", "팔달구 창룡대로210번길 13"],
-    ["영통종합사회복지관", "종합사회복지관", "031-201-8300", "영통구"]]],
+    ["영통종합사회복지관", "종합사회복지관", "031-201-8300", "영통구"],
+    ["수원시청소년상담복지센터", "청소년상담복지센터 · 상담", "031-212-1318", "수원시 청소년희망등대센터 3층", "아이가 마음이 힘들거나 학교 적응이 어려울 때 무료로 상담받을 수 있어요."],
+    ["수원시 학교밖청소년지원센터 꿈드림", "학교밖청소년지원센터 · 학업·진로", "031-236-1317", "수원청소년문화센터 1층", "학교를 그만둔 아이가 검정고시, 진로, 자립 준비를 도움받을 수 있어요."],
+    ["수원시 건강가정지원센터", "가족센터 · 가족상담·부모교육", "031-245-1310", "수원시 팔달구 향교로 133, 3·4층", "부모 교육과 가족 상담을 받을 수 있어요."],
+    ["연무사회복지관", "종합사회복지관 · 생활 지원", "031-245-7576", "수원시 장안구 연무동, 창룡대로151번길 8", "생활이 어려울 때 상담하고, 아이와 가족 프로그램을 안내받을 수 있어요."],
+    ["광교종합사회복지관", "종합사회복지관 · 생활 지원", "031-212-7255", "수원시 영통구 이의동, 대학2로 41", "생활이 어려울 때 상담하고, 아이와 가족 프로그램을 안내받을 수 있어요."],
+    ["능실종합사회복지관", "종합사회복지관 · 생활 지원", "031-291-8475", "수원시 권선구 호매실동, 호매실로166번길 10", "생활이 어려울 때 상담하고, 아이와 가족 프로그램을 안내받을 수 있어요."],
+    ["수원시청 아동돌봄과 (다함께돌봄센터 문의)", "시청 담당 · 초등 방과후 돌봄", "031-5191-2303", "수원시청", "초등학생이 방과후에 갈 수 있는 다함께돌봄센터를 안내받을 수 있어요. 간식비 정도만 내요."]]],
   ["평택", [
     ["경기남부하나센터", "하나센터 · 오산·평택·안성", "031-656-2012", "평택시 평택5로 65 4층"],
     ["합정종합사회복지관", "종합사회복지관", "031-655-5337", "평택시 평택로 22"],
-    ["부락종합사회복지관", "종합사회복지관", "031-611-4820", "평택시 서정로 303"]]],
+    ["부락종합사회복지관", "종합사회복지관", "031-611-4820", "평택시 서정로 303"],
+    ["상담센터 마음숲 중부 (남북하나재단)", "북한이탈주민 가족 심리상담", "031-655-2261", "평택", "북한이탈주민과 가족이 무료로 심리검사, 가족 상담, 아이 놀이·미술치료를 받을 수 있어요."],
+    ["평택시 가족센터", "가족센터 · 가족상담·교육", "031-615-3952", "평택시 서정로 295, 북부복지타운 1층", "가족 상담, 부모 교육, 가족 프로그램을 이용할 수 있어요."],
+    ["평택시청소년상담복지센터", "청소년상담복지센터 · 상담", "031-654-1388", "평택시 평남로 616, 평택시청소년문화센터 4층", "아이가 마음이 힘들거나 학교 적응이 어려울 때 무료로 상담받을 수 있어요."],
+    ["평택시청소년문화센터 (학교밖지원센터·방과후아카데미)", "학교밖청소년지원 · 방과후 학습", "031-646-5400", "평택시 평남로 616, 평택시청소년문화센터", "학교 밖 청소년 지원과 청소년 방과후아카데미(방과후 학습·급식)를 물어볼 수 있어요."],
+    ["평택시 아동돌봄플랫폼", "시 돌봄 안내 · 지역아동센터·다함께돌봄", "031-650-2607", "평택시 (온라인 www.pt-icare.or.kr)", "지역아동센터, 다함께돌봄센터, 방과후아카데미 같은 돌봄 기관을 한 번에 찾아볼 수 있어요."]]],
   ["화성", [
     ["화성협력사무소", "하나센터 협력사무소 · 화성", "031-8059-2571", "화성시 향남로 418-10 유진프라자 602호"],
     ["화성시남부종합사회복지관", "종합사회복지관", "031-366-0888", "향남읍 행정서로3길 50"],
-    ["동탄어울림종합사회복지관", "종합사회복지관 · 동탄", "031-376-5211", "화성시 동탄"]]],
+    ["동탄어울림종합사회복지관", "종합사회복지관 · 동탄", "031-376-5211", "화성시 동탄"],
+    ["화성시가족센터 (가족만세센터)", "가족센터 · 가족상담·교육", "031-352-1214", "화성시 만세구 향남읍 평2길 16", "가족 상담, 부모 교육, 가족 프로그램을 이용할 수 있어요."],
+    ["화성시청소년상담복지센터", "청소년상담복지센터 · 상담", "031-225-1318", "화성시 병점구 태안로 145, 유앤아이센터 2층 (동탄분소 031-378-6820, 향남분소 031-8047-0279)", "아이가 마음이 힘들거나 학교 적응이 어려울 때 무료로 상담받을 수 있어요."],
+    ["화성시학교밖청소년지원센터 꿈드림", "학교밖청소년지원센터 · 학업·진로", "031-278-0179", "화성시 효행구 봉담읍 효행로 212, 2층", "학교를 그만둔 아이가 검정고시, 진로, 생활 지원을 받을 수 있어요."],
+    ["나래울종합사회복지관", "종합사회복지관 · 생활 지원", "031-8015-7300", "화성시 동탄구 여울로2길 33", "생활이 어려울 때 상담하고, 아이와 가족 프로그램을 안내받을 수 있어요."],
+    ["동탄4단지종합사회복지관", "종합사회복지관 · 생활 지원", "031-378-8111", "화성시 동탄순환대로24길 101 (동탄2 LH4단지)", "임대아파트 단지 안에 있어, 생활 상담과 아이 프로그램을 가까이에서 이용할 수 있어요."],
+    ["여울림종합사회복지관", "종합사회복지관 · 생활 지원", "031-366-7390", "화성시 송산면 사강로 145", "화성 서쪽 지역에서 생활 상담과 아이·가족 프로그램을 이용할 수 있어요."]]],
   ["고양", [
     ["경기서북부하나센터", "하나센터 · 고양·파주·김포", "031-908-6521", "일산서구 주화로 88 효림빌딩 7층"],
     ["흰돌종합사회복지관", "종합사회복지관", "031-905-3400", "일산동구 장백로 61"],
-    ["일산종합사회복지관", "종합사회복지관", "031-975-3322", "일산서구 고양대로 654"]]],
+    ["일산종합사회복지관", "종합사회복지관", "031-975-3322", "일산서구 고양대로 654"],
+    ["고양시덕양행신종합사회복지관", "종합사회복지관 · 생활 지원", "031-839-6000", "고양시 덕양구 행신동, 서정마을2로 13", "생활이 어려울 때 상담하고, 아이와 가족 프로그램을 안내받을 수 있어요."],
+    ["고양시문촌7종합사회복지관", "종합사회복지관 · 생활 지원", "031-916-4071", "고양시 일산서구 주엽동, 킨텍스로 340", "생활이 어려울 때 상담하고, 아이와 가족 프로그램을 안내받을 수 있어요."],
+    ["고양시문촌9종합사회복지관", "종합사회복지관 · 생활 지원", "031-917-0202", "고양시 일산서구 주엽동, 주엽로 156", "생활이 어려울 때 상담하고, 아이와 가족 프로그램을 안내받을 수 있어요."],
+    ["고양시원흥종합사회복지관", "종합사회복지관 · 생활 지원", "031-964-9380", "고양시 덕양구 원흥동, 삼원로 102", "생활이 어려울 때 상담하고, 아이와 가족 프로그램을 안내받을 수 있어요."],
+    ["고양시청소년상담복지센터", "청소년상담복지센터 · 상담", "031-995-4269", "고양시 덕양구 중앙로633번길 25, 토당청소년수련관 2층", "아이가 마음이 힘들거나 학교 적응이 어려울 때 무료로 상담받을 수 있어요."],
+    ["고양시학교밖청소년지원센터 꿈드림", "학교밖청소년지원센터 · 학업·진로", "031-995-4272", "고양시 덕양구 중앙로633번길 25", "학교를 그만둔 아이가 검정고시, 진로, 자립 준비를 도움받을 수 있어요."]]]
 ];
 const SUPPORT = [
-  ["장학금", "남북하나재단 장학사업", "북한이탈주민 학생과 제3국·남한에서 태어난 자녀(중·고등학생, 검정고시, 대학생). 1년에 두 번(보통 봄, 가을) 모집하고, 학생 본인 이름으로 가입해 신청해요.", "1577-6635", "https://www.koreahana.or.kr/home/kor/contents.do?menuPos=30"],
-  ["학습 지원", "학습지·화상영어 (남북하나재단)", "학습지: 만 3세~초등학생 자녀에게 선생님이 일주일에 한 번 방문해요. 화상영어: 만 9~24세, 원어민과 1:1 수업. 둘 중 하나만 받을 수 있어요.", "1577-6635", "https://www.koreahana.or.kr"],
-  ["한국어", "한국어 화상교육 (남북하나재단)", "탈북 청소년과 제3국에서 태어난 자녀에게 선생님이 1:1로 한국어를 무료로 가르쳐요. 2026년에 시작했어요.", "1577-6635", "https://www.koreahana.or.kr"],
+  ["장학금", "남북하나재단 장학사업", "북한이탈주민 학생과 제3국·한국에서 태어난 자녀(중·고등학생, 검정고시 합격자, 대학(원)생)가 받을 수 있어요. 1년에 두 번(보통 4월, 9월) 모집하고, 온라인이나 등기우편으로 신청해요.", "1577-6635", "https://www.koreahana.or.kr/home/kor/contents.do?menuPos=30"],
+  ["학습", "학습지·화상영어 (남북하나재단)", "학습지: 만 3세~초등학생 자녀에게 선생님이 일주일에 한 번 방문해요. 화상영어: 만 9~24세, 원어민과 1:1 수업. 둘 중 하나만 받을 수 있어요.", "1577-6635", "https://www.koreahana.or.kr"],
+  ["학습", "한국어 화상교육 (남북하나재단)", "탈북 청소년과 제3국에서 태어난 자녀에게 선생님이 1:1로 한국어를 가르쳐요. 2026년에 새로 시작한 사업이라 운영 일정이 바뀔 수 있으니 재단에 먼저 물어보세요.", "1577-6635", "https://www.koreahana.or.kr"],
   ["멘토링", "북한배경학생 멘토링 (한국교육개발원)", "북한배경학생교육지원센터에서 현직 선생님이 학생과 1:1로 오래 만나 공부와 학교생활을 도와요. 학교(담임 선생님)를 통해 물어보세요.", null, "https://www.hub4u.or.kr"],
   ["교육비", "교육급여 바우처 (교육부·한국장학재단)", "교육급여를 받는 가정은 교육활동지원비를 바우처로 받아요. 2026년 1년에 초 50만 2천 원, 중 69만 9천 원, 고 86만 원. 대상이 된 뒤 따로 신청해야 해요.", null, "https://e-voucher.kosaf.go.kr"],
-  ["방과후", "늘봄학교 · 초3 방과후 바우처", "초등 1~2학년은 맞춤형 프로그램을 무료로 들을 수 있고, 3학년은 방과후 바우처(1년 50만 원)를 받아요. 학교 늘봄·방과후 담당에게 물어보세요.", null, null],
-  ["문화·운동", "문화누리카드 · 스포츠강좌이용권", "형편이 어려운 가정의 아이가 공연·책·여행(문화누리카드)이나 운동 강좌(스포츠강좌이용권)를 이용할 수 있게 도와줘요. 주민센터에서 신청해요.", null, null],
+  ["교육비", "늘봄학교 · 초3 방과후 바우처", "초등 1~2학년은 맞춤형 프로그램을 무료로 들을 수 있고, 3학년은 방과후 바우처(1년 50만 원)를 받아요. 학교 늘봄·방과후 담당에게 물어보세요.", null, null],
+  ["교육비", "문화누리카드 · 스포츠강좌이용권", "형편이 어려운 가정의 아이가 공연·책·여행(문화누리카드)이나 운동 강좌(스포츠강좌이용권)를 이용할 수 있게 도와줘요. 주민센터에서 신청해요.", null, null],
+  ["등록금", "대학 교육지원금(등록금 면제·반액 지원) (통일부·남북하나재단)", "북한이탈주민 본인과 한국 국적을 가진 자녀(제3국·한국 출생 포함)가 대학에 들어가면 국공립대는 등록금이 전액 면제되고, 사립대는 50%를 지원받아요. 처음 입학한 날부터 6년 안에 8학기까지 받을 수 있고, 입학할 때 주민센터에서 '교육지원대상자 증명서'를 떼어 대학 장학처에 내면 돼요.", "02-3215-5793", "https://www.koreahana.or.kr/home/kor/contents.do?menuPos=47"],
+  ["등록금", "중·고등학교 교육지원(입학금·수업료 지원) (교육부·남북하나재단 안내)", "입학이나 편입학할 때 만 24세 이하인 북한이탈주민 학생은 중·고등학교 입학금, 수업료, 학교운영지원비, 기숙사비를 재학 기간 동안 지원받아요. 주민센터·구청에서 교육지원대상자 증명서와 학력인정 서류를 받아 학교 행정실에 내면 돼요.", "1577-6635", "https://www.koreahana.or.kr/home/kor/contents.do?menuPos=36"],
+  ["진로", "청소년·대학생 진로진학 지원 '디딤돌사업' (남북하나재단)", "북한이탈주민 본인이나 자녀인 중·고등학생과 대학(원)생이 진로진학지원단이나 진로 전문가와 1:1 상담을 받을 수 있어요. 해마다 재단 홈페이지 모집공고를 보고 신청하고, 마감 전까지 연중 받아요.", "1577-6635", "https://www.koreahana.or.kr/home/kor/contents.do?menuPos=32"],
+  ["멘토링", "통일전담교육사 학교 배치 (남북하나재단·교육부·교육청)", "북한 교사 출신 통일전담교육사가 북한이탈주민 자녀가 많은 초·중학교에 배치되어 학습 지도, 멘토링, 체험활동, 학생·학부모 상담을 해 줘요. 학교가 교육청을 통해 신청하는 사업이라, 부모님은 아이 학교에 통일전담교육사가 있는지 담임선생님께 물어보시면 돼요.", "1577-6635", "https://www.koreahana.or.kr/home/kor/contents.do?menuPos=34"],
+  ["상담", "상담센터 마음숲 심리상담·치료 (남북하나재단)", "북한이탈주민과 가족이면 누구나 무료로 심리검사, 개인·부부·가족 상담, 아동 놀이·미술치료를 받을 수 있어요(성인 12회, 아동 15회 기본). 전화나 방문으로 접수하고, 인천(032-435-6601~5)·중부(평택, 031-655-2261~4) 센터가 있어요.", "032-435-6601", "https://www.koreahana.or.kr/home/kor/contents.do?menuPos=15"],
+  ["상담", "지역 하나센터 전문상담사 (남북하나재단·통일부)", "전국 25개 하나센터에 배치된 전문상담사가 심리상담, 교육·의료·복지·취업 상담과 필요한 지원 연결을 도와줘요. 사는 지역의 하나센터에 전화하거나 재단 홈페이지 '하나센터 찾기'에서 가까운 곳을 찾으면 돼요.", "1577-6635", "https://www.koreahana.or.kr/home/kor/customerSupport/consulting/hanaCenter/index.do?menuPos=90"],
+  ["진로", "부모 취업·창업 상담과 단기연수 지원 (남북하나재단·하나센터)", "일자리를 찾는 북한이탈주민 부모님은 재단과 지역 하나센터 취업전문상담사에게 구직 상담과 일자리 알선을 받을 수 있어요. 하나센터에 구직 등록을 하고 취업하면 '단기연수지원'으로 최대 4개월 연수비를 받을 수도 있어요(취업 후 60일 안에 신청).", "02-3215-5885", "https://www.koreahana.or.kr/home/kor/contents.do?menuPos=18"],
+  ["대안학교", "북한이탈주민 대안교육기관·지역아동센터 지원 (남북하나재단)", "북한이탈주민이나 그 자녀가 많이 다니는 대안교육기관(하루 평균 15명 이상)과 지역아동센터(10명 이상)에 재단이 운영비·급식비·프로그램비를 지원해요. 일반 학교 적응이 힘든 아이라면 이런 기관을 하나센터나 재단 콜센터에 물어 소개받을 수 있어요.", "1577-6635", "https://www.koreahana.or.kr/home/kor/contents.do?menuPos=35"],
+  ["대안학교", "여명학교 (서울, 학력인정 대안학교)", "북한·중국 등 제3국·한국에서 태어난 북한배경 청소년이 다니는 서울의 학력인정 대안학교로, 졸업하면 중·고등학교 학력을 인정받아요. 서울 강서구 가양동에 있고, 입학 방법은 학교에 직접 문의하면 돼요.", null, null],
+  ["대안학교", "장대현중고등학교 (부산, 학력인정 대안학교)", "부산 강서구에 있는 탈북청소년 대안학교로, 2022년 부산교육청에서 인가를 받아 영호남 지역에서 학력을 인정받을 수 있는 학교예요. 입학 상담은 학교에 직접 문의하면 돼요.", null, null],
+  ["학습", "레인보우스쿨 (이주배경청소년지원재단 무지개청소년센터)", "중국 등 외국에서 오거나 태어난 북한배경 자녀를 포함한 이주배경청소년이 한국어, 한국 생활, 진로 교육을 받고 학교 편입학 도움을 받을 수 있어요. 전국 26곳에서 상시 모집하고, 만 16~24세는 진로형 과정도 있어요.", "02-733-7587", "https://www.rainbowyouth.or.kr/business/educationSupport/businessContents.do"],
+  ["상담", "이주배경청소년 심리상담·사례관리 (이주배경청소년지원재단)", "이주배경청소년(제3국 출생 북한배경 자녀 포함)이 대면·비대면·찾아가는 개인·집단 상담을 받을 수 있고, 필요하면 부모상담과 부모교육도 해 줘요. 중국어·러시아어 등 상담 통역도 지원하고, 재단 홈페이지 '상담 신청'으로 신청해요.", "02-733-7587", "https://www.rainbowyouth.or.kr/participation/requestOnlineConsultingForm.do"],
+  ["학습", "1:1 맞춤 과외(튜터링) (사단법인 성통만사 PSCORE)", "탈북 청소년과 성인이 자원봉사 선생님과 1:1로 짝을 지어 영어 등 부족한 공부를 무료로 배울 수 있어요. 교육 홈페이지에서 회원가입 후 가까운 지역 선생님을 찾아 과외를 신청하면 돼요.", "02-6497-5035", "https://edu.pscore.org/"],
+  ["장학금", "방일영문화재단 탈북대학생 장학금 (방일영문화재단)", "대학 1학년에 다니는 탈북 학부생 중 성적 기준을 넘는 학생을 대학 추천으로 뽑아, 3년 동안 생활비 장학금을 줘요. 2026년에는 10~11월에 대학 장학 공지로 모집했고, 해마다 공고 확인이 필요해요.", "02-724-5040", null],
   ["멘토링", "다문화·탈북학생 대학생 멘토링 (교육부·한국장학재단)", "대학생 멘토가 초·중·고 학생의 공부를 도와줘요. 학교를 통해 신청하는 경우가 많아요.", "1599-2290", null],
 ];
 const FIRSTC = [
@@ -2422,15 +3246,21 @@ const FIRSTC = [
   ["폭력이나 위험한 일이 생겼어요", "학교 · 117", "112 · 119 · 109"],
 ];
 $("#firstc").append(...FIRSTC.map(([q, a, b]) => h("div", {class: "frow"}, h("b", {}, q), h("span", {class: "fa"}, a), h("span", {class: "small"}, "(" + b + ")"))));
-$("#supp").append(...SUPPORT.map(([k, n, d, tel, url]) => h("div", {class: "lrow"},
+let sKind = "전체";
+const SKINDS = ["전체", "장학금", "등록금", "교육비", "학습", "멘토링", "진로", "상담", "대안학교"];
+function renderSupp() {
+  $("#scats").replaceChildren(...SKINDS.map(k => h("button", {class: "chip", type: "button", "aria-pressed": k === sKind, onclick: () => { sKind = k; renderSupp(); }}, k === "전체" ? `전체 ${SUPPORT.length}` : k)));
+  $("#supp").replaceChildren(...SUPPORT.filter(([k]) => sKind === "전체" || k === sKind).map(([k, n, d, tel, url]) => h("div", {class: "lrow"},
   h("div", {}, h("span", {class: "small kind"}, k), h("b", {}, n), h("span", {class: "small"}, d)),
   h("div", {class: "acts2"}, tel ? h("a", {class: "tel", href: "tel:" + tel.replace(/-/g, "")}, h("span", {"aria-hidden": "true"}, "☎"), " ", tel) : null,
     url ? h("a", {class: "web", href: url, target: "_blank", rel: "noopener"}, "누리집 ↗") : null))));
+}
+renderSupp();
 let lArea = LOCAL[0][0];
 function renderLocal() {
   $("#lcats").replaceChildren(...LOCAL.map(([a]) => h("button", {class: "chip", type: "button", "aria-pressed": a === lArea, onclick: () => { lArea = a; renderLocal(); }}, a)));
-  $("#lrows").replaceChildren(...LOCAL.find(([a]) => a === lArea)[1].map(([n, k, tel, addr]) => h("div", {class: "lrow"},
-    h("div", {}, h("b", {}, n), h("span", {class: "small"}, k), h("span", {class: "small addr"}, addr)),
+  $("#lrows").replaceChildren(...LOCAL.find(([a]) => a === lArea)[1].map(([n, k, tel, addr, what]) => h("div", {class: "lrow"},
+    h("div", {}, h("b", {}, n), h("span", {class: "small kind"}, k), what ? h("span", {class: "small"}, what) : null, h("span", {class: "small addr"}, addr)),
     h("a", {class: "tel", href: "tel:" + tel.replace(/-/g, "")}, h("span", {"aria-hidden": "true"}, "☎"), " ", tel))));
 }
 renderLocal();
@@ -2440,6 +3270,16 @@ $("#help").append(...HELP.map(([who, n, tel, url, hrs, d]) => h("article", {clas
     : url ? h("a", {class: "tel web", href: url, target: "_blank", rel: "noopener"}, url.replace("https://", ""), " ↗") : null,
   hrs ? h("span", {class: "hrs"}, "운영 ", hrs) : null,
   h("p", {class: "small"}, d))));
+
+/* ---------- 움직임: 화면에 들어오면 나타나기 ---------- */
+(function () {
+  if (!("IntersectionObserver" in window) || matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } }), {rootMargin: "0px 0px -40px 0px"});
+  const mark = () => document.querySelectorAll(".st-t, .st-l, .st-hi, .st-3 > div, .st-4 > *, .st-vs > div, .st-end .wrap > *, .split > *, .boxes > .box, .gcard, .org, .lrow, .word")
+    .forEach((el, i) => { if (el.classList.contains("rv")) return; el.classList.add("rv"); el.style.transitionDelay = (i % 4) * 70 + "ms"; io.observe(el); });
+  mark(); new MutationObserver(() => mark()).observe(document.querySelector("main"), {childList: true, subtree: true});
+  setTimeout(() => document.querySelectorAll(".rv:not(.in)").forEach(el => { const r = el.getBoundingClientRect(); if (r.top < innerHeight) el.classList.add("in"); }), 1200);
+})();
 
 /* ---------- 라우팅 ---------- */
 const VIEWS = ["home", "notices", "words", "guide", "help", "qna", "privacy", "terms"];

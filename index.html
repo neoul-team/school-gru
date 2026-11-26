@@ -11,27 +11,27 @@
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;800&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;800&family=Gaegu:wght@700&display=swap">
 <style>
-/* Layout: public-service portal. Utility strip, white masthead, navy menu bar, page-title blocks with a rule, square-cornered panels */
+/* Warm forest-green palette on cream. Layout: public-service portal. Utility strip, white masthead, navy menu bar, page-title blocks with a rule, square-cornered panels */
 :root{
-  --bg:#F5F6F8; --card:#FFFFFF; --ink:#222222; --muted:#5B616B; --line:#D8DCE5; --line-strong:#9DA6AC;
-  --brand:#0E2F4C; --brand-ink:#12508A; --brand-soft:#EAF3FA; --on-brand:#FFFFFF;
-  --sky:#1B86B8; --sky-ink:#0F79AA; --slate:#486986; --band:#0E2F4C; --gray:#F5F5F5;
-  --hl:#D6EBF7; --gold:#9A6B00; --warn:#B42318;
+  --bg:#FAF8F1; --card:#FFFFFF; --ink:#262A21; --muted:#5C6152; --line:#E4E2D4; --line-strong:#ADAA94;
+  --brand:#2E5320; --brand-ink:#3D6B2A; --brand-soft:#EEF4E3; --on-brand:#FFFFFF;
+  --sky:#5E8A36; --sky-ink:#4C7A2B; --slate:#5A6E48; --band:#2E5320; --gray:#F3F6EC;
+  --hl:#E2EECB; --gold:#9A6B00; --warn:#B42318;
   --sans:"Noto Sans KR","Apple SD Gothic Neo","Malgun Gothic",sans-serif;
-  --fs:16px; --r:4px;
+  --fs:16px; --r:4px; --hand:"Gaegu","Noto Sans KR",sans-serif;
 }
 @media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
-  --bg:#0F141B; --card:#161D27; --ink:#E4E9F0; --muted:#A2ADBC; --line:#2A3442; --line-strong:#4A5668;
-  --brand:#2C5A85; --brand-ink:#8FC3EC; --brand-soft:#1A2638; --on-brand:#FFFFFF;
-  --sky:#1C6E96; --sky-ink:#7CC8EE; --slate:#33506B; --band:#0A1824; --gray:#121922;
-  --hl:#21405A; --gold:#E0B95A; --warn:#F28B82; color-scheme:dark}}
+  --bg:#13160F; --card:#1B1F16; --ink:#ECEDE2; --muted:#B3B6A4; --line:#343829; --line-strong:#5A5F49;
+  --brand:#4A7A35; --brand-ink:#B8DB8C; --brand-soft:#1F2A19; --on-brand:#FFFFFF;
+  --sky:#4F7F33; --sky-ink:#AAD47C; --slate:#46573A; --band:#111A0D; --gray:#171B12;
+  --hl:#2F4524; --gold:#E0B95A; --warn:#F28B82; color-scheme:dark}}
 :root[data-theme="dark"]{
-  --bg:#0F141B; --card:#161D27; --ink:#E4E9F0; --muted:#A2ADBC; --line:#2A3442; --line-strong:#4A5668;
-  --brand:#2C5A85; --brand-ink:#8FC3EC; --brand-soft:#1A2638; --on-brand:#FFFFFF;
-  --sky:#1C6E96; --sky-ink:#7CC8EE; --slate:#33506B; --band:#0A1824; --gray:#121922;
-  --hl:#21405A; --gold:#E0B95A; --warn:#F28B82; color-scheme:dark}
+  --bg:#13160F; --card:#1B1F16; --ink:#ECEDE2; --muted:#B3B6A4; --line:#343829; --line-strong:#5A5F49;
+  --brand:#4A7A35; --brand-ink:#B8DB8C; --brand-soft:#1F2A19; --on-brand:#FFFFFF;
+  --sky:#4F7F33; --sky-ink:#AAD47C; --slate:#46573A; --band:#111A0D; --gray:#171B12;
+  --hl:#2F4524; --gold:#E0B95A; --warn:#F28B82; color-scheme:dark}
 html.big{--fs:19px}
 body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:var(--fs);line-height:1.7;word-break:keep-all;overflow-wrap:anywhere;letter-spacing:-.01em}
 body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--card)}
@@ -78,16 +78,16 @@ img,svg,canvas,video{max-width:100%}
 main{padding-block:0 64px}
 section[data-view].wrap{gap:24px}
 .head{position:relative;display:grid;gap:10px;padding:40px 0 44px;margin-bottom:8px;color:#fff;
-  border-image:linear-gradient(115deg,var(--brand) 0%,#164a72 55%,var(--sky) 100%) fill 0 / 0 / 0 calc((100vw - min(100vw,1120px)) / 2 + 16px)}
+  border-image:linear-gradient(115deg,var(--brand) 0%,#3F6B2A 55%,var(--sky) 100%) fill 0 / 0 / 0 calc((100vw - min(100vw,1120px)) / 2 + 16px)}
 .head > *{position:relative;z-index:1}
 .head h1,.head h2{font-size:clamp(1.6em,3.6vw,2.2em);font-weight:800;color:#fff}
 .head .lead{color:#fff;font-size:1.06em;line-height:1.7;max-width:36em}
 .hcta{display:flex;align-items:center;gap:10px 14px;flex-wrap:wrap;margin-top:4px}
 .hcta > span{color:#fff;font-weight:500}
-.hcta button{display:inline-flex;align-items:center;gap:6px;border:0;background:#fff;color:#0E2F4C;font:inherit;font-weight:800;padding:9px 20px;border-radius:999px;cursor:pointer;box-shadow:0 2px 8px rgba(0,0,0,.18)}
-.hcta button:hover{background:#E6F4FB}
-.hcta button:focus-visible{outline:3px solid #9FE1FF;outline-offset:2px}
-.head .mk{color:#9FE1FF}
+.hcta button{display:inline-flex;align-items:center;gap:6px;border:0;background:#fff;color:#2E5320;font:inherit;font-weight:800;padding:9px 20px;border-radius:999px;cursor:pointer;box-shadow:0 2px 8px rgba(0,0,0,.18)}
+.hcta button:hover{background:#F0F6E4}
+.hcta button:focus-visible{outline:3px solid #D7ECB0;outline-offset:2px}
+.head .mk{color:#D7ECB0}
 .head .eyebrow{color:rgba(255,255,255,.8);font-size:.84em}
 .head .eyebrow::before{content:"⌂ "}
 .head .eyebrow a{color:#fff;text-decoration:none}
@@ -128,29 +128,29 @@ section[data-view].wrap{gap:24px}
 
 
 /* home: banner, search band, gray program band, split service/board, link boxes */
-.mv{background:linear-gradient(115deg,var(--brand) 0%,#164a72 55%,var(--sky) 100%);color:#fff;position:relative;overflow:hidden}
-.mv::before,.mv::after{content:"";position:absolute;border-radius:50%;background:rgba(255,255,255,.07)}
+.mv{background:linear-gradient(135deg,#D6E8BD 0%,#E9F2DA 40%,#F4F1DC 75%,#F8EFD6 100%);color:#262A21;position:relative;overflow:hidden}
+.mv::before,.mv::after{content:"";position:absolute;border-radius:50%;background:rgba(255,255,255,.35)}
 .mv::before{width:420px;height:420px;right:-80px;top:-160px}
 .mv::after{width:260px;height:260px;left:38%;bottom:-170px}
 .mv .wrap{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);gap:32px;align-items:center;padding-block:52px 56px;position:relative;z-index:1}
-.mv .badge{justify-self:start;border:1px solid rgba(255,255,255,.55);border-radius:999px;padding:2px 14px;font-size:.82em}
+.mv .badge{justify-self:start;background:rgba(255,255,255,.7);color:#2E5320;font-weight:700;border:1px solid rgba(46,83,32,.25);border-radius:999px;padding:2px 14px;font-size:.82em}
 .mv .txt{display:grid;gap:16px}
-.mv h1{font-size:clamp(1.7em,4.2vw,2.6em);font-weight:800;line-height:1.3;color:#fff}
-.mv h1 em{font-style:normal;color:#9FE1FF}
-.mv p{opacity:.92;max-width:34em}
+.mv h1{font-family:var(--hand);font-size:clamp(2.1em,5.2vw,3.3em);font-weight:700;line-height:1.25;color:#1E2419;letter-spacing:0}
+.mv h1 em{font-style:normal;color:#3D6B2A}
+.mv p{color:#3E4436;max-width:34em}
 .mv .acts{display:flex;gap:8px;flex-wrap:wrap;margin-top:4px}
-.mv .acts a{border-radius:999px;padding:10px 22px;font-weight:700;text-decoration:none;border:1px solid #fff}
-.mv .acts a.pri{background:#fff;color:#0E2F4C}
-.mv .acts a.sec{color:#fff}
-.mv .acts a.sec:hover{background:rgba(255,255,255,.12)}
+.mv .acts a{border-radius:999px;padding:10px 22px;font-weight:700;text-decoration:none;border:1px solid #2E5320}
+.mv .acts a.pri{background:#2E5320;color:#fff}
+.mv .acts a.sec{color:#2E5320;background:rgba(255,255,255,.6)}
+.mv .acts a.sec:hover{background:#fff}
 .mv .art{justify-self:center;width:min(100%,340px)}
 .msearch{background:var(--band);padding-block:36px}
 .msearch .wrap{display:grid;justify-items:center;gap:14px}
 .sbar{display:flex;width:min(100%,860px);background:#fff;border-radius:14px;overflow:hidden;box-shadow:0 4px 16px rgba(0,0,0,.18)}
 .sbar input{flex:1;min-width:0;border:0;padding:20px 26px;background:#fff;color:#222;font-size:1.2em}
 .sbar input:focus{outline:none}
-.sbar:focus-within{outline:3px solid #9FE1FF;outline-offset:2px}
-.sbar button{border:0;background:#fff;color:#0E2F4C;padding:0 24px;cursor:pointer;display:grid;place-items:center}
+.sbar:focus-within{outline:3px solid #D7ECB0;outline-offset:2px}
+.sbar button{border:0;background:#fff;color:#2E5320;padding:0 24px;cursor:pointer;display:grid;place-items:center}
 .sbar button svg{width:30px;height:30px;fill:none;stroke:currentColor;stroke-width:2.4;stroke-linecap:round}
 .hot{display:flex;gap:6px 16px;flex-wrap:wrap;justify-content:center;font-size:.95em;color:rgba(255,255,255,.75)}
 .hot a{color:#fff;text-decoration:none}
@@ -166,7 +166,7 @@ section[data-view].wrap{gap:24px}
 .more{justify-self:center;border:1px solid var(--line-strong);background:var(--card);border-radius:999px;padding:7px 26px;text-decoration:none;color:var(--ink);font-size:.92em}
 .more:hover{border-color:var(--brand-ink);color:var(--brand-ink)}
 .split{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);padding-block:48px 0 !important}
-.svc{background:var(--sky);color:#fff;padding:32px 28px;display:grid;gap:20px;align-content:start}
+.svc{background:var(--brand-ink);color:#fff;padding:32px 28px;display:grid;gap:20px;align-content:start}
 .svc h2,.bbs h2{font-size:1.25em;font-weight:800;color:#fff}
 .svc h2{text-align:center}
 .feat{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px 8px}
@@ -189,12 +189,12 @@ section[data-view].wrap{gap:24px}
 .box h3{font-size:1.25em;font-weight:800}
 .boxes .box{border:0;color:#fff;padding:28px;min-height:0}
 .boxes .box:nth-child(1){background:var(--band)}
-.boxes .box:nth-child(2){background:#12508A}
+.boxes .box:nth-child(2){background:#7A5C2E}
 .boxes .box h3{color:#fff}
 .boxes .box p{color:rgba(255,255,255,.82)}
 .boxes .box li a{color:#fff}
 .boxes .box li a::before{background:#fff;color:var(--band)}
-.boxes .box li a:hover{color:#9FE1FF}
+.boxes .box li a:hover{color:#D7ECB0}
 .boxes .box .deco{stroke:#fff;opacity:.14}
 .boxes .qrmini{color:rgba(255,255,255,.85)}
 .box p{color:var(--muted);font-size:.92em;max-width:17em;position:relative}
@@ -205,6 +205,95 @@ section[data-view].wrap{gap:24px}
 .box .deco{position:absolute;right:-6px;bottom:-8px;width:120px;height:120px;fill:none;stroke:var(--sky);opacity:.18;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
 .qrow{display:flex;justify-content:space-between;align-items:flex-end;gap:12px}
 .box .qrmini canvas,.box .qrmini img{width:84px;height:84px}
+/* story sections (home) */
+.hand{font-family:var(--hand);font-weight:700;letter-spacing:0}
+.st{padding-block:64px;background:var(--card)}
+.st .wrap{display:grid;gap:28px}
+.st-cream{background:#F6F9F1}
+.st-soft{background:linear-gradient(160deg,#E2EDD2 0%,#EEF4E6 45%,#F7F2DF 100%)}
+.st-t{display:grid;gap:8px;justify-items:center;text-align:center}
+.st-t h2{font-size:clamp(1.45em,3.2vw,1.95em);font-weight:800}
+.st-t p{color:var(--muted);max-width:40em}
+.st-n{font-weight:800;color:var(--brand-ink);font-size:.9em;letter-spacing:.08em}
+.st-name .wrap{grid-template-columns:minmax(0,1.2fr) minmax(0,.8fr);align-items:center;gap:40px}
+.st-l{display:grid;gap:14px}
+.st-l h2{font-size:clamp(1.6em,3.6vw,2.2em);font-weight:800}
+.st-l h2 .hand{color:var(--brand-ink);font-size:1.25em}
+.st-l p{color:var(--muted)}
+.st-dict{background:#FBF6E6;border:1px solid #E8DDBB;border-radius:16px;padding:24px 26px;display:grid;gap:8px}
+.st-dict > b{font-size:1.6em;font-weight:800;color:#2E5320}
+.st-dict > span{font-size:.8em;color:#7A5C2E;font-weight:700}
+.st-dict p{color:#5C5540;font-size:.95em}
+.st-dict ul{list-style:none;margin:6px 0 0;padding:0;display:flex;flex-wrap:wrap;gap:6px}
+.st-dict li{background:#fff;border:1px solid #E8DDBB;border-radius:999px;padding:3px 12px;font-size:.86em;color:#2E5320;font-weight:700}
+.st-3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.st-3 > div,.st-4 > div,.st-4 > a{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:22px 22px 20px;display:grid;gap:8px;align-content:start}
+.st-3 svg{width:40px;height:40px;fill:none;stroke:var(--brand-ink);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.st-3 b,.st-4 b{font-size:1.08em;font-weight:800}
+.st-3 p,.st-4 p{color:var(--muted);font-size:.93em}
+.st-4{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
+.st-cream .st-3 > div,.st-soft .st-4 > div{border-color:transparent;box-shadow:0 2px 10px rgba(46,83,32,.07)}
+.st-4.nums > div{justify-items:center;text-align:center}
+.st-4.nums strong{font-size:2.2em;font-weight:800;color:var(--brand-ink);line-height:1.1}
+.st-4.go > a{text-decoration:none;color:var(--ink);transition:transform .15s,box-shadow .15s}
+.st-4.go > a:hover{transform:translateY(-2px);box-shadow:0 6px 18px rgba(46,83,32,.12);border-color:var(--sky)}
+.st-4.go span{color:var(--brand-ink);font-weight:700;font-size:.9em;margin-top:4px}
+.st-dark{background:linear-gradient(160deg,#2E531E 0%,#24431A 100%);padding-block:56px;text-align:center}
+.st-dark p{color:#fff;font-size:clamp(1.4em,3vw,1.9em);line-height:1.4}
+.st-vs{display:grid;gap:10px;max-width:880px;width:100%;justify-self:center}
+.st-vs > div{display:grid;grid-template-columns:minmax(0,1fr) 40px minmax(0,1fr);align-items:center;gap:8px}
+.st-vs > div:not(.h){background:var(--card);border-radius:14px;padding:14px 18px;box-shadow:0 2px 10px rgba(46,83,32,.06)}
+.st-vs .h{font-weight:800;font-size:.9em;padding:0 18px}
+.st-vs .h span:first-child{color:var(--muted)} .st-vs .h span:last-child{color:var(--brand-ink)}
+.st-vs > div span{color:var(--muted)}
+.st-vs i{font-style:normal;color:var(--sky);font-weight:800;text-align:center}
+.st-vs b{color:var(--brand-ink)}
+.st-end{background:linear-gradient(180deg,var(--card) 0%,#EEF5DF 100%);text-align:center}
+.st-end .wrap{justify-items:center;gap:14px}
+.st-end h2{font-size:clamp(1.35em,3vw,1.9em);font-weight:800;line-height:1.45}
+.st-end p{color:var(--muted)}
+.st-end .small{color:var(--brand-ink);font-weight:700}
+.st-end .acts{display:flex;gap:8px;flex-wrap:wrap;justify-content:center}
+.st-end .acts a{border-radius:999px;padding:11px 24px;font-weight:700;text-decoration:none;border:1px solid var(--brand)}
+.st-end .acts .pri{background:var(--brand);color:#fff}
+.st-end .acts .sec{background:var(--card);color:var(--brand)}
+:root[data-theme="dark"] .st-cream,:root[data-theme="dark"] .st-soft,:root[data-theme="dark"] .st-end{background:var(--gray)}
+:root[data-theme="dark"] .mv{background:linear-gradient(135deg,#22331A,#1B2414);color:var(--ink)}
+:root[data-theme="dark"] .mv h1,:root[data-theme="dark"] .mv p{color:var(--ink)}
+:root[data-theme="dark"] .mv h1 em{color:var(--brand-ink)}
+:root[data-theme="dark"] .st-dict{background:var(--card);border-color:var(--line)}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .st-cream,:root:not([data-theme="light"]) .st-soft,:root:not([data-theme="light"]) .st-end{background:var(--gray)}
+  :root:not([data-theme="light"]) .mv{background:linear-gradient(135deg,#22331A,#1B2414);color:var(--ink)}
+  :root:not([data-theme="light"]) .mv h1,:root:not([data-theme="light"]) .mv p{color:var(--ink)}
+  :root:not([data-theme="light"]) .mv h1 em{color:var(--brand-ink)}
+  :root:not([data-theme="light"]) .st-dict{background:var(--card);border-color:var(--line)}}
+@media (max-width:860px){
+  .st-name .wrap,.st-3{grid-template-columns:minmax(0,1fr)}
+  .st-4{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media (max-width:600px){
+  .st{padding-block:44px}
+  .st-4{grid-template-columns:minmax(0,1fr)}
+  .st-vs > div{grid-template-columns:minmax(0,1fr);gap:2px}
+  .st-vs i{transform:rotate(90deg);justify-self:start}
+  .st-vs .h{display:none}
+}
+/* legal pages */
+.doc{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:32px clamp(18px,4vw,44px);display:grid;gap:22px;max-width:880px;width:100%;box-sizing:border-box;justify-self:center}
+.doc h3{font-size:1.12em;font-weight:800;color:var(--brand-ink);padding-bottom:6px;border-bottom:1px solid var(--line)}
+.doc section{display:grid;gap:8px}
+.doc p,.doc li{color:var(--ink);font-size:.97em}
+.doc ul,.doc ol{margin:0;padding-left:1.3em;display:grid;gap:4px}
+.doc .sum{background:#F6F9F1;border-radius:12px;padding:16px 20px;display:grid;gap:6px}
+.doc .sum b{color:var(--brand)}
+.doc table{width:100%;border-collapse:collapse;font-size:.92em}
+.doc th,.doc td{border:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}
+.doc th{background:#F6F9F1;font-weight:700;white-space:nowrap}
+.doc .eff{color:var(--muted);font-size:.9em}
+:root[data-theme="dark"] .doc .sum,:root[data-theme="dark"] .doc th{background:var(--gray)}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .doc .sum,:root:not([data-theme="light"]) .doc th{background:var(--gray)}}
+@media (max-width:600px){.doc table,.doc tbody,.doc tr,.doc td,.doc th{display:block}.doc tr{border:1px solid var(--line);border-radius:8px;margin-bottom:8px}.doc th,.doc td{border:0}}
+
 @media (max-width:860px){
   .mv .wrap{grid-template-columns:minmax(0,1fr);padding-block:40px 44px}
   .mv .art{display:none}
@@ -402,7 +491,7 @@ section[data-view].wrap{gap:24px}
 }
 
 /* AI popup */
-.ai-fab{position:fixed;right:calc(env(safe-area-inset-right,0px) + 16px);bottom:calc(env(safe-area-inset-bottom,0px) + 16px);z-index:18;display:flex;gap:8px;align-items:center;background:var(--brand);color:var(--on-brand);border:0;border-radius:999px;padding:12px 18px;font-weight:700;box-shadow:0 6px 18px rgba(13,40,80,.35);cursor:pointer}
+.ai-fab{position:fixed;right:calc(env(safe-area-inset-right,0px) + 16px);bottom:calc(env(safe-area-inset-bottom,0px) + 16px);z-index:18;display:flex;gap:8px;align-items:center;background:var(--brand);color:var(--on-brand);border:0;border-radius:999px;padding:12px 18px;font-weight:700;box-shadow:0 6px 18px rgba(30,50,20,.35);cursor:pointer}
 .ai-fab svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:2;stroke-linejoin:round}
 .ai-fab[aria-expanded="true"]{background:var(--ink);color:var(--card)}
 .ai-panel{position:fixed;right:calc(env(safe-area-inset-right,0px) + 16px);bottom:calc(env(safe-area-inset-bottom,0px) + 76px);z-index:19;width:min(390px,calc(100vw - 32px));height:min(580px,calc(100vh - 110px));background:var(--card);border:1px solid var(--line-strong);border-top:4px solid var(--brand);box-shadow:0 12px 32px rgba(0,0,0,.25);display:grid;grid-template-rows:auto minmax(0,1fr) auto auto auto}
@@ -506,16 +595,16 @@ footer{padding-bottom:88px}
 @media (prefers-reduced-motion:reduce){.ph-wait::before{animation:none}}
 
 .check.step{grid-template-columns:28px minmax(0,1fr);cursor:default}
-.gask{background:linear-gradient(115deg,#0E2F4C 0%,#164a72 60%,#1B86B8 100%);color:#fff;padding:36px 24px 30px;display:grid;grid-template-columns:minmax(0,1fr);justify-items:center;text-align:center;gap:10px;border-radius:4px}
+.gask{background:linear-gradient(115deg,#2E5320 0%,#3F6B2A 60%,#5E8A36 100%);color:#fff;padding:36px 24px 30px;display:grid;grid-template-columns:minmax(0,1fr);justify-items:center;text-align:center;gap:10px;border-radius:4px}
 .gask-ic{width:52px;height:52px;fill:none;stroke:#fff;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;opacity:.9}
 .gask h3{font-size:1.4em;font-weight:800;color:#fff;margin:0}
 .gask > p{color:rgba(255,255,255,.88);margin:0}
 .gask-bar{display:flex;width:min(100%,720px);background:#fff;border-radius:999px;padding:6px;margin-top:8px;box-shadow:0 4px 16px rgba(0,0,0,.2)}
-.gask-bar:focus-within{outline:3px solid #9FE1FF;outline-offset:2px}
+.gask-bar:focus-within{outline:3px solid #D7ECB0;outline-offset:2px}
 .gask-bar input{flex:1;min-width:0;border:0;background:none;color:#222;font:inherit;font-size:1.05em;padding:10px 18px}
 .gask-bar input:focus{outline:none}
-.gask-bar button{border:0;background:#1B86B8;color:#fff;font:inherit;font-weight:800;padding:0 26px;border-radius:999px;cursor:pointer}
-.gask-bar button:hover{background:#0E2F4C}
+.gask-bar button{border:0;background:#5E8A36;color:#fff;font:inherit;font-weight:800;padding:0 26px;border-radius:999px;cursor:pointer}
+.gask-bar button:hover{background:#2E5320}
 .gask-ex{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:8px;margin-top:4px}
 .gask-ex > span{color:rgba(255,255,255,.75);font-size:.88em;margin-right:2px}
 .gask-ex button{max-width:100%;white-space:normal;border:1px solid rgba(255,255,255,.45);background:rgba(255,255,255,.08);color:#fff;border-radius:999px;padding:5px 14px;font:inherit;font-size:.88em;cursor:pointer}
@@ -595,13 +684,13 @@ footer{padding-bottom:88px}
 .basis-s{font-size:.8em;color:var(--muted);border-top:1px dashed var(--line);padding-top:6px;margin-top:2px}
 .hres{width:min(100%,860px);background:#fff;color:#222;border-radius:14px;box-shadow:0 6px 20px rgba(0,0,0,.2);padding:14px 16px;display:grid;gap:12px;text-align:left;max-height:60vh;overflow:auto}
 .hres[hidden]{display:none}
-.hgrp h4{margin:0 0 4px;font-size:.82em;color:#486986;font-weight:800}
+.hgrp h4{margin:0 0 4px;font-size:.82em;color:#5A6E48;font-weight:800}
 .hgrp ul{list-style:none;margin:0;padding:0;display:grid}
 .hgrp li button{display:flex;gap:10px;align-items:baseline;width:100%;border:0;background:none;text-align:left;padding:7px 6px;border-radius:6px;cursor:pointer;font:inherit;color:#222}
-.hgrp li button:hover{background:#EAF3FA}
-.hgrp li b{flex:0 0 auto;color:#0E2F4C}
+.hgrp li button:hover{background:#EEF4E3}
+.hgrp li b{flex:0 0 auto;color:#2E5320}
 .hgrp li span{color:#666;font-size:.86em;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;min-width:0}
-.hall{border:0;background:none;color:#0F79AA;font:inherit;font-size:.86em;font-weight:700;cursor:pointer;padding:4px 6px}
+.hall{border:0;background:none;color:#4C7A2B;font:inherit;font-size:.86em;font-weight:700;cursor:pointer;padding:4px 6px}
 .hnone{margin:0;color:#444}
 @media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .basis{background:#2A2410;border-color:#6B5A1E;color:#F1E3B0}:root:not([data-theme="light"]) .basis b{color:#FFF1C2}}
 :root[data-theme="dark"] .basis{background:#2A2410;border-color:#6B5A1E;color:#F1E3B0}
@@ -624,14 +713,23 @@ footer{padding-bottom:88px}
 .lrow .acts2{display:flex;gap:14px;align-items:center;flex-wrap:wrap}
 .lrow .web{font-size:.9em;font-weight:700;color:var(--sky-ink)}
 /* QR overlay */
-.overlay{position:fixed;inset:0;z-index:20;background:rgba(10,16,26,.55);display:grid;place-items:center;padding:max(16px,env(safe-area-inset-top,0px)) max(16px,env(safe-area-inset-right,0px)) max(16px,env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px))}
+.overlay{position:fixed;inset:0;z-index:20;background:rgba(20,26,14,.55);display:grid;place-items:center;padding:max(16px,env(safe-area-inset-top,0px)) max(16px,env(safe-area-inset-right,0px)) max(16px,env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px))}
 .qrbox{background:var(--card);border-top:4px solid var(--brand);padding:24px;display:grid;gap:12px;justify-items:center;width:min(100%,360px);box-sizing:border-box;text-align:center}
 .qrbox .code{background:#fff;padding:12px;border:1px solid var(--line)}
 .qrbox .code canvas,.qrbox .code img{display:block;width:220px;height:220px}
 .qrbox .url{font-size:.78em;color:var(--muted);word-break:break-all;user-select:all}
 
 footer{background:var(--gray);border-top:1px solid var(--line);padding-block:28px 96px;color:var(--muted);font-size:.84em}
-footer .wrap{display:flex;justify-content:center}
+footer .wrap{display:grid;justify-items:center;gap:12px;text-align:center}
+.fsprout{width:34px;height:40px;fill:#D7ECB0;stroke:#3D6B2A;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.flinks{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;justify-content:center;gap:4px 0}
+.flinks li + li::before{content:"·";margin:0 10px;color:var(--line-strong)}
+.flinks a{color:var(--muted);text-decoration:none}
+.flinks a:hover{color:var(--brand-ink);text-decoration:underline}
+.flinks b{color:var(--ink)}
+.finfo{margin:0;display:flex;flex-wrap:wrap;justify-content:center;gap:4px 18px}
+.finfo div{display:flex;gap:6px}
+.finfo dt{font-weight:700;color:var(--ink)} .finfo dd{margin:0}
 .fcopy{font-size:1.05em;color:var(--muted)}
 footer .copy{color:var(--muted)}
 footer b{color:var(--ink)}
@@ -650,7 +748,7 @@ footer b{color:var(--ink)}
 
 <header>
   <div class="wrap top">
-    <a class="logo" href="#home" data-go="home" aria-label="학교 그루 처음으로"><svg viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="20" fill="#0E2F4C"/><path d="M20 13c-3.2-2-6.8-2.2-10-1.3v16.6c3.2-.9 6.8-.7 10 1.3 3.2-2 6.8-2.2 10-1.3V11.7c-3.2-.9-6.8-.7-10 1.3zM20 13v16.3" fill="none" stroke="#fff" stroke-width="2" stroke-linejoin="round"/><path d="M10 28.3c3.2-.9 6.8-.7 10 1.3 3.2-2 6.8-2.2 10-1.3" fill="none" stroke="#5CC8F2" stroke-width="2.2" stroke-linecap="round"/></svg></a>
+    <a class="logo" href="#home" data-go="home" aria-label="학교 그루 처음으로"><svg viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="20" fill="#2E5320"/><path d="M20 30.5V18.5" stroke="#fff" stroke-width="2.4" stroke-linecap="round"/><path d="M20 21c0-5.2-3.8-8.6-9.4-8.6 0 5.2 3.8 8.6 9.4 8.6z" fill="#B6DB7E"/><path d="M20 18.4c0-5.6 4-9.2 9.8-9.2 0 5.6-4 9.2-9.8 9.2z" fill="#fff"/><path d="M13 30.5h14" stroke="#F1DFA8" stroke-width="2.4" stroke-linecap="round"/></svg></a>
     <a class="brand" href="#home" data-go="home">
       <span><small>학부모 학교생활 안내 서비스</small><b>학교 그루</b></span>
     </a>
@@ -679,13 +777,13 @@ footer b{color:var(--ink)}
       <div class="acts"><a class="pri" href="#notices" data-go="notices">가정통신문 읽기</a><a class="sec" href="#notices" data-go="notices" data-photo>사진으로 풀이받기</a><a class="sec" href="#guide" data-go="guide">상황별 행동 안내</a></div>
     </div>
     <svg class="art" viewBox="0 0 340 280" aria-hidden="true">
-  <rect x="40" y="18" width="210" height="250" rx="6" fill="#fff"/>
-  <rect x="40" y="18" width="210" height="44" rx="6" fill="#E6F4FB"/>
-  <text x="145" y="47" text-anchor="middle" font-size="17" font-weight="800" fill="#0E2F4C" letter-spacing="5">가정통신문</text>
-  <g fill="#D3DCE6"><rect x="62" y="82" width="166" height="8" rx="4"/><rect x="62" y="104" width="120" height="8" rx="4"/><rect x="62" y="148" width="166" height="8" rx="4"/><rect x="62" y="170" width="100" height="8" rx="4"/><rect x="62" y="214" width="150" height="8" rx="4"/><rect x="62" y="236" width="80" height="8" rx="4"/></g>
-  <rect x="186" y="100" width="46" height="16" rx="3" fill="#9FE1FF"/><rect x="62" y="122" width="74" height="16" rx="3" fill="#9FE1FF"/><rect x="166" y="166" width="62" height="16" rx="3" fill="#9FE1FF"/>
-  <g transform="translate(206 120)"><circle r="46" fill="rgba(255,255,255,.18)" stroke="#fff" stroke-width="9"/><path d="M33 33l38 38" stroke="#fff" stroke-width="14" stroke-linecap="round"/></g>
-  <g transform="translate(218 196)"><rect width="112" height="58" rx="10" fill="#fff"/><path d="M22 58l-4 14 18-14z" fill="#fff"/><text x="56" y="25" text-anchor="middle" font-size="13" font-weight="800" fill="#1B86B8">수익자 부담</text><text x="56" y="44" text-anchor="middle" font-size="12" fill="#333">= 내가 내는 돈</text></g>
+  <rect x="40" y="18" width="210" height="250" rx="6" fill="#fff" stroke="#DCD8C2"/>
+  <rect x="40" y="18" width="210" height="44" rx="6" fill="#F0F6E4"/>
+  <text x="145" y="47" text-anchor="middle" font-size="17" font-weight="800" fill="#2E5320" letter-spacing="5">가정통신문</text>
+  <g fill="#E2E5D5"><rect x="62" y="82" width="166" height="8" rx="4"/><rect x="62" y="104" width="120" height="8" rx="4"/><rect x="62" y="148" width="166" height="8" rx="4"/><rect x="62" y="170" width="100" height="8" rx="4"/><rect x="62" y="214" width="150" height="8" rx="4"/><rect x="62" y="236" width="80" height="8" rx="4"/></g>
+  <rect x="186" y="100" width="46" height="16" rx="3" fill="#D7ECB0"/><rect x="62" y="122" width="74" height="16" rx="3" fill="#D7ECB0"/><rect x="166" y="166" width="62" height="16" rx="3" fill="#D7ECB0"/>
+  <g transform="translate(206 120)"><circle r="46" fill="rgba(215,236,176,.25)" stroke="#2E5320" stroke-width="9"/><path d="M33 33l38 38" stroke="#2E5320" stroke-width="14" stroke-linecap="round"/></g>
+  <g transform="translate(218 196)"><rect width="112" height="58" rx="10" fill="#fff" stroke="#DCD8C2"/><path d="M22 58l-4 14 18-14z" fill="#fff"/><text x="56" y="25" text-anchor="middle" font-size="13" font-weight="800" fill="#5E8A36">수익자 부담</text><text x="56" y="44" text-anchor="middle" font-size="12" fill="#333">= 내가 내는 돈</text></g>
 </svg>
   </div></div>
 
@@ -698,6 +796,26 @@ footer b{color:var(--ink)}
     <div class="hot"><span>자주 찾는 말</span><a href="#words" data-go="words" data-q="결석">결석</a><a href="#words" data-go="words" data-q="교외체험학습">교외체험학습</a><a href="#words" data-go="words" data-q="수익자">수익자 부담</a><a href="#words" data-go="words" data-q="방과후">방과후학교</a><a href="#words" data-go="words" data-q="회신">회신서</a></div>
   </div></div>
 
+  <div class="st st-name"><div class="wrap">
+    <div class="st-l">
+      <h2><span class="hand">학교 그루</span>란,</h2>
+      <p>'그루'는 나무를 세는 말이에요. 아이 한 명 한 명이 학교라는 땅에 뿌리를 내리고 한 그루 나무처럼 자라도록, 그 곁의 부모님을 돕고 싶다는 뜻을 이름에 담았어요.</p>
+      <p>학교에서 오는 어려운 말과 낯선 절차 앞에서 혼자 고민하지 않도록, 잠깐 들러 필요한 것을 확인하고 갈 수 있는 곳이 되려고 해요.</p>
+    </div>
+    <div class="st-dict" aria-label="낱말 풀이">
+      <b>그루</b> <span>의존명사</span>
+      <p>나무를 세는 단위. 예) 사과나무 한 그루</p>
+      <ul><li>쉬운 말로 풀어요</li><li>할 일을 차례로 알려요</li><li>도움받을 곳을 이어요</li></ul>
+    </div>
+  </div></div>
+  <div class="st st-cream"><div class="wrap">
+    <div class="st-t"><h2>학교 그루는 학부모에게 학교 정보를 쉽게 전합니다.</h2><p>한국 학교가 처음이라는 이유로 아이 일에서 멀어지지 않도록</p></div>
+    <div class="st-3">
+      <div><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M10 8h20l8 8v24H10z"/><path d="M30 8v8h8M16 24h16M16 31h10"/></svg><b>어려운 말은 쉬운 말로</b><p>가정통신문 속 행정 용어를 누르면 뜻을 쉬운 말로 알려 드려요.</p></div>
+      <div><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M12 14h24M12 24h24M12 34h14"/><path d="M34 32l3 3 6-7"/></svg><b>해야 할 일은 차례대로</b><p>언제까지, 무엇을, 어떻게 내야 하는지 먼저 짚어 드려요.</p></div>
+      <div><svg viewBox="0 0 48 48" aria-hidden="true"><circle cx="14" cy="24" r="5"/><circle cx="34" cy="14" r="5"/><circle cx="34" cy="34" r="5"/><path d="M19 22l10-5M19 26l10 5"/></svg><b>도움받을 곳까지</b><p>상황마다 먼저 연락할 곳과 상담 전화를 이어 드려요.</p></div>
+    </div>
+  </div></div>
 
   <div class="wrap split">
     <div class="svc">
@@ -731,6 +849,46 @@ footer b{color:var(--ink)}
       </div>
     </div>
   </div>
+
+  <div class="st"><div class="wrap">
+    <div class="st-t"><span class="st-n">01</span><h2>학교 그루는 질문합니다.</h2><p>학교에서 오는 안내는 많은데, 왜 부모님은 자꾸 놓치게 될까요?</p></div>
+    <div class="st-4">
+      <div><b>학교 말이 어려워요</b><p>수익자 부담, 회신, 출석 인정 결석처럼 학교에서만 쓰는 말이 많아요.</p></div>
+      <div><b>할 일을 놓쳐요</b><p>무엇을 언제까지 내야 하는지 몰라 마감을 지나치기 쉬워요.</p></div>
+      <div><b>앱이 낯설어요</b><p>하이클래스, e알리미, 나이스처럼 학교마다 쓰는 앱이 달라요.</p></div>
+      <div><b>물어볼 곳이 없어요</b><p>아이 일로 누구에게 먼저 연락해야 할지 막막해요.</p></div>
+    </div>
+  </div></div>
+  <div class="st st-dark"><div class="wrap"><p class="hand">이 질문의 답을 찾기 위해, 학교 그루는 실제 자료부터 모았어요.</p></div></div>
+  <div class="st st-soft"><div class="wrap">
+    <div class="st-t"><span class="st-n">02</span><h2>학교 그루는 모았습니다.</h2><p>지어낸 예시보다 부모님이 실제로 받는 자료와 목소리를 바탕으로 만들었어요.</p></div>
+    <div class="st-4 nums" id="stNums"></div>
+  </div></div>
+  <div class="st"><div class="wrap">
+    <div class="st-t"><span class="st-n">03</span><h2>학교 그루는 제공합니다.</h2></div>
+    <div class="st-4 go">
+      <a href="#notices" data-go="notices"><b>가정통신문 읽기</b><p>실제 통신문에서 밑줄 친 말을 눌러 뜻을 확인해요.</p><span>통신문 보기 →</span></a>
+      <a href="#words" data-go="words"><b>학교 용어 사전</b><p>학교에서 쓰는 말을 쉬운 말과 예시로 풀었어요.</p><span>사전 보기 →</span></a>
+      <a href="#guide" data-go="guide"><b>상황별 행동 안내</b><p>아플 때, 다쳤을 때, 마음이 힘들 때 무엇부터 할지 알려 줘요.</p><span>안내 보기 →</span></a>
+      <a href="#help" data-go="help"><b>상담·지원 기관</b><p>상담 전화, 지원 제도, 우리 동네 기관을 모았어요.</p><span>기관 보기 →</span></a>
+    </div>
+  </div></div>
+  <div class="st st-cream"><div class="wrap">
+    <div class="st-t"><span class="st-n">04</span><h2>학교 그루와 함께라면</h2><p>학교 일을 챙기는 과정이 이렇게 달라져요.</p></div>
+    <div class="st-vs">
+      <div class="h"><span>지금까지는</span><span></span><span>학교 그루와 함께라면</span></div>
+      <div><span>어려운 말이 나오면 그냥 넘겼어요</span><i>→</i><b>누르면 쉬운 말로 뜻을 알려 줘요</b></div>
+      <div><span>무엇을 내야 하는지 몰라 기한을 놓쳤어요</span><i>→</i><b>할 일과 마감 날짜를 먼저 짚어 줘요</b></div>
+      <div><span>아이 일로 누구에게 물어야 할지 몰랐어요</span><i>→</i><b>상황마다 먼저 연락할 곳을 알려 줘요</b></div>
+      <div><span>궁금한 것을 혼자 고민했어요</span><i>→</i><b>AI와 다른 학부모에게 물어볼 수 있어요</b></div>
+    </div>
+  </div></div>
+  <div class="st st-end"><div class="wrap">
+    <span class="small">학교 그루는 곁에 있습니다.</span>
+    <h2>아이가 학교에서 한 그루 나무처럼 자라도록,<br>부모님 곁에서 함께 돕겠습니다.</h2>
+    <p>앞으로도 이용하시는 분들께 묻고, 듣고, 계속 고쳐 나갈게요.</p>
+    <div class="acts"><a class="pri" href="#guide" data-go="guide">상황별 안내 보기 →</a><a class="sec" href="#qna" data-go="qna">학부모 Q&amp;A</a></div>
+  </div></div>
 
 </section>
 
@@ -850,6 +1008,100 @@ footer b{color:var(--ink)}
   </div>
 </section>
 
+<section data-view="privacy" class="wrap" hidden>
+  <div class="head">
+    <svg class="hicon" viewBox="0 0 48 48" aria-hidden="true"><path d="M24 6l14 5v11c0 9-6 16-14 20-8-4-14-11-14-20V11z"/><path d="M18 24l4 4 8-8"/></svg>
+    <span class="eyebrow"><a href="#home" data-go="home">처음</a> › 개인정보처리방침</span>
+    <h2>개인정보처리방침</h2>
+    <p class="lead">학교 그루가 어떤 정보를 왜 저장하고, 언제 지우는지 쉬운 말로 알려 드려요.</p>
+  </div>
+  <article class="doc">
+    <div class="sum">
+      <b>한눈에 보기</b>
+      <p>· 회원가입이 없어요. 이름, 전화번호, 주소, 이메일을 받지 않아요.</p>
+      <p>· 학부모 Q&amp;A에 글을 쓸 때만 닉네임과 글 내용이 저장돼요.</p>
+      <p>· 광고나 방문 분석 도구를 쓰지 않고, 정보를 팔거나 다른 곳에 넘기지 않아요.</p>
+    </div>
+    <section><h3>1. 저장하는 정보</h3>
+      <table><tbody>
+        <tr><th>학부모 Q&amp;A 글</th><td>닉네임, 분류, 제목, 내용, 쓴 시각</td></tr>
+        <tr><th>글쓴이 확인값</th><td>내가 쓴 글만 지울 수 있도록, 브라우저가 만든 무작위 표를 알아볼 수 없게 바꾼 값(암호화 값)</td></tr>
+        <tr><th>이 기기 안에만</th><td>글자 크기, 마지막으로 본 화면, 글쓴이 확인용 무작위 표. 이 기기의 브라우저에만 남고 서버로 보내지 않아요.</td></tr>
+      </tbody></table>
+    </section>
+    <section><h3>2. 쓰는 목적</h3>
+      <ul><li>학부모끼리 묻고 답하는 게시판을 보여 주기 위해</li><li>글쓴이 본인만 자기 글을 지울 수 있게 하기 위해</li><li>욕설·비방 글을 자동으로 걸러 내기 위해</li></ul>
+    </section>
+    <section><h3>3. 보관 기간과 삭제</h3>
+      <ul><li>글쓴이가 [삭제]를 누르면 바로 지워져요. 질문을 지우면 그 질문에 달린 답글도 함께 지워져요.</li>
+        <li>게시판에는 최근 질문 300개, 답글 1,500개까지만 남고 오래된 글부터 자동으로 지워져요.</li>
+        <li>욕설이나 비방이 들어간 글은 저장되지 않거나 화면에서 숨겨져요.</li>
+        <li>서비스 운영을 마치면 저장된 글을 모두 지워요.</li></ul>
+    </section>
+    <section><h3>4. AI 묻기와 사진 풀이</h3>
+      <ul><li>GitHub 누리집(neoul-team.github.io)에서는 AI 묻기 질문이 누리집 안의 자료로만 답을 찾고, 밖으로 보내지 않아요. 사진 풀이는 쓰지 않아요.</li>
+        <li>Claude 앱 안에서 열면 답을 만들기 위해 질문과 사진이 Anthropic의 Claude로 보내져요. 이때는 Claude의 개인정보 처리 기준이 함께 적용돼요.</li>
+        <li>질문과 사진에 아이 이름, 학교 이름, 전화번호 같은 개인정보는 넣지 마세요.</li></ul>
+    </section>
+    <section><h3>5. 정보를 맡기는 곳 (처리 위탁·국외 이전)</h3>
+      <table><tbody>
+        <tr><th>GitHub (미국)</th><td>누리집 화면 제공. 보안을 위해 접속 기록(IP 주소 등)이 GitHub에 남을 수 있어요.</td></tr>
+        <tr><th>Cloudflare (미국)</th><td>GitHub 누리집의 학부모 Q&amp;A 글 저장</td></tr>
+        <tr><th>Anthropic (미국)</th><td>Claude 앱 안에서 쓸 때 AI 답변과 Q&amp;A 글 저장</td></tr>
+      </tbody></table>
+      <p>이 밖의 다른 사람이나 회사에 정보를 주지 않아요.</p>
+    </section>
+    <section><h3>6. 아이(만 14세 미만)의 이용</h3>
+      <p>학교 그루는 보호자를 위한 서비스예요. 만 14세 미만 어린이는 보호자와 함께 이용하고, 게시판에 자기 정보를 쓰지 않도록 해 주세요.</p>
+    </section>
+    <section><h3>7. 이용하는 분의 권리</h3>
+      <p>언제든지 내가 쓴 글을 직접 지울 수 있어요. 브라우저 저장 공간을 지우면 이 기기에 남은 설정도 모두 지워져요. 다만 브라우저 저장 공간을 지운 뒤에는 예전에 쓴 글을 직접 지울 수 없으니, 지우고 싶은 글이 있으면 먼저 지워 주세요.</p>
+    </section>
+    <section><h3>8. 개인정보 보호 책임자</h3>
+      <p>팀 너울 (여성복지론 수업 프로젝트). 문의나 삭제 요청은 학부모 Q&amp;A 게시판의 '기타' 분류로 남겨 주세요. 개인정보 침해 신고는 개인정보침해신고센터(국번 없이 118)에서도 도움받을 수 있어요.</p>
+    </section>
+    <p class="eff">시행일: 2026년 11월 26일</p>
+  </article>
+</section>
+
+<section data-view="terms" class="wrap" hidden>
+  <div class="head">
+    <svg class="hicon" viewBox="0 0 48 48" aria-hidden="true"><path d="M12 6h18l8 8v28H12z"/><path d="M30 6v8h8M18 22h14M18 28h14M18 34h9"/></svg>
+    <span class="eyebrow"><a href="#home" data-go="home">처음</a> › 이용약관</span>
+    <h2>이용약관</h2>
+    <p class="lead">학교 그루를 이용할 때 함께 지켜 주셨으면 하는 약속이에요.</p>
+  </div>
+  <article class="doc">
+    <section><h3>제1조 목적</h3>
+      <p>이 약관은 팀 너울이 운영하는 학부모 학교생활 안내 서비스 '학교 그루'(이하 '서비스')를 이용하는 방법과 지켜야 할 일을 정해요.</p></section>
+    <section><h3>제2조 서비스 내용</h3>
+      <ul><li>가정통신문 읽기, 학교 용어 사전, 상황별 행동 안내, 상담·지원 기관 안내, AI 묻기, 학부모 Q&amp;A를 제공해요.</li>
+        <li>누구나 회원가입 없이 무료로 이용할 수 있어요.</li></ul></section>
+    <section><h3>제3조 안내 정보의 성격</h3>
+      <ul><li>서비스의 안내는 2026년 11월 기준의 일반 정보예요. 학교와 지역마다 신청 기간, 서류, 담당자가 다를 수 있어요.</li>
+        <li>법률·의료·심리 상담을 대신하지 않아요. 중요한 일은 학교나 담당 기관에 꼭 다시 확인해 주세요.</li>
+        <li>AI 답변은 틀릴 수 있어요. 급하거나 위험한 일은 119, 112, 117에 바로 연락하세요.</li></ul></section>
+    <section><h3>제4조 학부모 Q&amp;A 이용 규칙</h3>
+      <ol><li>욕설, 비방, 차별하는 말, 다른 사람을 깎아내리는 말을 쓰지 않아요.</li>
+        <li>아이 이름, 학교 이름, 전화번호, 주소 같은 개인정보를 쓰지 않아요. 다른 사람의 정보도 마찬가지예요.</li>
+        <li>광고, 홍보, 돈을 요구하는 글을 쓰지 않아요.</li>
+        <li>거짓 정보나 다른 사람을 속이는 글을 쓰지 않아요.</li>
+        <li>다른 학부모의 질문에는 내가 겪은 경험을 바탕으로 친절하게 답해요.</li></ol>
+      <p>규칙에 어긋나는 글은 자동으로 걸러지거나 알리지 않고 지워질 수 있어요.</p></section>
+    <section><h3>제5조 게시물의 권리</h3>
+      <p>게시판 글의 권리는 쓴 사람에게 있어요. 서비스는 그 글을 게시판에 보여 주는 데에만 써요.</p></section>
+    <section><h3>제6조 자료의 출처</h3>
+      <ul><li>가정통신문은 여러 학교에서 실제로 받은 것으로, 학교 이름과 전화번호는 가렸어요.</li>
+        <li>상황별 안내 일부는 PSCORE 「학교생활과 자녀 성장을 돕는 안내서」(2026)를 참고했어요.</li>
+        <li>기관 번호와 주소는 2026년 10~11월에 각 기관 자료에서 확인했어요.</li></ul></section>
+    <section><h3>제7조 서비스의 변경과 중단</h3>
+      <p>학교 그루는 수업 프로젝트로 만든 서비스라 내용이 바뀌거나 운영이 끝날 수 있어요. 운영을 마치면 게시판 글은 모두 지워요.</p></section>
+    <section><h3>제8조 책임의 한계</h3>
+      <p>서비스는 정확한 정보를 드리려고 노력하지만, 안내 정보나 다른 이용자의 글을 믿고 한 일로 생긴 손해에 대해서는 책임지지 않아요.</p></section>
+    <p class="eff">시행일: 2026년 11월 26일</p>
+  </article>
+</section>
+
 <section data-view="qna" class="wrap" hidden>
   <div class="head">
     <svg class="hicon" viewBox="0 0 48 48" aria-hidden="true"><path d="M7 9h23v16H17l-6 5v-5H7z"/><path d="M34 17h7v15h-3v5l-6-5H20v-3"/></svg>
@@ -910,7 +1162,18 @@ footer b{color:var(--ink)}
 
 <div class="bnav" id="bnav" role="navigation" aria-label="아래 메뉴"></div>
 <footer>
-  <div class="wrap"><span class="fcopy">© 2026 팀 너울</span></div>
+  <div class="wrap">
+    <svg class="fsprout" viewBox="0 0 40 48" aria-hidden="true"><path d="M20 46V22"/><path d="M20 28c0-7-5-11-12-11 0 7 5 11 12 11z"/><path d="M20 23c0-8 6-13 14-13 0 8-6 13-14 13z"/></svg>
+    <ul class="flinks">
+      <li><a href="#guide" data-go="guide">상황별 행동 안내</a></li>
+      <li><a href="#help" data-go="help">상담·지원 기관</a></li>
+      <li><a href="#qna" data-go="qna">학부모 Q&amp;A</a></li>
+      <li><a href="#terms" data-go="terms">이용약관</a></li>
+      <li><a href="#privacy" data-go="privacy"><b>개인정보처리방침</b></a></li>
+    </ul>
+    <dl class="finfo"><div><dt>서비스명</dt><dd>학교 그루 (학부모 학교생활 안내 서비스)</dd></div><div><dt>운영</dt><dd>팀 너울</dd></div></dl>
+    <span class="fcopy">© 2026 팀 너울</span>
+  </div>
 </footer>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcode-generator/1.4.4/qrcode.min.js"></script>
@@ -1959,6 +2222,13 @@ const FICON = {
 const BNAV = [["home", "처음", '<path d="M8 23L24 9l16 14"/><path d="M12 20v18h24V20"/>'], ["notices", "통신문"], ["words", "용어"], ["guide", "상황"], ["help", "기관"], ["qna", "Q&A"]];
 setTimeout(() => $("#bnav").append(...BNAV.map(([v, t, icon]) => { const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg"); svg.setAttribute("viewBox", "0 0 48 48"); svg.setAttribute("aria-hidden", "true"); svg.innerHTML = icon || FICON[v]; const a = h("a", {href: "#" + v, "data-go": v}, svg, h("span", {}, t)); if (document.querySelector(`#nav a[data-go="${v}"][aria-current]`)) a.setAttribute("aria-current", "page"); return a; })), 0);
 function ficon(k) { const s = document.createElementNS("http://www.w3.org/2000/svg", "svg"); s.setAttribute("viewBox", "0 0 48 48"); s.setAttribute("aria-hidden", "true"); s.innerHTML = FICON[k]; return s; }
+const ST_NUMS = [
+  [NOTICES.filter(n => n.real).length + "건", "실제 가정통신문", "여러 학교에서 받은 통신문을 학교 이름과 번호만 가리고 그대로 실었어요."],
+  [W.length + "개", "학교 용어", "통신문과 학교생활에 나오는 말을 쉬운 말로 풀었어요."],
+  [TOPICS.reduce((n, t) => n + t.list.length, 0) + "가지", "상황별 안내", "북한이탈주민이 함께 만든 PSCORE 안내서를 참고해 보강했어요."],
+  ["설문", "학부모 의견", "설문에서 받은 의견으로 통합 검색, 지역 기관, 학교 앱 안내를 더했어요."],
+];
+$("#stNums").append(...ST_NUMS.map(([n, b, d]) => h("div", {}, h("strong", {}, n), h("b", {}, b), h("p", {}, d))));
 const FEAT = [
   ["notices", "가정통신문 읽기", "실제 7건 · 예시 5건"],
   ["words", "학교 용어 사전", `학교 말 ${W.length}개`],
@@ -2121,7 +2391,7 @@ $("#help").append(...HELP.map(([who, n, tel, url, hrs, d]) => h("article", {clas
   h("p", {class: "small"}, d))));
 
 /* ---------- 라우팅 ---------- */
-const VIEWS = ["home", "notices", "words", "guide", "help", "qna"];
+const VIEWS = ["home", "notices", "words", "guide", "help", "qna", "privacy", "terms"];
 function go(v, push = true) {
   if (!VIEWS.includes(v)) v = "home";
   document.querySelectorAll("section[data-view]").forEach(s => s.hidden = s.dataset.view !== v);

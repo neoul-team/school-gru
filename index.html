@@ -348,6 +348,8 @@ body.qs-on{overflow:hidden}
 @media (prefers-reduced-motion:reduce){.gru *,.gru,.qs-box,.gru-say{animation:none!important}.rv{opacity:1;transform:none}}
 
 /* Q&A login */
+.tool-login{background:var(--brand)!important;color:#fff!important;border-color:var(--brand)!important;font-weight:700}
+@media (max-width:600px){.tool-login{padding:5px 10px}}
 .qacct{display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;justify-content:space-between;background:var(--brand-soft);border-radius:12px;padding:10px 14px}
 .qacct .btn{padding:7px 18px}
 .qlogin{align-content:start}
@@ -852,6 +854,7 @@ footer b{color:var(--ink)}
     </a>
     <div class="tools">
       <button class="tool qs-open" id="qsBtn" type="button" aria-label="빠르게 찾기"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5L21 21"/></svg>찾기</button>
+      <button class="tool tool-login" id="loginBtn" type="button" hidden>로그인</button>
       <button class="tool" id="sizeBtn" aria-pressed="false">글자 크게</button>
     </div>
   </div>
@@ -3905,6 +3908,8 @@ function setMe(user) {
   $("#qform").hidden = !qMe;
   $("#qlogin").hidden = !!qMe;
   const nk = $("#qnick"); if (qMe && nk && !nk.value) nk.value = qMe.nick;
+  $("#loginBtn").hidden = false;
+  $("#loginBtn").textContent = qMe ? qMe.nick + "님" : "로그인";
   $("#qacct").replaceChildren(...(qMe ? [h("span", {}, h("b", {}, qMe.nick), "님", qMe.via === "kakao" ? " (카카오)" : " (이메일)", "으로 로그인했어요"),
       h("span", {}, h("button", {class: "link", type: "button", onclick: async () => { try { await authApi("logout", {session: store.get("qnaSession")}); } catch {} setMe(null); }}, "로그아웃"), " · ",
         h("button", {class: "link del", type: "button", onclick: async e => {
@@ -3926,6 +3931,7 @@ function renderLoginDlg() {
   $("#lgSubmit").textContent = su ? "가입하고 로그인" : "이메일로 로그인";
   $("#lgSwitch").replaceChildren(su ? "이미 가입했나요? " : "처음이신가요? ", h("button", {class: "link", type: "button", onclick: () => { lgMode = su ? "login" : "signup"; $("#lgMsg").textContent = ""; renderLoginDlg(); }}, su ? "로그인하기" : "이메일로 가입하기"));
 }
+$("#loginBtn").addEventListener("click", () => { go("qna"); if (!qMe) openLogin(); });
 $("#lgKakao").addEventListener("click", () => { location.href = QNA_API + "kakao/start"; });
 $("#lgClose").addEventListener("click", closeLogin);
 $("#lgDlg").addEventListener("click", e => { if (e.target.id === "lgDlg") closeLogin(); });

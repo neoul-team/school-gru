@@ -2,7 +2,7 @@
 <html lang="ko">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=1024,viewport-fit=cover">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="description" content="가정통신문 속 학교 용어를 쉬운 말로 풀고, 학교생활에 필요한 정보를 안내하는 학부모 누리집">
 <style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}#photo,[data-photo]{display:none!important}</style>
 </head>
@@ -13,6 +13,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;800&display=swap">
 <style>
+:root{color-scheme:light}
 /* Layout: public-service portal. Utility strip, white masthead, navy menu bar, page-title blocks with a rule, square-cornered panels */
 :root{
   --bg:#F5F6F8; --card:#FFFFFF; --ink:#222222; --muted:#5B616B; --line:#D8DCE5; --line-strong:#9DA6AC;
@@ -22,16 +23,8 @@
   --sans:"Noto Sans KR","Apple SD Gothic Neo","Malgun Gothic",sans-serif;
   --fs:16px; --r:4px;
 }
-@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
-  --bg:#0F141B; --card:#161D27; --ink:#E4E9F0; --muted:#A2ADBC; --line:#2A3442; --line-strong:#4A5668;
-  --brand:#2C5A85; --brand-ink:#8FC3EC; --brand-soft:#1A2638; --on-brand:#FFFFFF;
-  --sky:#1C6E96; --sky-ink:#7CC8EE; --slate:#33506B; --band:#0A1824; --gray:#121922;
-  --hl:#21405A; --gold:#E0B95A; --warn:#F28B82; color-scheme:dark}}
-:root[data-theme="dark"]{
-  --bg:#0F141B; --card:#161D27; --ink:#E4E9F0; --muted:#A2ADBC; --line:#2A3442; --line-strong:#4A5668;
-  --brand:#2C5A85; --brand-ink:#8FC3EC; --brand-soft:#1A2638; --on-brand:#FFFFFF;
-  --sky:#1C6E96; --sky-ink:#7CC8EE; --slate:#33506B; --band:#0A1824; --gray:#121922;
-  --hl:#21405A; --gold:#E0B95A; --warn:#F28B82; color-scheme:dark}
+
+
 html.big{--fs:19px}
 body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:var(--fs);line-height:1.7;word-break:keep-all;overflow-wrap:anywhere;letter-spacing:-.01em}
 body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--card)}
@@ -63,8 +56,8 @@ nav li{flex:1 0 auto}
 nav a{display:block;text-align:center;padding:13px 16px 11px;text-decoration:none;color:var(--ink);white-space:nowrap;font-weight:700;font-size:1.02em;border-bottom:3px solid transparent}
 nav a:hover{color:var(--sky-ink)}
 nav a[aria-current="page"]{color:var(--brand-ink);border-bottom-color:var(--sky)}
-:root[data-theme="dark"] .brand b{color:var(--ink)}
-@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .brand b{color:var(--ink)}}
+
+
 
 main{padding-block:32px 64px}
 main:has(> [data-view="home"]:not([hidden])){padding-block:0}
@@ -257,16 +250,12 @@ section[data-view].wrap{gap:24px}
 .st-end .acts a{border-radius:999px;padding:11px 24px;font-weight:700;text-decoration:none;border:1px solid var(--brand)}
 .st-end .acts .pri{background:var(--brand);color:#fff}
 .st-end .acts .sec{background:var(--card);color:var(--brand)}
-:root[data-theme="dark"] .st-cream,:root[data-theme="dark"] .st-soft,:root[data-theme="dark"] .st-end{background:var(--gray)}
-:root[data-theme="dark"] .mv{background:linear-gradient(135deg,#15263A,#0F1B2A);color:var(--ink)}
-:root[data-theme="dark"] .mv h1,:root[data-theme="dark"] .mv p{color:var(--ink)}
-:root[data-theme="dark"] .mv h1 em{color:var(--brand-ink)}
-:root[data-theme="dark"] .st-dict{background:var(--card);border-color:var(--line)}
-@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .st-cream,:root:not([data-theme="light"]) .st-soft,:root:not([data-theme="light"]) .st-end{background:var(--gray)}
-  :root:not([data-theme="light"]) .mv{background:linear-gradient(135deg,#15263A,#0F1B2A);color:var(--ink)}
-  :root:not([data-theme="light"]) .mv h1,:root:not([data-theme="light"]) .mv p{color:var(--ink)}
-  :root:not([data-theme="light"]) .mv h1 em{color:var(--brand-ink)}
-  :root:not([data-theme="light"]) .st-dict{background:var(--card);border-color:var(--line)}}
+
+
+
+
+
+
 @media (max-width:860px){
   .st-name .wrap,.st-3{grid-template-columns:minmax(0,1fr)}
   .st-4{grid-template-columns:repeat(2,minmax(0,1fr))}
@@ -325,9 +314,9 @@ section[data-view].wrap{gap:24px}
 .hs-3 .acts a.pri{background:#0B6E96;border-color:#0B6E96}
 .mv .hs-1 .badge{background:#0E2F4C;color:#fff;border-color:#0E2F4C}
 @media (min-width:861px){.mv .hs-2.wrap{grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr)}.hs-2 .art-wrap{order:-1}}
-:root[data-theme="dark"] .hs-2{background:linear-gradient(135deg,#1C2448,#141A33)}
-:root[data-theme="dark"] .hs-3{background:linear-gradient(135deg,#123542,#0C2029)}
-@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .hs-2{background:linear-gradient(135deg,#1C2448,#141A33)}:root:not([data-theme="light"]) .hs-3{background:linear-gradient(135deg,#123542,#0C2029)}}
+
+
+
 /* 그루 움직임: 읽기, 응원 */
 .gru-read .g-all{animation:g-read 3.4s ease-in-out infinite}
 .gru-read .g-book{animation:g-page 3.4s ease-in-out infinite;transform-box:view-box;transform-origin:100px 190px}
@@ -443,8 +432,8 @@ body.qs-on{overflow:hidden}
 .doc th,.doc td{border:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}
 .doc th{background:#F3F7FB;font-weight:700;white-space:nowrap}
 .doc .eff{color:var(--muted);font-size:.9em}
-:root[data-theme="dark"] .doc .sum,:root[data-theme="dark"] .doc th{background:var(--gray)}
-@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .doc .sum,:root:not([data-theme="light"]) .doc th{background:var(--gray)}}
+
+
 @media (max-width:600px){.doc table,.doc tbody,.doc tr,.doc td,.doc th{display:block}.doc tr{border:1px solid var(--line);border-radius:8px;margin-bottom:8px}.doc th,.doc td{border:0}}
 
 @media (max-width:860px){
@@ -661,6 +650,7 @@ body.qs-on{overflow:hidden}
 .fab-gru .fg-eyes{animation:g-blink 4.5s infinite;transform-box:view-box;transform-origin:24px 27px}
 .ai-fab:hover .fab-gru{animation:g-hop .5s ease}
 @media (prefers-reduced-motion:reduce){.fab-gru *{animation:none!important}}
+@media (max-width:600px){.ai-fab{font-size:0!important;gap:0!important;padding:5px!important;border-radius:50%;box-shadow:0 6px 16px rgba(14,47,76,.3)}.ai-fab svg.fab-gru{width:50px;height:50px}}
 .ai-fab[aria-expanded="true"]{background:var(--ink);color:var(--card)}
 .ai-panel{position:fixed;right:calc(env(safe-area-inset-right,0px) + 16px);bottom:calc(env(safe-area-inset-bottom,0px) + 76px);z-index:19;width:min(390px,calc(100vw - 32px));height:min(580px,calc(100vh - 110px));background:var(--card);border:1px solid var(--line-strong);border-top:4px solid var(--brand);box-shadow:0 12px 32px rgba(0,0,0,.25);display:grid;grid-template-rows:auto minmax(0,1fr) auto auto auto}
 .ai-head{display:flex;justify-content:space-between;align-items:center;gap:8px;padding:12px 14px;border-bottom:1px solid var(--line)}
@@ -860,8 +850,8 @@ footer{padding-bottom:88px}
 .hgrp li span{color:#666;font-size:.86em;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;min-width:0}
 .hall{border:0;background:none;color:#0F79AA;font:inherit;font-size:.86em;font-weight:700;cursor:pointer;padding:4px 6px}
 .hnone{margin:0;color:#444}
-@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .basis{background:#2A2410;border-color:#6B5A1E;color:#F1E3B0}:root:not([data-theme="light"]) .basis b{color:#FFF1C2}}
-:root[data-theme="dark"] .basis{background:#2A2410;border-color:#6B5A1E;color:#F1E3B0}
+
+
 .local{background:var(--card);box-shadow:0 1px 3px rgba(0,0,0,.08);border-top:4px solid var(--sky);padding:22px 24px;display:grid;gap:12px}
 .local h3{margin:0;font-size:1.2em;font-weight:800}
 .local.first{margin-bottom:18px}
@@ -1474,7 +1464,7 @@ footer b{color:var(--ink)}
     <div class="hres qs-res" id="qsres" hidden aria-live="polite"></div>
   </div>
 </div>
-<button class="ai-fab" id="aiFab" type="button" aria-expanded="false" aria-controls="aiPanel"><svg class="fab-gru" viewBox="0 0 48 48" aria-hidden="true"><g class="fg-leaf"><path d="M24 15V8" stroke="#3E8E41" stroke-width="2" stroke-linecap="round"/><path d="M24 11c-3-5-9-5-11-3 3 4 8 5 11 3z" fill="#6CC04A"/><path d="M24 9c3-6 10-6 12-3-3 5-9 6-12 3z" fill="#8ED36A"/></g><ellipse cx="24" cy="30" rx="16" ry="15" fill="#7CCB6A"/><g class="fg-eyes"><ellipse cx="18.5" cy="27" rx="2.2" ry="2.8" fill="#1E2A1A"/><ellipse cx="29.5" cy="27" rx="2.2" ry="2.8" fill="#1E2A1A"/><circle cx="19.3" cy="26" r=".8" fill="#fff"/><circle cx="30.3" cy="26" r=".8" fill="#fff"/></g><ellipse cx="14.5" cy="32" rx="2.6" ry="1.6" fill="#FF9DA8" opacity=".8"/><ellipse cx="33.5" cy="32" rx="2.6" ry="1.6" fill="#FF9DA8" opacity=".8"/><path d="M21.5 32q2.5 3 5 0" stroke="#1E2A1A" stroke-width="1.3" fill="none" stroke-linecap="round"/></svg>그루에게 묻기</button>
+<button class="ai-fab" id="aiFab" type="button" aria-expanded="false" aria-controls="aiPanel" aria-label="그루에게 묻기"><svg class="fab-gru" viewBox="0 0 48 48" aria-hidden="true"><g class="fg-leaf"><path d="M24 15V8" stroke="#3E8E41" stroke-width="2" stroke-linecap="round"/><path d="M24 11c-3-5-9-5-11-3 3 4 8 5 11 3z" fill="#6CC04A"/><path d="M24 9c3-6 10-6 12-3-3 5-9 6-12 3z" fill="#8ED36A"/></g><ellipse cx="24" cy="30" rx="16" ry="15" fill="#7CCB6A"/><g class="fg-eyes"><ellipse cx="18.5" cy="27" rx="2.2" ry="2.8" fill="#1E2A1A"/><ellipse cx="29.5" cy="27" rx="2.2" ry="2.8" fill="#1E2A1A"/><circle cx="19.3" cy="26" r=".8" fill="#fff"/><circle cx="30.3" cy="26" r=".8" fill="#fff"/></g><ellipse cx="14.5" cy="32" rx="2.6" ry="1.6" fill="#FF9DA8" opacity=".8"/><ellipse cx="33.5" cy="32" rx="2.6" ry="1.6" fill="#FF9DA8" opacity=".8"/><path d="M21.5 32q2.5 3 5 0" stroke="#1E2A1A" stroke-width="1.3" fill="none" stroke-linecap="round"/></svg>그루에게 묻기</button>
 <div class="ai-panel" id="aiPanel" role="dialog" aria-label="그루에게 묻기" hidden>
   <div class="ai-head">
     <div class="ai-who"><svg class="gru gru-ai" viewBox="0 0 200 220" aria-hidden="true">
@@ -4042,7 +4032,7 @@ async function remoteQna() {
   const sess = store.get("qnaSession");
   setMe(null);
   if (sess) authApi("me", {session: sess}).then(r => setMe(r.user)).catch(() => {});
-  if (qLoginErr) { openLogin(); $("#lgMsg").textContent = LOGIN_ERR[qLoginErr] || "로그인하지 못했어요. 다시 해 주세요."; }
+  if (qLoginErr) { openLogin(); const base = qLoginErr.split("__")[0], code = qLoginErr.split("__")[1]; $("#lgMsg").textContent = (LOGIN_ERR[base] || "로그인하지 못했어요. 다시 해 주세요.") + (code ? ` (오류 코드: ${code})` : ""); }
   db = {
     collection: name => { const q = {orderBy: () => q, limit: () => q, onSnapshot: cb => { subs[name].push(cb); cb({docs: []}); emit(); return () => {}; },
       add: d => post(name === "questions" ? {type: "question", nick: d.nick, cat: d.cat, title: d.title, body: d.body} : {type: "answer", qid: d.qid, nick: d.nick, body: d.body})}; return q; },

@@ -246,7 +246,9 @@ section[data-view].wrap{gap:24px}
 .st-vs > div span{color:var(--muted)}
 .st-vs i{font-style:normal;color:var(--sky);font-weight:800;text-align:center}
 .st-vs b{color:var(--brand-ink)}
-.st-end{background:linear-gradient(180deg,var(--card) 0%,#E6F1FA 100%);text-align:center}
+.st-end{background:radial-gradient(circle at 8% 120%,rgba(159,225,255,.22) 0 180px,transparent 181px),radial-gradient(circle at 94% -20%,rgba(255,255,255,.1) 0 220px,transparent 221px),linear-gradient(135deg,#12508A 0%,#0E2F4C 100%)!important;color:#fff;text-align:center;padding-block:64px!important}
+.st-end h2{color:#fff}
+.st-end .small{color:#9FE1FF!important;letter-spacing:.04em}
 .st-end .wrap{justify-items:center;gap:14px}
 .st-end h2{font-size:clamp(1.35em,3vw,1.9em);font-weight:800;line-height:1.45}
 .st-end p{color:var(--muted)}
@@ -306,12 +308,42 @@ section[data-view].wrap{gap:24px}
 .hs-slide{flex:0 0 100%;min-width:0;box-sizing:border-box;max-width:none;padding-left:max(16px,calc((100% - 1088px) / 2));padding-right:max(16px,calc((100% - 1088px) / 2))}
 .mv .hs-slide.wrap{padding-bottom:76px}
 .hs-ctl{position:absolute;left:0;right:0;bottom:22px;display:flex;justify-content:center;align-items:center;gap:10px}
-.hs-arw,.hs-pause{width:38px;height:38px;border-radius:50%;border:1px solid rgba(14,47,76,.3);background:rgba(255,255,255,.75);color:#0E2F4C;font-size:1.4em;line-height:1;cursor:pointer;display:grid;place-items:center}
-.hs-pause{font-size:.72em;letter-spacing:-1px}
-.hs-arw:hover,.hs-pause:hover{background:#fff}
+.hs-arw{width:38px;height:38px;border-radius:50%;border:1px solid rgba(14,47,76,.3);background:rgba(255,255,255,.75);color:#0E2F4C;font-size:1.4em;line-height:1;cursor:pointer;display:grid;place-items:center}
+.hs-arw:hover{background:#fff}
 .hs-dots{display:flex;gap:8px}
 .hs-dots button{width:11px;height:11px;border-radius:999px;border:0;padding:0;background:rgba(14,47,76,.28);cursor:pointer;transition:width .3s,background .3s}
 .hs-dots button[aria-current="true"]{width:30px;background:#0E2F4C}
+/* 슬라이드마다 다른 색 */
+.hs-slide{position:relative;overflow:hidden}
+.hs-2{background:radial-gradient(circle at 12% 110%,rgba(255,255,255,.55) 0 150px,transparent 151px),linear-gradient(135deg,#DCE2FB 0%,#E9EDFD 50%,#F5F7FE 100%)}
+.hs-3{background:radial-gradient(circle at 92% -10%,rgba(255,255,255,.55) 0 190px,transparent 191px),linear-gradient(135deg,#CDEBF5 0%,#E3F4FA 50%,#F3FAFD 100%)}
+.hs-2 .badge{background:#3D55C9!important;color:#fff!important;border-color:#3D55C9!important}
+.hs-2 h1 em{color:#3D55C9!important}
+.hs-2 .acts a.pri{background:#3D55C9;border-color:#3D55C9}
+.hs-3 .badge{background:#0B6E96!important;color:#fff!important;border-color:#0B6E96!important}
+.hs-3 h1 em{color:#0B6E96!important}
+.hs-3 .acts a.pri{background:#0B6E96;border-color:#0B6E96}
+.mv .hs-1 .badge{background:#0E2F4C;color:#fff;border-color:#0E2F4C}
+@media (min-width:861px){.mv .hs-2.wrap{grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr)}.hs-2 .art-wrap{order:-1}}
+:root[data-theme="dark"] .hs-2{background:linear-gradient(135deg,#1C2448,#141A33)}
+:root[data-theme="dark"] .hs-3{background:linear-gradient(135deg,#123542,#0C2029)}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .hs-2{background:linear-gradient(135deg,#1C2448,#141A33)}:root:not([data-theme="light"]) .hs-3{background:linear-gradient(135deg,#123542,#0C2029)}}
+/* 그루 움직임: 읽기, 응원 */
+.gru-read .g-all{animation:g-read 3.4s ease-in-out infinite}
+.gru-read .g-book{animation:g-page 3.4s ease-in-out infinite;transform-box:view-box;transform-origin:100px 190px}
+@keyframes g-read{0%,100%{transform:rotate(-4deg)}50%{transform:rotate(4deg) translateY(-3px)}}
+@keyframes g-page{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}
+.gru-cheer .g-all{animation:g-jump 1.8s ease-in-out infinite}
+.gru-cheer .g-arm-l{animation:g-cheer-l .9s ease-in-out infinite alternate;transform-box:view-box;transform-origin:42px 128px}
+.gru-cheer .g-arm-r{animation:g-cheer-r .9s ease-in-out infinite alternate;transform-origin:158px 128px}
+.gru-cheer .g-sh{animation:g-jsh 1.8s ease-in-out infinite}
+.gru-cheer .g-spark path{animation:g-twinkle 1.3s ease-in-out infinite;transform-box:fill-box;transform-origin:center}
+.gru-cheer .g-spark path:nth-child(2){animation-delay:.4s}.gru-cheer .g-spark path:nth-child(3){animation-delay:.8s}
+@keyframes g-jump{0%,100%{transform:translateY(0)}45%{transform:translateY(-9px)}}
+@keyframes g-jsh{0%,100%{transform:scaleX(1)}45%{transform:scaleX(.85)}}
+@keyframes g-cheer-l{from{transform:rotate(8deg)}to{transform:rotate(-14deg)}}
+@keyframes g-cheer-r{from{transform:rotate(-8deg)}to{transform:rotate(14deg)}}
+@keyframes g-twinkle{0%,100%{transform:scale(.5);opacity:.3}50%{transform:scale(1.15);opacity:1}}
 /* 무엇을 도와드릴까요 */
 .svc-band{background:var(--sky)}
 .svc-band .svc{background:none;padding:56px 16px 64px;gap:34px}
@@ -623,6 +655,12 @@ body.qs-on{overflow:hidden}
 /* AI popup */
 .ai-fab{position:fixed;right:calc(env(safe-area-inset-right,0px) + 16px);bottom:calc(env(safe-area-inset-bottom,0px) + 16px);z-index:18;display:flex;gap:8px;align-items:center;background:var(--brand);color:var(--on-brand);border:0;border-radius:999px;padding:12px 18px;font-weight:700;box-shadow:0 6px 18px rgba(13,40,80,.35);cursor:pointer}
 .ai-fab svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:2;stroke-linejoin:round}
+.ai-fab{padding-left:8px!important}
+.ai-fab svg.fab-gru{width:40px;height:40px;stroke:none;background:#fff;border-radius:50%;flex:0 0 auto;overflow:visible}
+.fab-gru .fg-leaf{animation:g-sway 2.8s ease-in-out infinite;transform-box:view-box;transform-origin:24px 15px}
+.fab-gru .fg-eyes{animation:g-blink 4.5s infinite;transform-box:view-box;transform-origin:24px 27px}
+.ai-fab:hover .fab-gru{animation:g-hop .5s ease}
+@media (prefers-reduced-motion:reduce){.fab-gru *{animation:none!important}}
 .ai-fab[aria-expanded="true"]{background:var(--ink);color:var(--card)}
 .ai-panel{position:fixed;right:calc(env(safe-area-inset-right,0px) + 16px);bottom:calc(env(safe-area-inset-bottom,0px) + 76px);z-index:19;width:min(390px,calc(100vw - 32px));height:min(580px,calc(100vh - 110px));background:var(--card);border:1px solid var(--line-strong);border-top:4px solid var(--brand);box-shadow:0 12px 32px rgba(0,0,0,.25);display:grid;grid-template-rows:auto minmax(0,1fr) auto auto auto}
 .ai-head{display:flex;justify-content:space-between;align-items:center;gap:8px;padding:12px 14px;border-bottom:1px solid var(--line)}
@@ -877,7 +915,7 @@ footer b{color:var(--ink)}
 
 <header>
   <div class="wrap top">
-    <a class="logo" href="#home" data-go="home" aria-label="학교 그루 처음으로"><svg viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="20" fill="#0E2F4C"/><path d="M20 13c-3.2-2-6.8-2.2-10-1.3v16.6c3.2-.9 6.8-.7 10 1.3 3.2-2 6.8-2.2 10-1.3V11.7c-3.2-.9-6.8-.7-10 1.3zM20 13v16.3" fill="none" stroke="#fff" stroke-width="2" stroke-linejoin="round"/><path d="M10 28.3c3.2-.9 6.8-.7 10 1.3 3.2-2 6.8-2.2 10-1.3" fill="none" stroke="#5CC8F2" stroke-width="2.2" stroke-linecap="round"/></svg></a>
+    <a class="logo" href="#home" data-go="home" aria-label="학교 그루 홈으로"><svg viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="20" fill="#0E2F4C"/><path d="M20 13c-3.2-2-6.8-2.2-10-1.3v16.6c3.2-.9 6.8-.7 10 1.3 3.2-2 6.8-2.2 10-1.3V11.7c-3.2-.9-6.8-.7-10 1.3zM20 13v16.3" fill="none" stroke="#fff" stroke-width="2" stroke-linejoin="round"/><path d="M10 28.3c3.2-.9 6.8-.7 10 1.3 3.2-2 6.8-2.2 10-1.3" fill="none" stroke="#5CC8F2" stroke-width="2.2" stroke-linecap="round"/></svg></a>
     <a class="brand" href="#home" data-go="home">
       <span><small>학부모 학교생활 안내 서비스</small><b>학교 그루</b></span>
     </a>
@@ -888,7 +926,7 @@ footer b{color:var(--ink)}
     </div>
   </div>
   <nav aria-label="주 메뉴"><ul id="nav">
-    <li><a href="#home" data-go="home">처음</a></li>
+    <li><a href="#home" data-go="home">홈</a></li>
     <li><a href="#notices" data-go="notices">가정통신문</a></li>
     <li><a href="#words" data-go="words">학교 용어 사전</a></li>
     <li><a href="#guide" data-go="guide">상황별 행동 안내</a></li>
@@ -902,12 +940,12 @@ footer b{color:var(--ink)}
 <section data-view="home">
   <div class="mv"><div class="hs" id="hs" aria-roledescription="회전 슬라이드" aria-label="학교 그루 소개">
     <div class="hs-track" id="hsTrack">
-    <div class="hs-slide wrap" role="group" aria-roledescription="슬라이드" aria-label="1 / 3">
+    <div class="hs-slide hs-1 wrap" role="group" aria-roledescription="슬라이드" aria-label="1 / 3">
     <div class="txt">
       <span class="badge">누구나 이용할 수 있는 학부모 학교생활 안내</span>
       <h1>가정통신문 속 어려운 말,<br><em>쉬운 말</em>로 확인하세요</h1>
       <p>학교에서 실제로 보낸 가정통신문을 보면서 밑줄 친 말을 누르면 뜻을 쉬운 말로 알려 드립니다. 학부모가 해야 할 일도 함께 정리했습니다.</p>
-      <div class="acts"><a class="pri" href="#notices" data-go="notices">가정통신문 읽기</a><a class="sec" href="#notices" data-go="notices" data-photo>사진으로 풀이받기</a><a class="sec" href="#guide" data-go="guide">상황별 행동 안내</a></div>
+      <div class="acts"><a class="pri" href="#notices" data-go="notices">가정통신문 읽기</a></div>
     </div>
     <div class="art-wrap">
     <svg class="art" viewBox="0 0 340 280" aria-hidden="true">
@@ -945,12 +983,12 @@ footer b{color:var(--ink)}
     </div>
 
     </div>
-    <div class="hs-slide wrap" role="group" aria-roledescription="슬라이드" aria-label="2 / 3">
+    <div class="hs-slide hs-2 wrap" role="group" aria-roledescription="슬라이드" aria-label="2 / 3">
     <div class="txt">
       <span class="badge">학교 용어 사전</span>
       <h1>학교에서만 쓰는 말,<br><em>사전</em>에서 바로 찾아요</h1>
       <p>회신, 수익자 부담, 출석 인정 결석처럼 낯선 학교 용어를 쉬운 뜻과 예시로 풀었어요. 모르는 말을 검색창에 그대로 적어 보세요.</p>
-      <div class="acts"><a class="pri" href="#words" data-go="words">학교 용어 사전 보기</a><a class="sec" href="#words" data-go="words" data-q="결석">‘결석’ 찾아보기</a></div>
+      <div class="acts"><a class="pri" href="#words" data-go="words">학교 용어 사전 보기</a></div>
     </div>
     <div class="art-wrap">
     <svg class="art" viewBox="0 0 340 280" aria-hidden="true">
@@ -961,7 +999,7 @@ footer b{color:var(--ink)}
   <g transform="translate(176 66)"><rect width="140" height="66" rx="12" fill="#fff" stroke="#1B86B8" stroke-width="2"/><text x="70" y="28" text-anchor="middle" font-size="15" font-weight="800" fill="#1B86B8">회신</text><text x="70" y="50" text-anchor="middle" font-size="13" fill="#333">= 답장을 보내요</text></g>
   <g transform="translate(150 196)"><rect width="150" height="54" rx="12" fill="#fff" stroke="#D3DCE6"/><text x="75" y="23" text-anchor="middle" font-size="13" font-weight="800" fill="#12508A">출석 인정 결석</text><text x="75" y="41" text-anchor="middle" font-size="12" fill="#333">= 빠져도 결석 아님</text></g>
 </svg>
-    <svg class="gru gru-hero" viewBox="0 0 200 220" aria-hidden="true">
+    <svg class="gru gru-hero gru-read" viewBox="0 0 200 220" aria-hidden="true">
   <ellipse class="g-sh" cx="100" cy="208" rx="50" ry="8" fill="rgba(14,47,76,.13)"/>
   <g class="g-all">
     <g class="g-leaf">
@@ -970,28 +1008,36 @@ footer b{color:var(--ink)}
       <path d="M100 33c12-22 38-24 46-12-12 20-34 22-46 12z" fill="#8ED36A"/>
       <path d="M99 39c-11-7-23-9-34-7M101 32c10-8 23-11 36-10" stroke="#4FA33A" stroke-width="2" fill="none" stroke-linecap="round"/>
     </g>
-    <path class="g-arm-l" d="M42 134q-18 8-15 24" stroke="#62B455" stroke-width="11" stroke-linecap="round" fill="none"/>
-    <path class="g-arm-r" d="M158 128q19-14 17-34" stroke="#62B455" stroke-width="11" stroke-linecap="round" fill="none"/>
+    
+    
     <path d="M100 56c42 0 64 32 64 72 0 42-26 68-64 68s-64-26-64-68c0-40 22-72 64-72z" fill="#7CCB6A"/>
     <ellipse cx="100" cy="150" rx="40" ry="33" fill="#CDEFB9"/>
     <g class="g-eyes">
-      <ellipse cx="82" cy="112" rx="7" ry="9" fill="#1E2A1A"/><ellipse cx="118" cy="112" rx="7" ry="9" fill="#1E2A1A"/>
-      <circle cx="84.5" cy="108.5" r="2.6" fill="#fff"/><circle cx="120.5" cy="108.5" r="2.6" fill="#fff"/>
+      <ellipse cx="84" cy="117" rx="6.5" ry="7.5" fill="#1E2A1A"/><ellipse cx="116" cy="117" rx="6.5" ry="7.5" fill="#1E2A1A"/>
+      <circle cx="86" cy="114.5" r="2.2" fill="#fff"/><circle cx="118" cy="114.5" r="2.2" fill="#fff"/>
     </g>
     <ellipse cx="70" cy="127" rx="8" ry="5" fill="#FF9DA8" opacity=".75"/><ellipse cx="130" cy="127" rx="8" ry="5" fill="#FF9DA8" opacity=".75"/>
     <path d="M91 125q9 10 18 0" stroke="#1E2A1A" stroke-width="3.2" fill="none" stroke-linecap="round"/>
     <ellipse cx="80" cy="197" rx="14" ry="7" fill="#5DAA4C"/><ellipse cx="120" cy="197" rx="14" ry="7" fill="#5DAA4C"/>
+    <g class="g-book">
+      <path d="M100 150q-26-10-48-4v40q22-6 48 4z" fill="#fff" stroke="#1B86B8" stroke-width="3" stroke-linejoin="round"/>
+      <path d="M100 150q26-10 48-4v40q-22-6-48 4z" fill="#F4FAFE" stroke="#1B86B8" stroke-width="3" stroke-linejoin="round"/>
+      <path d="M62 158q16-3 30 1M62 168q16-3 30 1M108 159q14-4 30-1M108 169q14-4 30-1" stroke="#9FE1FF" stroke-width="3" stroke-linecap="round" fill="none"/>
+      <path d="M100 150v40" stroke="#1B86B8" stroke-width="3"/>
+    </g>
+    <path class="g-hand-l" d="M44 140q2 22 16 30" stroke="#62B455" stroke-width="11" stroke-linecap="round" fill="none"/>
+    <path class="g-hand-r" d="M156 140q-2 22-16 30" stroke="#62B455" stroke-width="11" stroke-linecap="round" fill="none"/>
   </g>
 </svg>
     <span class="gru-say" aria-hidden="true">모르는 말, 같이 찾아봐요!</span>
     </div>
     </div>
-    <div class="hs-slide wrap" role="group" aria-roledescription="슬라이드" aria-label="3 / 3">
+    <div class="hs-slide hs-3 wrap" role="group" aria-roledescription="슬라이드" aria-label="3 / 3">
     <div class="txt">
       <span class="badge">상황별 행동 안내</span>
       <h1>아이에게 일이 생겼을 때,<br><em>무엇부터</em> 할지 알려 드려요</h1>
       <p>아플 때, 다쳤을 때, 친구 문제로 힘들 때처럼 자주 생기는 상황마다 차례대로 할 일과 연락할 곳을 정리했어요.</p>
-      <div class="acts"><a class="pri" href="#guide" data-go="guide">상황별 행동 안내 보기</a><a class="sec" href="#help" data-go="help">상담·지원 기관</a></div>
+      <div class="acts"><a class="pri" href="#guide" data-go="guide">상황별 행동 안내 보기</a></div>
     </div>
     <div class="art-wrap">
     <svg class="art" viewBox="0 0 340 280" aria-hidden="true">
@@ -1006,7 +1052,7 @@ footer b{color:var(--ink)}
   <g stroke="#3E8E41" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M236 98l6 6 12-12"/><path d="M236 144l6 6 12-12"/></g>
   <g transform="translate(222 214)"><rect width="104" height="48" rx="10" fill="#fff" stroke="#D3DCE6"/><text x="52" y="21" text-anchor="middle" font-size="12" font-weight="800" fill="#B42318">급하면 119</text><text x="52" y="38" text-anchor="middle" font-size="11" fill="#333">망설이지 마세요</text></g>
 </svg>
-    <svg class="gru gru-hero" viewBox="0 0 200 220" aria-hidden="true">
+    <svg class="gru gru-hero gru-cheer" viewBox="0 0 200 220" aria-hidden="true">
   <ellipse class="g-sh" cx="100" cy="208" rx="50" ry="8" fill="rgba(14,47,76,.13)"/>
   <g class="g-all">
     <g class="g-leaf">
@@ -1015,7 +1061,7 @@ footer b{color:var(--ink)}
       <path d="M100 33c12-22 38-24 46-12-12 20-34 22-46 12z" fill="#8ED36A"/>
       <path d="M99 39c-11-7-23-9-34-7M101 32c10-8 23-11 36-10" stroke="#4FA33A" stroke-width="2" fill="none" stroke-linecap="round"/>
     </g>
-    <path class="g-arm-l" d="M42 134q-18 8-15 24" stroke="#62B455" stroke-width="11" stroke-linecap="round" fill="none"/>
+    <path class="g-arm-l" d="M42 128q-19-14-17-34" stroke="#62B455" stroke-width="11" stroke-linecap="round" fill="none"/>
     <path class="g-arm-r" d="M158 128q19-14 17-34" stroke="#62B455" stroke-width="11" stroke-linecap="round" fill="none"/>
     <path d="M100 56c42 0 64 32 64 72 0 42-26 68-64 68s-64-26-64-68c0-40 22-72 64-72z" fill="#7CCB6A"/>
     <ellipse cx="100" cy="150" rx="40" ry="33" fill="#CDEFB9"/>
@@ -1036,7 +1082,6 @@ footer b{color:var(--ink)}
       <button type="button" class="hs-arw" id="hsPrev" aria-label="이전 화면">‹</button>
       <div class="hs-dots" id="hsDots"></div>
       <button type="button" class="hs-arw" id="hsNext" aria-label="다음 화면">›</button>
-      <button type="button" class="hs-pause" id="hsPause" aria-label="자동 넘김 멈추기">❚❚</button>
     </div>
   </div></div>
 
@@ -1133,10 +1178,10 @@ footer b{color:var(--ink)}
 <section data-view="notices" class="wrap" hidden>
   <div class="head">
     <svg class="hicon" viewBox="0 0 48 48" aria-hidden="true"><path d="M14 6h14l8 8v28H14z"/><path d="M28 6v8h8M19 22h12M19 28h12M19 34h8"/></svg>
-    <span class="eyebrow"><a href="#home" data-go="home">처음</a> › 가정통신문</span>
+    <span class="eyebrow"><a href="#home" data-go="home">홈</a> › 가정통신문</span>
     <h2>가정통신문 쉽게 읽기</h2>
     <p class="lead">실제 학교에서 보낸 가정통신문을 바탕으로 만들었어요. 통신문을 고르고 밑줄 친 말을 누르면 뜻이 나와요.</p>
-    <div class="hcta"><span>모르는 단어는 AI에게 물어보세요</span><button type="button" data-ai>AI에게 묻기 <span aria-hidden="true">›</span></button></div>
+    <div class="hcta"><span>모르는 단어는 그루에게 물어보세요</span><button type="button" data-ai>그루에게 묻기 <span aria-hidden="true">›</span></button></div>
   </div>
   <div class="photo" id="photo">
     <div class="ph-intro">
@@ -1176,10 +1221,10 @@ footer b{color:var(--ink)}
 <section data-view="words" class="wrap" hidden>
   <div class="head">
     <svg class="hicon" viewBox="0 0 48 48" aria-hidden="true"><path d="M24 12c-4-3-10-3-14-2v26c4-1 10-1 14 2 4-3 10-3 14-2V10c-4-1-10-1-14 2zM24 12v26"/></svg>
-    <span class="eyebrow"><a href="#home" data-go="home">처음</a> › 학교 용어 사전</span>
+    <span class="eyebrow"><a href="#home" data-go="home">홈</a> › 학교 용어 사전</span>
     <h2>학교 용어 사전</h2>
     <p class="lead">학교에서 자주 쓰는 말을 쉬운 말로 풀고, 가정통신문 속 예문을 함께 실었어요.</p>
-    <div class="hcta"><span>찾는 말이 없으면 AI에게 물어보세요</span><button type="button" data-ai>AI에게 묻기 <span aria-hidden="true">›</span></button></div>
+    <div class="hcta"><span>찾는 말이 없으면 그루에게 물어보세요</span><button type="button" data-ai>그루에게 묻기 <span aria-hidden="true">›</span></button></div>
   </div>
   <form class="search" id="wSearch" role="search">
     <input id="wq" type="search" placeholder="찾을 말 (예: 수익자 부담, 결석)" aria-label="용어 검색">
@@ -1193,10 +1238,10 @@ footer b{color:var(--ink)}
 <section data-view="guide" class="wrap" hidden>
   <div class="head">
     <svg class="hicon" viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="17"/><path d="M31 17l-5 11-11 5 5-11z"/></svg>
-    <span class="eyebrow"><a href="#home" data-go="home">처음</a> › 상황별 행동 안내</span>
+    <span class="eyebrow"><a href="#home" data-go="home">홈</a> › 상황별 행동 안내</span>
     <h2>우리 아이에게 이런 일이 생겼나요?</h2>
     <p class="lead">주제와 상황을 차례로 고르면, 무엇부터 할지와 도움받을 곳을 쉬운 말로 알려 드려요.</p>
-    <div class="hcta"><span>여기 없는 상황은 AI에게 물어보세요</span><button type="button" data-ai>AI에게 묻기 <span aria-hidden="true">›</span></button></div>
+    <div class="hcta"><span>여기 없는 상황은 그루에게 물어보세요</span><button type="button" data-ai>그루에게 묻기 <span aria-hidden="true">›</span></button></div>
   </div>
   <ol class="gsteps" id="gsteps" aria-label="진행 단계"></ol>
   <div id="gbody"></div>
@@ -1221,9 +1266,9 @@ footer b{color:var(--ink)}
 <section data-view="help" class="wrap" hidden>
   <div class="head">
     <svg class="hicon" viewBox="0 0 48 48" aria-hidden="true"><path d="M10 28v-4a14 14 0 0 1 28 0v4"/><rect x="8" y="26" width="7" height="11" rx="2"/><rect x="33" y="26" width="7" height="11" rx="2"/><path d="M36 37c0 3-4 5-9 5"/></svg>
-    <span class="eyebrow"><a href="#home" data-go="home">처음</a> › 상담·지원 기관</span>
+    <span class="eyebrow"><a href="#home" data-go="home">홈</a> › 상담·지원 기관</span>
     <h2>상담·지원 기관 안내</h2>
-    <p class="lead">번호와 주소는 2026년 10월에 모았으니 전화 전에 한 번 더 확인해 주세요.</p>
+    <p class="lead">상담 전화, 지원 제도, 우리 동네 기관을 한곳에 모았어요.</p>
   </div>
   <div class="local first">
     <h3 class="gq">이럴 땐 여기에 먼저 연락하세요</h3>
@@ -1234,7 +1279,7 @@ footer b{color:var(--ink)}
   <div class="help" id="help"></div>
   <div class="local supp">
     <h3 class="gq">받을 수 있는 지원 제도</h3>
-    <p class="small">북한배경 학생과 가정이 받을 수 있는 장학금, 등록금, 학습, 멘토링, 상담, 진로 지원이에요. 종류를 골라 보세요. 모집 시기와 대상은 해마다 바뀌니 신청 전 각 기관 공고를 확인하세요(2026년 11월 확인).</p>
+    <p class="small">북한배경 학생과 가정이 받을 수 있는 장학금, 등록금, 학습, 멘토링, 상담, 진로 지원이에요. 종류를 골라 보세요. 모집 시기와 대상은 해마다 바뀌니 신청 전 각 기관 공고를 확인하세요.</p>
     <div class="chips" id="scats"></div>
     <div class="lrows" id="supp"></div>
   </div>
@@ -1249,7 +1294,7 @@ footer b{color:var(--ink)}
 <section data-view="privacy" class="wrap" hidden>
   <div class="head">
     <svg class="hicon" viewBox="0 0 48 48" aria-hidden="true"><path d="M24 6l14 5v11c0 9-6 16-14 20-8-4-14-11-14-20V11z"/><path d="M18 24l4 4 8-8"/></svg>
-    <span class="eyebrow"><a href="#home" data-go="home">처음</a> › 개인정보처리방침</span>
+    <span class="eyebrow"><a href="#home" data-go="home">홈</a> › 개인정보처리방침</span>
     <h2>개인정보처리방침</h2>
     <p class="lead">학교 그루가 어떤 정보를 왜 저장하고, 언제 지우는지 쉬운 말로 알려 드려요.</p>
   </div>
@@ -1280,8 +1325,8 @@ footer b{color:var(--ink)}
         <li>이메일 가입 정보는 탈퇴를 요청하거나 서비스 운영을 마치면 지워요. 탈퇴하면 내가 쓴 글도 함께 지워져요.</li>
         <li>서비스 운영을 마치면 저장된 글과 가입 정보를 모두 지워요.</li></ul>
     </section>
-    <section><h3>4. AI 묻기와 사진 풀이</h3>
-      <ul><li>GitHub 누리집(neoul-team.github.io)에서는 AI 묻기 질문이 누리집 안의 자료로만 답을 찾고, 밖으로 보내지 않아요. 사진 풀이는 쓰지 않아요.</li>
+    <section><h3>4. 그루에게 묻기(AI)와 사진 풀이</h3>
+      <ul><li>GitHub 누리집(neoul-team.github.io)에서는 그루에게 묻기(AI) 질문이 누리집 안의 자료로만 답을 찾고, 밖으로 보내지 않아요. 사진 풀이는 쓰지 않아요.</li>
         <li>Claude 앱 안에서 열면 답을 만들기 위해 질문과 사진이 Anthropic의 Claude로 보내져요. 이때는 Claude의 개인정보 처리 기준이 함께 적용돼요.</li>
         <li>질문과 사진에 아이 이름, 학교 이름, 전화번호 같은 개인정보는 넣지 마세요.</li></ul>
     </section>
@@ -1310,7 +1355,7 @@ footer b{color:var(--ink)}
 <section data-view="terms" class="wrap" hidden>
   <div class="head">
     <svg class="hicon" viewBox="0 0 48 48" aria-hidden="true"><path d="M12 6h18l8 8v28H12z"/><path d="M30 6v8h8M18 22h14M18 28h14M18 34h9"/></svg>
-    <span class="eyebrow"><a href="#home" data-go="home">처음</a> › 이용약관</span>
+    <span class="eyebrow"><a href="#home" data-go="home">홈</a> › 이용약관</span>
     <h2>이용약관</h2>
     <p class="lead">학교 그루를 이용할 때 함께 지켜 주셨으면 하는 약속이에요.</p>
   </div>
@@ -1318,7 +1363,7 @@ footer b{color:var(--ink)}
     <section><h3>제1조 목적</h3>
       <p>이 약관은 팀 너울이 운영하는 학부모 학교생활 안내 서비스 '학교 그루'(이하 '서비스')를 이용하는 방법과 지켜야 할 일을 정해요.</p></section>
     <section><h3>제2조 서비스 내용</h3>
-      <ul><li>가정통신문 읽기, 학교 용어 사전, 상황별 행동 안내, 상담·지원 기관 안내, AI 묻기, 학부모 Q&amp;A를 제공해요.</li>
+      <ul><li>가정통신문 읽기, 학교 용어 사전, 상황별 행동 안내, 상담·지원 기관 안내, 그루에게 묻기(AI), 학부모 Q&amp;A를 제공해요.</li>
         <li>누구나 무료로 이용할 수 있어요. 학부모 Q&amp;A에 글을 쓸 때만 카카오나 이메일로 로그인해요.</li>
         <li>이메일 계정의 비밀번호는 스스로 잘 지켜 주세요. 다른 서비스와 같은 비밀번호는 쓰지 않는 것이 좋아요.</li></ul></section>
     <section><h3>제3조 안내 정보의 성격</h3>
@@ -1351,7 +1396,7 @@ footer b{color:var(--ink)}
 <section data-view="qna" class="wrap" hidden>
   <div class="head">
     <svg class="hicon" viewBox="0 0 48 48" aria-hidden="true"><path d="M7 9h23v16H17l-6 5v-5H7z"/><path d="M34 17h7v15h-3v5l-6-5H20v-3"/></svg>
-    <span class="eyebrow"><a href="#home" data-go="home">처음</a> › 학부모 Q&amp;A</span>
+    <span class="eyebrow"><a href="#home" data-go="home">홈</a> › 학부모 Q&amp;A</span>
     <h2>학부모 묻고 답하기</h2>
     <p class="lead">학교 일로 궁금한 것을 묻고, 아는 것은 답해 주세요. 별명을 써도 괜찮아요.</p>
   </div>
@@ -1429,8 +1474,8 @@ footer b{color:var(--ink)}
     <div class="hres qs-res" id="qsres" hidden aria-live="polite"></div>
   </div>
 </div>
-<button class="ai-fab" id="aiFab" type="button" aria-expanded="false" aria-controls="aiPanel"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16v11H9l-5 4z"/><path d="M8 9.5h8M8 12.5h5"/></svg>AI에게 묻기</button>
-<div class="ai-panel" id="aiPanel" role="dialog" aria-label="AI 질의응답" hidden>
+<button class="ai-fab" id="aiFab" type="button" aria-expanded="false" aria-controls="aiPanel"><svg class="fab-gru" viewBox="0 0 48 48" aria-hidden="true"><g class="fg-leaf"><path d="M24 15V8" stroke="#3E8E41" stroke-width="2" stroke-linecap="round"/><path d="M24 11c-3-5-9-5-11-3 3 4 8 5 11 3z" fill="#6CC04A"/><path d="M24 9c3-6 10-6 12-3-3 5-9 6-12 3z" fill="#8ED36A"/></g><ellipse cx="24" cy="30" rx="16" ry="15" fill="#7CCB6A"/><g class="fg-eyes"><ellipse cx="18.5" cy="27" rx="2.2" ry="2.8" fill="#1E2A1A"/><ellipse cx="29.5" cy="27" rx="2.2" ry="2.8" fill="#1E2A1A"/><circle cx="19.3" cy="26" r=".8" fill="#fff"/><circle cx="30.3" cy="26" r=".8" fill="#fff"/></g><ellipse cx="14.5" cy="32" rx="2.6" ry="1.6" fill="#FF9DA8" opacity=".8"/><ellipse cx="33.5" cy="32" rx="2.6" ry="1.6" fill="#FF9DA8" opacity=".8"/><path d="M21.5 32q2.5 3 5 0" stroke="#1E2A1A" stroke-width="1.3" fill="none" stroke-linecap="round"/></svg>그루에게 묻기</button>
+<div class="ai-panel" id="aiPanel" role="dialog" aria-label="그루에게 묻기" hidden>
   <div class="ai-head">
     <div class="ai-who"><svg class="gru gru-ai" viewBox="0 0 200 220" aria-hidden="true">
   <ellipse class="g-sh" cx="100" cy="208" rx="50" ry="8" fill="rgba(14,47,76,.13)"/>
@@ -3164,8 +3209,8 @@ function renderG() {
         h("p", {class: "small"}, "학교 전화번호와 담당자는 학교에서 보낸 안내문이나 학교 누리집에서 확인하세요. ", h("a", {href: "#help", "data-go": "help"}, "상담·지원 기관 안내 보기"))),
       st.note ? h("div", {class: "know"}, h("b", {}, "꼭 알아두세요"), h("p", {}, st.note)) : null,
       st.link ? h("div", {class: "know"}, h("b", {}, "함께 보기"), h("p", {}, st.link[1], " ", h("a", {href: "#" + st.link[0], "data-go": st.link[0]}, "가정통신문 보러 가기"))) : null,
-      h("div", {class: "know"}, h("b", {}, "우리 아이 상황과 조금 다른가요?"), h("p", {}, "아이 학년과 생긴 일을 AI에게 적어 보세요. ",
-        h("button", {class: "link", type: "button", onclick: () => aiOpen(`상황별 안내 「${st.t}」를 봤어요. 우리 아이 상황은 조금 달라요. 무엇부터 하면 좋을까요?`)}, "이 상황으로 AI에게 묻기"))),
+      h("div", {class: "know"}, h("b", {}, "우리 아이 상황과 조금 다른가요?"), h("p", {}, "아이 학년과 생긴 일을 그루에게 적어 보세요. ",
+        h("button", {class: "link", type: "button", onclick: () => aiOpen(`상황별 안내 「${st.t}」를 봤어요. 우리 아이 상황은 조금 달라요. 무엇부터 하면 좋을까요?`)}, "이 상황으로 그루에게 묻기"))),
       h("div", {class: "reply"},
         h("button", {class: "btn ghost", type: "button", onclick: () => gGo(tp.id, null)}, "‹ 다른 상황 보기"),
         h("button", {class: "btn ghost", type: "button", onclick: () => gGo(null, null)}, "큰 주제로 돌아가기"))));
@@ -3187,7 +3232,7 @@ const FICON = {
   qna: '<path d="M7 9h23v16H17l-6 5v-5H7z"/><path d="M34 17h7v15h-3v5l-6-5H20v-3"/>',
   ai: '<path d="M22 6l3 9 9 3-9 3-3 9-3-9-9-3 9-3z"/><path d="M36 28l1.5 4.5L42 34l-4.5 1.5L36 40l-1.5-4.5L30 34l4.5-1.5z"/>',
 };
-const BNAV = [["home", "처음", '<path d="M8 23L24 9l16 14"/><path d="M12 20v18h24V20"/>'], ["notices", "통신문"], ["words", "용어"], ["guide", "상황"], ["help", "기관"], ["qna", "Q&A"]];
+const BNAV = [["home", "홈", '<path d="M8 23L24 9l16 14"/><path d="M12 20v18h24V20"/>'], ["notices", "통신문"], ["words", "용어"], ["guide", "상황"], ["help", "기관"], ["qna", "Q&A"]];
 setTimeout(() => $("#bnav").append(...BNAV.map(([v, t, icon]) => { const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg"); svg.setAttribute("viewBox", "0 0 48 48"); svg.setAttribute("aria-hidden", "true"); svg.innerHTML = icon || FICON[v]; const a = h("a", {href: "#" + v, "data-go": v}, svg, h("span", {}, t)); if (document.querySelector(`#nav a[data-go="${v}"][aria-current]`)) a.setAttribute("aria-current", "page"); return a; })), 0);
 function ficon(k) { const s = document.createElementNS("http://www.w3.org/2000/svg", "svg"); s.setAttribute("viewBox", "0 0 48 48"); s.setAttribute("aria-hidden", "true"); s.innerHTML = FICON[k]; return s; }
 const FEAT = [
@@ -3196,7 +3241,7 @@ const FEAT = [
   ["guide", "상황별 행동 안내", `${TOPICS.reduce((n, t) => n + t.list.length, 0)}가지 상황`],
   ["help", "상담·지원 기관", "상담 전화·기관"],
   ["qna", "학부모 Q&A", "묻고 답하기"],
-  ["ai", "AI에게 묻기", "궁금한 것 바로 묻기"],
+  ["ai", "그루에게 묻기", "궁금한 것 바로 묻기"],
 ];
 $("#feat").append(...FEAT.map(([v, b, s]) => v === "ai"
   ? h("button", {type: "button", onclick: () => aiOpen()}, ficon(v), h("span", {}, b))
@@ -3227,10 +3272,8 @@ $("#boxGuide")?.append(...TOPICS.map(t => h("li", {}, h("a", {href: "#guide", on
     dots.forEach((d, k) => d.setAttribute("aria-current", k === cur ? "true" : "false"));
   }
   function restart() { clearInterval(timer); timer = null; if (!paused && !hover && !document.hidden) timer = setInterval(() => show(cur + 1), 6000); }
-  function setPaused(v) { paused = v; $("#hsPause").textContent = v ? "▶" : "❚❚"; $("#hsPause").setAttribute("aria-label", v ? "자동 넘김 다시 시작" : "자동 넘김 멈추기"); restart(); }
   $("#hsPrev").addEventListener("click", () => { show(cur - 1); restart(); });
   $("#hsNext").addEventListener("click", () => { show(cur + 1); restart(); });
-  $("#hsPause").addEventListener("click", () => setPaused(!paused));
   hs.addEventListener("mouseenter", () => { hover = true; restart(); });
   hs.addEventListener("mouseleave", () => { hover = false; restart(); });
   hs.addEventListener("focusin", () => { hover = true; restart(); });
@@ -3242,7 +3285,7 @@ $("#boxGuide")?.append(...TOPICS.map(t => h("li", {}, h("a", {href: "#guide", on
   hs.addEventListener("pointermove", e => { if (x0 == null) return; dx = e.clientX - x0; if (Math.abs(e.clientY - y0) > Math.abs(dx) && Math.abs(dx) < 10) return; tr.style.transform = `translateX(calc(${-100 * cur}% + ${dx}px))`; });
   function end() { if (x0 == null) return; x0 = null; tr.style.transition = ""; if (Math.abs(dx) > 50) show(cur + (dx < 0 ? 1 : -1)); else show(cur); restart(); }
   hs.addEventListener("pointerup", end); hs.addEventListener("pointercancel", end);
-  show(0); setPaused(calm);
+  show(0); restart();
 })();
 /* 통합 검색: 용어·상황·기관·통신문을 한 번에 */
 function sNorm(t) { return String(t || "").replace(/\[\[([^\]|]+)(\|[^\]]+)?\]\]/g, "$1").replace(/\s+/g, "").toLowerCase(); }
@@ -3268,7 +3311,7 @@ function homeSearch(inp = $("#hq"), out = $("#hres")) {
     group("상담·지원 기관", orgs.map(([who, n, tel, , , , area]) => li(n, [who, tel].filter(Boolean).join(" · "), () => { if (area) { lArea = area; renderLocal(); } go("help"); if (area) setTimeout(() => document.querySelector(".local").scrollIntoView({block: "start"}), 0); }))),
     group("가정통신문", nots.map(n => li(n.title, n.date, () => { openNotice(n.id); go("notices"); }))),
   ].filter(Boolean) : [h("p", {class: "hnone"}, `'${raw}'에 맞는 안내를 찾지 못했어요. `,
-    h("button", {class: "link", type: "button", onclick: () => aiOpen(`${raw}에 대해 알려 주세요.`)}, "AI에게 물어보기"))]));
+    h("button", {class: "link", type: "button", onclick: () => aiOpen(`${raw}에 대해 알려 주세요.`)}, "그루에게 물어보기"))]));
 }
 $("#hq").addEventListener("input", () => homeSearch());
 $("#homeSearch").addEventListener("submit", e => { e.preventDefault(); homeSearch(); });
@@ -3307,9 +3350,8 @@ function renderWords() {
   $("#words").replaceChildren(...(list.length ? list.slice(0, wShow).map(w => h("article", {class: "word", onclick: e => e.currentTarget.classList.toggle("open")},
     h("div", {class: "row"}, h("h3", {}, h("span", {class: "mk"}, w.t)), h("span", {class: "tag"}, w.c)),
     h("p", {}, w.e),
-    h("p", {class: "ex"}, "예) ", w.x),
     w.tip ? h("p", {class: "tip"}, w.tip) : null
-  )).concat(list.length > wShow ? [h("button", {class: "more wmore", type: "button", onclick: () => { wShow += 24; renderWords(); }}, `더 보기 (${list.length - wShow}개 남음)`)] : []) : [h("div", {class: "empty"}, `'${$("#wq").value}'은(는) 아직 사전에 없어요. `, h("button", {class: "link", type: "button", onclick: () => aiOpen(`'${$("#wq").value.trim()}'이(가) 무슨 뜻이에요?`)}, "AI에게 뜻 물어보기"))]));
+  )).concat(list.length > wShow ? [h("button", {class: "more wmore", type: "button", onclick: () => { wShow += 24; renderWords(); }}, `더 보기 (${list.length - wShow}개 남음)`)] : []) : [h("div", {class: "empty"}, `'${$("#wq").value}'은(는) 아직 사전에 없어요. `, h("button", {class: "link", type: "button", onclick: () => aiOpen(`'${$("#wq").value.trim()}'이(가) 무슨 뜻이에요?`)}, "그루에게 뜻 물어보기"))]));
 }
 $("#wq").addEventListener("input", renderWords);
 $("#wSearch").addEventListener("submit", e => e.preventDefault());
@@ -3794,7 +3836,7 @@ function phRender(r) {
             h("div", {class: "row"}, h("h4", {}, w.t), mine ? h("span", {class: "ph-in"}, "용어 사전에 있어요") : null),
             h("p", {}, w.e),
             w.s ? h("p", {class: "src"}, "“", w.s, "”") : null,
-            h("button", {class: "link ask", type: "button", onclick: () => aiOpen(`가정통신문에 나온 '${w.t}'이(가) 무슨 뜻인지 더 자세히, 예를 들어 알려 주세요.`)}, "AI에게 더 묻기"));
+            h("button", {class: "link ask", type: "button", onclick: () => aiOpen(`가정통신문에 나온 '${w.t}'이(가) 무슨 뜻인지 더 자세히, 예를 들어 알려 주세요.`)}, "그루에게 더 묻기"));
         })))),
     r.note ? h("div", {class: "know"}, h("b", {}, "알아 두세요"), h("p", {}, r.note)) : null,
     h("p", {class: "ph-note"}, "AI가 사진을 읽은 결과라 틀릴 수 있어요. 날짜, 금액, 내야 할 서류는 통신문 원본과 담임 선생님께 꼭 다시 확인하세요."));

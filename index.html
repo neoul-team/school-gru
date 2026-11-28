@@ -495,6 +495,18 @@ body.qs-on{overflow:hidden}
 .reply{display:flex;gap:6px;flex-wrap:wrap}
 .reply input{flex:1 1 200px;min-width:0;border:1px solid var(--line-strong);background:var(--card);border-radius:var(--r);padding:8px 12px}
 .reply .nick{flex:0 1 120px}
+.reply .anon{display:flex;align-items:center;gap:4px;font-size:.85em;color:var(--muted);white-space:nowrap}
+.qanon{display:flex!important;flex-direction:row!important;align-items:center;gap:8px;font-weight:600}
+.qanon input{width:18px;height:18px;flex:0 0 auto}
+.qanon small{font-weight:400;color:var(--muted)}
+.cmts{display:grid;gap:6px;margin:6px 0 2px 14px;padding-left:12px;border-left:3px solid var(--line)}
+.cmt{font-size:.94em}
+.cmt .meta{font-size:.78em;color:var(--muted)}
+.cmt .body{white-space:pre-wrap}
+.a .acts-row{display:flex;gap:12px;align-items:center;margin-top:2px}
+.qwd{font-size:.88em;color:var(--muted);padding:4px 2px}
+.qwd summary{cursor:pointer;width:max-content}
+.qwd div{padding:8px 0 0;display:grid;gap:6px}
 .link{border:0;background:none;color:var(--brand-ink);cursor:pointer;padding:0;font-size:.9em;text-decoration:underline}
 .link.del{color:var(--warn)}
 .status{font-size:.88em;color:var(--muted)}
@@ -1301,6 +1313,7 @@ footer b{color:var(--ink)}
         <tr><th>이메일로 가입할 때</th><td>이메일 주소, 별명, 비밀번호(알아볼 수 없게 바꾼 값으로만 저장해서 운영자도 볼 수 없어요)</td></tr>
         <tr><th>카카오로 로그인할 때</th><td>카카오 회원번호, 카카오 별명. 카카오 비밀번호나 이메일, 전화번호는 받지 않아요.</td></tr>
         <tr><th>로그인 상태</th><td>로그인을 유지하기 위한 무작위 표. 30일이 지나거나 로그아웃하면 지워져요.</td></tr>
+        <tr><th>익명으로 쓴 글</th><td>다른 사람에게는 별명 대신 '익명'으로 보이고 글쓴이 표도 보내지 않아요. 내 글을 지울 수 있도록 서버에는 누가 썼는지 남아요.</td></tr>
         <tr><th>글쓴이 확인값</th><td>내가 쓴 글만 지울 수 있도록, 브라우저가 만든 무작위 표를 알아볼 수 없게 바꾼 값(암호화 값)</td></tr>
         <tr><th>이 기기 안에만</th><td>글자 크기, 마지막으로 본 화면, 글쓴이 확인용 무작위 표. 이 기기의 브라우저에만 남고 서버로 보내지 않아요.</td></tr>
       </tbody></table>
@@ -1405,14 +1418,16 @@ footer b{color:var(--ink)}
     </div>
     <form class="form" id="qform">
       <h3>질문 올리기</h3>
-      <label>별명<input id="qnick" maxlength="20" placeholder="예: 봄이엄마" required></label>
+      <label id="qnickRow">별명<input id="qnick" maxlength="20" placeholder="예: 봄이엄마"></label>
       <label>어떤 일인가요?<select id="qcat"></select></label>
       <label>제목<input id="qtitle" maxlength="80" placeholder="예: 우유급식 신청은 꼭 해야 하나요?" required></label>
       <label>내용<textarea id="qbody" maxlength="2000" placeholder="아이 학년, 궁금한 점을 적어 주세요. 이름·학교·전화번호는 쓰지 마세요." required></textarea></label>
       <p class="small qrule">욕설이나 다른 사람을 깎아내리는 말이 있으면 글이 올라가지 않고, 이미 올라간 글도 자동으로 가려져요.</p>
+      <label class="qanon"><input type="checkbox" id="qanon"> 익명으로 올리기 <small>(다른 사람에게 별명 대신 '익명'으로 보여요)</small></label>
       <button class="btn" type="submit" id="qsubmit">올리기</button>
       <p class="status" id="qformMsg"></p>
     </form>
+    <details class="qwd" id="qwd" hidden><summary>계정 관리</summary><div id="qwdBody"></div></details>
   </div>
 </section>
 
@@ -3912,11 +3927,44 @@ function delButton(key, onYes) {
   return h("button", {class: "link del", type: "button", onclick: () => { confirmDel = key; renderQs(); }}, "지우기");
 }
 $("#qq").addEventListener("input", () => renderQs());
+const qDraft = {}, qOpenC = new Set();
+function myAnonIds() { try { return new Set(JSON.parse(store.get("myAnon") || "[]")); } catch { return new Set(); } }
+function addMyAnon(id) { if (!id) return; const m = myAnonIds(); m.add(id); store.set("myAnon", JSON.stringify([...m].slice(-300))); }
+const isMine = x => (x.authorId && x.authorId === uid) || myAnonIds().has(x.id);
+const shownNick = x => x.anon ? "익명" : x.nick;
+function replyForm(q, parent) {
+  const key = parent ? "c" + parent.id : "a" + q.id;
+  const needNick = !qMe;
+  const nickIn = needNick ? h("input", {class: "nick", maxlength: "20", placeholder: "별명", "aria-label": "별명", value: store.get(nickKey) || ""}) : null;
+  const bodyIn = h("input", {maxlength: "1000", placeholder: parent ? "댓글 쓰기" : "답글 쓰기", "aria-label": parent ? "댓글" : "답글", value: qDraft[key] || "", oninput: e => { qDraft[key] = e.target.value; }});
+  const anonIn = h("input", {type: "checkbox"});
+  const msg = h("span", {class: "status"});
+  return h("form", {class: "reply", onsubmit: async e => {
+    e.preventDefault();
+    const anon = anonIn.checked, body = bodyIn.value.trim();
+    const nick = qMe ? qMe.nick : (nickIn.value.trim());
+    if (!body || (!nick && !anon)) { msg.textContent = needNick ? "별명과 내용을 적어 주세요. 익명으로 올려도 돼요." : "내용을 적어 주세요."; return; }
+    const btn = e.currentTarget.querySelector("button"); btn.disabled = true;
+    msg.textContent = "확인하는 중이에요.";
+    const mod = await qModerate(`별명: ${anon ? "익명" : nick}\n${parent ? "댓글" : "답글"}: ${body}`);
+    if (!mod.ok) { msg.textContent = "올리지 않았어요. " + mod.reason + " 고쳐서 다시 올려 주세요."; btn.disabled = false; return; }
+    msg.textContent = "";
+    try {
+      const doc = {qid: q.id, nick: anon ? "익명" : nick, anon, body, authorId: uid, createdAt: Date.now()};
+      if (parent) doc.pid = parent.id;
+      const r = await db.collection("answers").add(doc);
+      if (anon) addMyAnon(r && r.id);
+      if (!anon && needNick) store.set(nickKey, nick);
+      delete qDraft[key]; if (parent) qOpenC.delete(parent.id);
+      renderQs();
+    } catch (err) { msg.textContent = writeErr(err); btn.disabled = false; }
+  }}, nickIn, bodyIn, h("label", {class: "anon"}, anonIn, "익명"), h("button", {class: "btn", type: "submit", style: "padding:8px 16px"}, parent ? "댓글 달기" : "답하기"), msg);
+}
 function renderQs() {
   renderQcats();
   if (!db) return;
   const kw = ($("#qq")?.value || "").replace(/\s+/g, "").toLowerCase();
-  const hay = q => (q.title + q.body + q.nick + answers.filter(a => a.qid === q.id).map(a => a.body).join("")).replace(/\s+/g, "").toLowerCase();
+  const hay = q => (q.title + q.body + shownNick(q) + answers.filter(a => a.qid === q.id).map(a => a.body).join("")).replace(/\s+/g, "").toLowerCase();
   const list = questions.filter(q => !qHidden(q.title, q.body, q.nick) && (qFilter === "전체" || q.cat === qFilter) && (!kw || hay(q).includes(kw)));
   const hid = questions.filter(q => qHidden(q.title, q.body, q.nick)).length + answers.filter(a => qHidden(a.body, a.nick)).length;
   $("#qstatus").textContent = questions.length ? `질문 ${list.length}개` + (hid ? ` · 규칙에 맞지 않아 가려진 글 ${hid}개` : "") : "";
@@ -3924,37 +3972,32 @@ function renderQs() {
     $("#qs").replaceChildren(h("div", {class: "empty"}, questions.length ? (kw ? `'${$("#qq").value.trim()}'이(가) 들어간 질문이 없어요. 새로 질문해 보세요.` : "이 분류에는 아직 질문이 없어요.") : "아직 질문이 없어요. 오른쪽(휴대전화는 아래)에서 첫 질문을 올려 주세요."));
     return;
   }
+  const loginLink = t => QNA_API && !qMe ? h("button", {class: "link", type: "button", onclick: () => openLogin()}, t) : null;
   $("#qs").replaceChildren(...list.map(q => {
     const as = answers.filter(a => a.qid === q.id && !qHidden(a.body, a.nick));
-    const nickIn = h("input", {class: "nick", maxlength: "20", placeholder: "별명", "aria-label": "별명", value: store.get(nickKey) || ""});
-    const bodyIn = h("input", {maxlength: "1000", placeholder: "답글 쓰기", "aria-label": "답글"});
-    const msg = h("span", {class: "status"});
+    const top = as.filter(a => !a.pid || !as.some(x => x.id === a.pid));
     return h("article", {class: "q"},
-      h("div", {class: "meta"}, h("span", {class: "tag"}, q.cat), h("span", {}, q.nick), h("span", {}, fmt(q.createdAt)),
-        q.authorId && q.authorId === uid ? delButton("q" + q.id, () => delQuestion(q, as)) : null),
+      h("div", {class: "meta"}, h("span", {class: "tag"}, q.cat), h("span", {}, shownNick(q)), h("span", {}, fmt(q.createdAt)),
+        isMine(q) ? delButton("q" + q.id, () => delQuestion(q, as)) : null),
       h("h3", {}, q.title),
       h("p", {class: "body"}, q.body),
       h("div", {class: "ans"},
-        h("span", {class: "small"}, as.length ? `답글 ${as.length}개` : "아직 답글이 없어요."),
-        ...as.map(a => h("div", {class: "a"},
-          h("div", {class: "meta"}, h("b", {}, a.nick), " · ", fmt(a.createdAt), " ",
-            a.authorId && a.authorId === uid ? delButton("a" + a.id, () => delAnswer(a)) : null),
-          h("p", {class: "body"}, a.body))),
-        canWrite ? h("form", {class: "reply", onsubmit: async e => {
-          e.preventDefault();
-          const nick = nickIn.value.trim(), body = bodyIn.value.trim();
-          if (!nick || !body) { msg.textContent = "별명과 답글을 모두 적어 주세요."; return; }
-          const btn = e.currentTarget.querySelector("button"); btn.disabled = true;
-          msg.textContent = "확인하는 중이에요.";
-          const mod = await qModerate(`별명: ${nick}\n답글: ${body}`);
-          if (!mod.ok) { msg.textContent = "올리지 않았어요. " + mod.reason + " 고쳐서 다시 올려 주세요."; btn.disabled = false; return; }
-          msg.textContent = "";
-          try {
-            await db.collection("answers").add({qid: q.id, nick, body, authorId: uid, createdAt: Date.now()});
-            store.set(nickKey, nick);
-          } catch (err) { msg.textContent = writeErr(err); btn.disabled = false; }
-        }}, nickIn, bodyIn, h("button", {class: "btn", type: "submit", style: "padding:8px 16px"}, "답하기"), msg)
-          : QNA_API && !qMe ? h("button", {class: "link", type: "button", onclick: () => openLogin()}, "로그인하고 답글 달기") : null
+        h("span", {class: "small"}, top.length ? `답글 ${top.length}개` : "아직 답글이 없어요."),
+        ...top.map(a => {
+          const kids = as.filter(c => c.pid === a.id);
+          return h("div", {class: "a"},
+            h("div", {class: "meta"}, h("b", {}, shownNick(a)), " · ", fmt(a.createdAt), " ",
+              isMine(a) ? delButton("a" + a.id, () => delAnswer(a, kids)) : null),
+            h("p", {class: "body"}, a.body),
+            kids.length || qOpenC.has(a.id) ? h("div", {class: "cmts"},
+              ...kids.map(c => h("div", {class: "cmt"},
+                h("div", {class: "meta"}, h("b", {}, shownNick(c)), " · ", fmt(c.createdAt), " ", isMine(c) ? delButton("a" + c.id, () => delAnswer(c, [])) : null),
+                h("p", {class: "body"}, c.body))),
+              canWrite && qOpenC.has(a.id) ? replyForm(q, a) : null) : null,
+            h("div", {class: "acts-row"},
+              canWrite ? h("button", {class: "link", type: "button", onclick: () => { qOpenC.has(a.id) ? qOpenC.delete(a.id) : qOpenC.add(a.id); renderQs(); }}, qOpenC.has(a.id) ? "댓글 닫기" : (kids.length ? `댓글 달기 (${kids.length})` : "댓글 달기")) : loginLink("로그인하고 댓글 달기")));
+        }),
+        canWrite ? replyForm(q, null) : loginLink("로그인하고 답글 달기")
       ));
   }));
 }
@@ -3970,9 +4013,9 @@ async function delQuestion(q, as) {
   try { for (const a of as) await db.doc("answers/" + a.id).delete(); await db.doc("questions/" + q.id).delete(); }
   catch { $("#qstatus").textContent = "지우지 못했어요. 다시 해 주세요."; }
 }
-async function delAnswer(a) {
+async function delAnswer(a, kids = []) {
   confirmDel = null;
-  try { await db.doc("answers/" + a.id).delete(); } catch { $("#qstatus").textContent = "지우지 못했어요. 다시 해 주세요."; }
+  try { for (const c of kids) await db.doc("answers/" + c.id).delete(); await db.doc("answers/" + a.id).delete(); } catch { $("#qstatus").textContent = "지우지 못했어요. 다시 해 주세요."; }
 }
 function lockForm() {
   $("#qform").replaceChildren(h("h3", {}, "질문 올리기"), h("p", {class: "small"}, "게시판을 준비하고 있습니다. 곧 질문을 올릴 수 있습니다."));
@@ -3981,16 +4024,18 @@ $("#qform").addEventListener("submit", async e => {
   e.preventDefault();
   const msg = $("#qformMsg");
   if (!db) { msg.textContent = "Q&A에 연결되지 않았어요. 로그인한 뒤 다시 열어 주세요."; return; }
-  const nick = $("#qnick").value.trim(), title = $("#qtitle").value.trim(), body = $("#qbody").value.trim();
-  if (!nick || !title || !body) { msg.textContent = "별명, 제목, 내용을 모두 적어 주세요."; return; }
+  const anon = $("#qanon").checked;
+  const nick = qMe ? qMe.nick : $("#qnick").value.trim(), title = $("#qtitle").value.trim(), body = $("#qbody").value.trim();
+  if (!title || !body || (!nick && !anon)) { msg.textContent = qMe ? "제목과 내용을 모두 적어 주세요." : "별명, 제목, 내용을 모두 적어 주세요. 익명으로 올려도 돼요."; return; }
   $("#qsubmit").disabled = true; msg.textContent = "확인하는 중이에요.";
-  const mod = await qModerate(`별명: ${nick}\n제목: ${title}\n내용: ${body}`);
+  const mod = await qModerate(`별명: ${anon ? "익명" : nick}\n제목: ${title}\n내용: ${body}`);
   if (!mod.ok) { msg.textContent = "올리지 않았어요. " + mod.reason + " 고쳐서 다시 올려 주세요."; $("#qsubmit").disabled = false; return; }
   msg.textContent = "올리는 중이에요.";
   try {
-    await db.collection("questions").add({nick, cat: $("#qcat").value, title, body, authorId: uid, createdAt: Date.now()});
-    store.set(nickKey, nick);
-    $("#qtitle").value = ""; $("#qbody").value = "";
+    const r = await db.collection("questions").add({nick: anon ? "익명" : nick, anon, cat: $("#qcat").value, title, body, authorId: uid, createdAt: Date.now()});
+    if (anon) addMyAnon(r && r.id);
+    if (!anon && !qMe) store.set(nickKey, nick);
+    $("#qtitle").value = ""; $("#qbody").value = ""; $("#qanon").checked = false;
     msg.textContent = "올렸어요. 답글이 달리면 이곳에 보여요.";
     qFilter = "전체";
   } catch (err) { msg.textContent = writeErr(err); }
@@ -4017,13 +4062,15 @@ async function remoteQna() {
     const sets = {questions: [...data.questions].sort((a, b) => b.createdAt - a.createdAt), answers: [...data.answers].sort((a, b) => a.createdAt - b.createdAt)};
     for (const n of ["questions", "answers"]) subs[n].forEach(cb => cb({docs: sets[n].map(x => ({id: x.id, data: () => x}))}));
   };
-  const pull = async () => { const r = await fetch(QNA_API, {cache: "no-store"}); if (!r.ok) throw new Error("http " + r.status); data = await r.json(); emit(); };
+  let last = "";
+  const pull = async () => { const r = await fetch(QNA_API, {cache: "no-store"}); if (!r.ok) throw new Error("http " + r.status); const t = await r.text(); if (t === last) return; last = t; data = JSON.parse(t); emit(); };
   const post = async body => {
     const r = await fetch(QNA_API, {method: "POST", headers: {"Content-Type": "application/json"}, body: JSON.stringify({...body, token: tok, session: store.get("qnaSession") || ""})});
     const d = await r.json().catch(() => ({}));
     if (d.error === "login_required") { setMe(null); openLogin(); }
     if (!r.ok) { const e = new Error(d.error || "http " + r.status); e.code = d.error === "blocked" ? "blocked" : "remote"; throw e; }
-    data = {questions: d.questions, answers: d.answers}; emit();
+    data = {questions: d.questions, answers: d.answers}; last = ""; emit();
+    return d;
   };
   try { await pull(); } catch { noDb(); return; }
   legacyUid = hash;
@@ -4035,7 +4082,7 @@ async function remoteQna() {
   if (qLoginErr) { openLogin(); const base = qLoginErr.split("__")[0], code = qLoginErr.split("__")[1]; $("#lgMsg").textContent = (LOGIN_ERR[base] || "로그인하지 못했어요. 다시 해 주세요.") + (code ? ` (오류 코드: ${code})` : ""); }
   db = {
     collection: name => { const q = {orderBy: () => q, limit: () => q, onSnapshot: cb => { subs[name].push(cb); cb({docs: []}); emit(); return () => {}; },
-      add: d => post(name === "questions" ? {type: "question", nick: d.nick, cat: d.cat, title: d.title, body: d.body} : {type: "answer", qid: d.qid, nick: d.nick, body: d.body})}; return q; },
+      add: d => post(name === "questions" ? {type: "question", nick: d.nick, anon: !!d.anon, cat: d.cat, title: d.title, body: d.body} : {type: "answer", qid: d.qid, pid: d.pid || "", nick: d.nick, anon: !!d.anon, body: d.body})}; return q; },
     doc: path => ({delete: () => { const [col, id] = path.split("/"); return post({type: "delete", kind: col === "questions" ? "question" : "answer", id}); }}),
   };
   startQna();
@@ -4074,16 +4121,18 @@ function setMe(user) {
   canWrite = !!qMe;
   $("#qform").hidden = !qMe;
   $("#qlogin").hidden = !!qMe;
-  const nk = $("#qnick"); if (qMe && nk && !nk.value) nk.value = qMe.nick;
+  if ($("#qnickRow")) $("#qnickRow").hidden = !!qMe;
   $("#loginBtn").hidden = false;
   $("#loginBtn").textContent = qMe ? qMe.nick + "님" : "로그인";
   $("#qacct").replaceChildren(...(qMe ? [h("span", {}, h("b", {}, qMe.nick), "님", qMe.via === "kakao" ? " (카카오)" : " (이메일)", "으로 로그인했어요"),
-      h("span", {}, h("button", {class: "link", type: "button", onclick: async () => { try { await authApi("logout", {session: store.get("qnaSession")}); } catch {} setMe(null); }}, "로그아웃"), " · ",
-        h("button", {class: "link del", type: "button", onclick: async e => {
-          if (e.currentTarget.dataset.sure !== "1") { e.currentTarget.dataset.sure = "1"; e.currentTarget.textContent = "정말 탈퇴할까요? 내 글도 지워져요 (한 번 더 누르기)"; return; }
-          try { await authApi("delete", {session: store.get("qnaSession")}); } catch {} setMe(null); location.reload();
-        }}, "탈퇴하기"))]
+      h("button", {class: "link", type: "button", onclick: async () => { try { await authApi("logout", {session: store.get("qnaSession")}); } catch {} setMe(null); }}, "로그아웃")]
     : [h("span", {}, "질문과 답글을 쓰려면 로그인해 주세요."), h("button", {class: "btn", type: "button", onclick: () => openLogin()}, "로그인")]));
+  $("#qwd").hidden = !qMe;
+  $("#qwdBody").replaceChildren(...(qMe ? [h("span", {}, "탈퇴하면 계정과 내가 쓴 글·답글·댓글이 모두 지워지고 되돌릴 수 없어요."),
+    h("button", {class: "link del", type: "button", style: "justify-self:start", onclick: async e => {
+      if (e.currentTarget.dataset.sure !== "1") { e.currentTarget.dataset.sure = "1"; e.currentTarget.textContent = "정말 탈퇴할까요? (한 번 더 누르면 탈퇴돼요)"; return; }
+      try { await authApi("delete", {session: store.get("qnaSession")}); } catch {} setMe(null); location.reload();
+    }}, "회원 탈퇴")] : []));
   if (db) renderQs();
 }
 function openLogin() { renderLoginDlg(); $("#lgDlg").hidden = false; setTimeout(() => $("#lgDlg .lg-kakao, #lgEmail")?.focus(), 30); }
